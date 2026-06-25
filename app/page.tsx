@@ -146,17 +146,22 @@ export default function HomePage() {
           </div>
 
           {/* Bottom Tabs */}
-          <div className="grid grid-cols-2 md:grid-cols-4 w-full mt-32 border border-gray-100 bg-gray-50/50">
+          <div className="grid grid-cols-2 md:grid-cols-4 w-full mt-32 border border-gray-100 bg-gray-50/50 overflow-hidden">
             {[
               { icon: Building2, label: "Apartment" },
               { icon: Home, label: "Villa" },
               { icon: Store, label: "Commercial" },
               { icon: MapPin, label: "Plots" }
             ].map((item, i) => (
-              <div key={i} className={`py-12 flex flex-col items-center justify-center gap-4 hover:bg-[#4BBFB8] hover:text-white transition-colors group cursor-pointer text-navy ${i !== 0 ? 'border-l border-gray-100' : ''}`}>
-                <item.icon className="w-12 h-12 group-hover:text-white text-[#4BBFB8] stroke-[1.5]" />
+              <motion.div
+                key={i}
+                whileHover={{ y: -6, backgroundColor: "#4BBFB8", color: "#ffffff" }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`py-12 flex flex-col items-center justify-center gap-4 group cursor-pointer text-navy transition-colors duration-200 ${i !== 0 ? 'border-l border-gray-100' : ''}`}
+              >
+                <item.icon className="w-12 h-12 group-hover:text-white text-[#4BBFB8] stroke-[1.5] transition-colors" />
                 <span className="font-bold text-lg">{item.label}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -199,7 +204,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="text-xs text-gray-400 font-bold uppercase tracking-wider">Call Experts</div>
-                    <div className="font-bold text-navy text-lg mt-0.5">+91-9462022262</div>
+                    <div className="font-bold text-navy text-lg mt-0.5">+91-XXXXXXXXXX</div>
                   </div>
                 </div>
                 <Button className="bg-navy text-white rounded-none h-14 px-8 font-bold text-xs tracking-widest hover:bg-navy/90 w-full sm:w-auto">
@@ -216,23 +221,31 @@ export default function HomePage() {
               transition={{ delay: 0.1 }}
               className="lg:col-span-4 flex flex-col gap-6"
             >
-              <div className="bg-[#2d3748] p-10 flex-1 flex flex-col justify-center shadow-lg group hover:-translate-y-1 transition-transform">
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-[#2d3748] p-10 flex-1 flex flex-col justify-center shadow-lg group transition-all"
+              >
                 <Building className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-white mb-4">Smart living</h3>
                 <p className="text-gray-400 mb-8 leading-relaxed">Integrated home automation and intelligent design for a seamless lifestyle.</p>
                 <Link href="#" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
-                  READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white"><ArrowRight className="w-4 h-4" /></div>
+                  READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></div>
                 </Link>
-              </div>
+              </motion.div>
 
-              <div className="bg-[#2d3748] p-10 flex-1 flex flex-col justify-center shadow-lg group hover:-translate-y-1 transition-transform">
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-[#2d3748] p-10 flex-1 flex flex-col justify-center shadow-lg group transition-all"
+              >
                 <Globe className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-white mb-4">Attractive location</h3>
                 <p className="text-gray-400 mb-8 leading-relaxed">Situated in prime areas with easy access to city centers and natural escapes.</p>
                 <Link href="#" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
-                  READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white"><ArrowRight className="w-4 h-4" /></div>
+                  READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></div>
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Column 3 (Right ~32%) */}
@@ -243,23 +256,31 @@ export default function HomePage() {
               transition={{ delay: 0.2 }}
               className="lg:col-span-3 flex flex-col gap-6"
             >
-              <div className="bg-white border border-gray-100 shadow-xl p-10 flex-1 flex flex-col justify-center group hover:-translate-y-1 transition-transform">
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-white border border-gray-100 shadow-xl p-10 flex-1 flex flex-col justify-center group transition-all"
+              >
                 <Leaf className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-navy mb-4">Eco construction</h3>
                 <p className="text-gray-500 mb-8 leading-relaxed">Sustainable materials and energy-efficient building methodologies.</p>
                 <Link href="#" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </div>
+              </motion.div>
 
-              <div className="bg-white border border-gray-100 shadow-xl p-10 flex-1 flex flex-col justify-center group hover:-translate-y-1 transition-transform">
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-white border border-gray-100 shadow-xl p-10 flex-1 flex flex-col justify-center group transition-all"
+              >
                 <Cpu className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-navy mb-4">Modern technology</h3>
                 <p className="text-gray-500 mb-8 leading-relaxed">State-of-the-art facilities designed for tomorrow's living needs.</p>
                 <Link href="#" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
 
           </div>
@@ -296,7 +317,8 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="relative h-[550px] group overflow-hidden bg-navy"
+                whileHover={{ y: -10 }}
+                className="relative h-[550px] group overflow-hidden bg-navy transition-all duration-300 shadow-lg hover:shadow-2xl"
               >
                 {/* Background Image */}
                 <Image
@@ -352,8 +374,9 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-7 relative"
+              className="lg:col-span-7 flex flex-col gap-8 relative"
             >
+              {/* Written Testimonial Card */}
               <div className="border-[3px] border-[#4BBFB8] bg-white p-10 md:p-14 relative shadow-2xl">
                 <Quote className="absolute top-10 right-10 w-24 h-24 text-gray-100" fill="currentColor" />
 
@@ -375,6 +398,17 @@ export default function HomePage() {
                 <div className="absolute -bottom-5 right-10 bg-[#4BBFB8] text-white px-5 py-2.5 flex gap-1 shadow-lg">
                   {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
                 </div>
+              </div>
+
+              {/* YouTube Video Testimonial Card */}
+              <div className="border-[3px] border-[#1e2a35] bg-white shadow-2xl overflow-hidden aspect-video relative group">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/Pu2WhSbXIzg"
+                  title="Dharatal Greens Customer Review"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
               </div>
             </motion.div>
           </div>
@@ -437,10 +471,10 @@ export default function HomePage() {
       {/* SECTION 8: Stats with Bg Images */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
         {[
-          { num: "50+", label: "Total apartments", bg: "stats-bg-1.png", icon: Building2, highlight: false },
-          { num: "100+", label: "Quality features", bg: "stats-bg-2.png", icon: Star, highlight: true },
-          { num: "100+", label: "Happy Clients", bg: "stats-bg-3.png", icon: Smile, highlight: false },
-          { num: "98%", label: "Success rates", bg: "stats-bg-4.png", icon: Zap, highlight: false },
+          { num: "5.2M+", label: "Residential Completed (Sq. Ft.)", bg: "stats-bg-1.png", icon: Building2, highlight: false },
+          { num: "1.5M+", label: "Farmhouse Completed (Sq. Ft.)", bg: "stats-bg-2.png", icon: Home, highlight: true },
+          { num: "2,500+", label: "Happy Residents", bg: "stats-bg-3.png", icon: Smile, highlight: false },
+          { num: "20+", label: "Projects Delivered", bg: "stats-bg-4.png", icon: Zap, highlight: false },
         ].map((stat, i) => (
           <div key={i} className="relative h-72 md:h-[380px] flex flex-col items-center justify-center text-white text-center p-8 overflow-hidden group">
             <Image
@@ -490,8 +524,9 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8 }}
                 className={srv.isDark ?
-                  "bg-[#1e2a35] shadow-xl p-10 pt-16 flex flex-col justify-end group cursor-pointer" :
+                  "bg-[#1e2a35] shadow-xl p-10 pt-16 flex flex-col justify-end group cursor-pointer transition-all duration-300" :
                   "bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 group cursor-pointer"
                 }
               >

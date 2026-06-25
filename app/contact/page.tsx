@@ -104,10 +104,10 @@ export default function Contact() {
                   <div>
                     <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Write email</div>
                     <a
-                      href="mailto:nath.manoharkamla@gmail.com"
+                      href="mailto:info@dharatalgreens.com"
                       className="text-base font-bold text-[#1e2a35] hover:text-[#4BBFB8] transition-colors"
                     >
-                      nath.manoharkamla@gmail.com
+                      info@dharatalgreens.com
                     </a>
                   </div>
                 </div>
@@ -120,10 +120,10 @@ export default function Contact() {
                   <div>
                     <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Call expert</div>
                     <a
-                      href="tel:+919462022262"
+                      href="tel:+91-XXXXXXXXXX"
                       className="text-base font-bold text-[#1e2a35] hover:text-[#4BBFB8] transition-colors"
                     >
-                      +91-9462022262
+                      +91-XXXXXXXXXX
                     </a>
                   </div>
                 </div>
@@ -136,7 +136,7 @@ export default function Contact() {
                   <div>
                     <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Visit office</div>
                     <p className="text-base font-bold text-[#1e2a35] leading-relaxed">
-                      Goutam buddh naga, near savina,<br />titardi, udaipur 313001
+                      Dharatal Greens Pvt. Ltd. 7th Floor, Metro Station, 703 704 & 709, near Neta Ji Subhash Place, Netaji Subhash Place, Pitampura, New Delhi, Delhi, 110034, India
                     </p>
                   </div>
                 </div>

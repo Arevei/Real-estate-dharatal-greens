@@ -38,7 +38,7 @@ const faqs = [
     },
     {
         q: "How can I contact Dharatal Greens for inquiries?",
-        a: "You can reach out through our website or visit the Contact page for detailed contact information. You can also call us directly at +91-9462022262 or email nath.manoharkamla@gmail.com.",
+        a: "You can reach out through our website or visit the Contact page for detailed contact information. You can also call us directly at +91-XXXXXXXXXX or email info@dharatalgreens.com.",
     },
     {
         q: "Are Dharatal Greens properties environmentally friendly?",
@@ -156,10 +156,10 @@ export default function FAQ() {
                     </div>
                     <div className="flex gap-4 flex-wrap justify-center">
                         <a
-                            href="tel:+919462022262"
+                            href="tel:+91-XXXXXXXXXX"
                             className="bg-[#4BBFB8] hover:bg-[#3aada6] text-white font-bold uppercase tracking-wider text-xs px-8 h-[52px] flex items-center transition-colors"
                         >
-                            Call +91-9462022262
+                            Call +91-XXXXXXXXXX
                         </a>
                         <Link
                             href="/contact"

@@ -48,14 +48,14 @@ export default function Contact() {
                 <MapPin className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold text-navy mb-2">Office Address</h3>
-              <p className="text-zinc-500">124 Luxury Avenue, Gurugram</p>
+              <p className="text-zinc-500 text-sm">Dharatal Greens Pvt. Ltd. 7th Floor, Metro Station, 703 704 & 709, near Neta Ji Subhash Place, Netaji Subhash Place, Pitampura, New Delhi, Delhi, 110034, India</p>
             </div>
             <div className="bg-zinc-50 p-10 text-center border border-zinc-100">
               <div className="w-16 h-16 mx-auto bg-accent rounded-full flex items-center justify-center text-white mb-6">
                 <Phone className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold text-navy mb-2">Phone Number</h3>
-              <p className="text-zinc-500">+91 98765 43210</p>
+              <p className="text-zinc-500">+91-XXXXXXXXXX</p>
             </div>
             <div className="bg-zinc-50 p-10 text-center border border-zinc-100">
               <div className="w-16 h-16 mx-auto bg-accent rounded-full flex items-center justify-center text-white mb-6">

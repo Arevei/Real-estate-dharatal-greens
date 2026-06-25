@@ -51,11 +51,11 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-zinc-400">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-accent shrink-0 mt-1" />
-                <span>124 Luxury Avenue, Golf Course Ext Road, Sector 54, Gurugram, India</span>
+                <span>Dharatal Greens Pvt. Ltd. 7th Floor, Metro Station, 703 704 & 709, near Neta Ji Subhash Place, Netaji Subhash Place, Pitampura, New Delhi, Delhi, 110034, India</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-accent shrink-0" />
-                <span>+91 98765 43210</span>
+                <span>+91-XXXXXXXXXX</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-accent shrink-0" />

@@ -57,7 +57,7 @@ export function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="text-xs font-medium text-white/70 tracking-wider">Call experts</span>
-              <span className="text-base font-bold text-white tracking-wide">+91-9462022262</span>
+              <span className="text-base font-bold text-white tracking-wide">+91-XXXXXXXXXX</span>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ export function Navbar() {
             ))}
             <div className="mt-8 flex flex-col items-center gap-2">
               <div className="text-xs font-medium text-white/70 tracking-wider">Call experts</div>
-              <div className="text-lg font-bold text-[#4BBFB8] tracking-wide">+91-9462022262</div>
+              <div className="text-lg font-bold text-[#4BBFB8] tracking-wide">+91-XXXXXXXXXX</div>
             </div>
           </div>
         )}

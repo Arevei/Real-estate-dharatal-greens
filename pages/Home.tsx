@@ -216,7 +216,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="text-xs text-gray-400 font-bold uppercase tracking-wider">Call Experts</div>
-                    <div className="font-bold text-navy text-lg mt-0.5">+91-9462022262</div>
+                    <div className="font-bold text-navy text-lg mt-0.5">+91-XXXXXXXXXX</div>
                   </div>
                 </div>
                 <Button className="bg-navy text-white rounded-none h-14 px-8 font-bold text-xs tracking-widest hover:bg-navy/90 w-full sm:w-auto">
@@ -452,10 +452,10 @@ export default function HomePage() {
       {/* SECTION 8: Stats with Bg Images */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
         {[
-          {num: "50+", label: "Total apartments", bg: "stats-bg-1.png", icon: Building2, highlight: false},
-          {num: "100+", label: "Quality features", bg: "stats-bg-2.png", icon: Star, highlight: true},
-          {num: "100+", label: "Happy Clients", bg: "stats-bg-3.png", icon: Smile, highlight: false},
-          {num: "98%", label: "Success rates", bg: "stats-bg-4.png", icon: Zap, highlight: false},
+          { num: "5.2M+", label: "Residential Completed (Sq. Ft.)", bg: "stats-bg-1.png", icon: Building2, highlight: false },
+          { num: "1.5M+", label: "Farmhouse Completed (Sq. Ft.)", bg: "stats-bg-2.png", icon: Home, highlight: true },
+          { num: "2,500+", label: "Happy Residents", bg: "stats-bg-3.png", icon: Smile, highlight: false },
+          { num: "20+", label: "Projects Delivered", bg: "stats-bg-4.png", icon: Zap, highlight: false },
         ].map((stat, i) => (
           <div key={i} className="relative h-72 md:h-[380px] flex flex-col items-center justify-center text-white text-center p-8 overflow-hidden group">
             <Image 

@@ -1,0 +1,730 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DHARATAL GREENS — Next.js globals.css
+   Save this file as: styles/globals.css
+   Requires: Tailwind CSS v3, tailwind.config.js (see below)
+   ============================================================ */
+
+:root {
+  /* Teal accent: #4BBFB8 */
+  --accent:        176 46% 52%;
+  --accent-fg:     0 0% 100%;
+
+  /* Navy / dark charcoal: #0f1f2e */
+  --navy:          210 50% 12%;
+  --navy-fg:       0 0% 100%;
+
+  /* Neutrals */
+  --background:    0 0% 100%;
+  --foreground:    210 50% 12%;
+  --border:        214 32% 91%;
+  --input:         214 32% 91%;
+  --ring:          176 46% 52%;
+
+  --card:          0 0% 100%;
+  --card-fg:       210 50% 12%;
+
+  --primary:       210 50% 12%;
+  --primary-fg:    0 0% 100%;
+
+  --secondary:     0 0% 96%;
+  --secondary-fg:  210 50% 12%;
+
+  --muted:         210 40% 96%;
+  --muted-fg:      215 16% 47%;
+
+  --destructive:   0 84% 60%;
+  --destructive-fg:210 40% 98%;
+
+  --radius: 0.5rem;
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-color: hsl(var(--border));
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: hsl(var(--navy));
+    line-height: 1.1;
+  }
+
+  /* Cursive / italic headings use Playfair Display */
+  .font-serif,
+  .italic-script {
+    font-family: 'Playfair Display', serif;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ============================================================
+   COMPONENT LAYER
+   ============================================================ */
+@layer components {
+
+  /* ---------- Navbar ---------- */
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: #1e2a35;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .navbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    transition: color 0.2s;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: #4BBFB8;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    border-radius: 0;
+    height: 52px;
+    padding: 0 2.5rem;
+    border: 2px solid transparent;
+  }
+
+  .btn-teal {
+    background-color: #4BBFB8;
+    color: #fff;
+  }
+  .btn-teal:hover { background-color: #3aada6; }
+
+  .btn-dark {
+    background-color: #1e2a35;
+    color: #fff;
+  }
+  .btn-dark:hover { background-color: #0f1f2e; }
+
+  .btn-outline-white {
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+  }
+  .btn-outline-white:hover {
+    background-color: #fff;
+    color: #4BBFB8;
+  }
+
+  .btn-outline-teal {
+    background-color: transparent;
+    border-color: #4BBFB8;
+    color: #4BBFB8;
+  }
+  .btn-outline-teal:hover {
+    background-color: #4BBFB8;
+    color: #fff;
+  }
+
+  /* ---------- Section labels ---------- */
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #4BBFB8;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* ---------- Teal accent strip ---------- */
+  .teal-strip {
+    background-color: #8bb8b6;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ---------- Property cards (Dream Home) ---------- */
+  .property-card {
+    position: relative;
+    overflow: hidden;
+    background-color: #0f1f2e;
+    height: 550px;
+  }
+  .property-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: transform 1s ease;
+  }
+  .property-card:hover img { transform: scale(1.08); }
+  .property-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #0f1f2e 0%, rgba(15,31,46,0.4) 50%, transparent 100%);
+    opacity: 0.9;
+  }
+  .property-card-body {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 0;
+    right: 0;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+  }
+  .property-type-pill {
+    background-color: #4BBFB8;
+    color: #fff;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.375rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .property-arrow-btn {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 2px solid #4BBFB8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4BBFB8;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 2rem;
+  }
+  .property-card:hover .property-arrow-btn {
+    background-color: #4BBFB8;
+    color: #fff;
+  }
+
+  /* ---------- Feature cards (dark) ---------- */
+  .feature-card-dark {
+    background-color: #2d3748;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  .feature-card-dark:hover { transform: translateY(-4px); }
+  .feature-card-dark h3 { color: #fff; }
+  .feature-card-dark p  { color: rgba(255,255,255,0.55); }
+
+  /* ---------- Feature cards (white) ---------- */
+  .feature-card-light {
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    transition: transform 0.2s;
+  }
+  .feature-card-light:hover { transform: translateY(-4px); }
+
+  /* ---------- Testimonial card ---------- */
+  .testimonial-card {
+    border: 3px solid #4BBFB8;
+    background-color: #fff;
+    padding: 3.5rem;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  }
+  .testimonial-card-star-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-color: #4BBFB8;
+  }
+  .testimonial-card-stars {
+    position: absolute;
+    bottom: -1.25rem;
+    right: 2.5rem;
+    background-color: #4BBFB8;
+    color: #fff;
+    padding: 0.625rem 1.25rem;
+    display: flex;
+    gap: 0.25rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  /* ---------- Stats cards ---------- */
+  .stats-card {
+    position: relative;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+    color: #fff;
+  }
+  .stats-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s;
+  }
+  .stats-card:hover img { transform: scale(1.08); }
+  .stats-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.70);
+  }
+  .stats-card-overlay.highlight { background: rgba(15,31,46,0.80); }
+  .stats-card-num {
+    position: relative;
+    z-index: 10;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .stats-card-label {
+    position: relative;
+    z-index: 10;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+  }
+  .stats-card-label.highlight-label {
+    background-color: #4BBFB8;
+    padding: 0.25rem 0.75rem;
+    color: #fff;
+  }
+
+  /* ---------- Service cards ---------- */
+  .service-card {
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .service-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+  .service-card-img-wrap {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+  .service-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .service-card-icon {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #4BBFB8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(75,191,184,0.4);
+    transition: transform 0.2s;
+  }
+  .service-card:hover .service-card-icon { transform: translateY(-6px); }
+  .service-card-body {
+    padding: 2rem 2rem 2rem 2rem;
+    padding-top: 3rem;
+  }
+  .service-card-dark {
+    background-color: #1e2a35;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  /* ---------- Contact form ---------- */
+  .contact-input {
+    width: 100%;
+    height: 60px;
+    border: 1px solid #e5e7eb;
+    padding: 0 1.25rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background-color: #fff;
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .contact-input:focus { border-color: #4BBFB8; }
+
+  .contact-textarea {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    padding: 1.25rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background-color: #fff;
+    border-radius: 0;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s;
+    min-height: 160px;
+  }
+  .contact-textarea:focus { border-color: #4BBFB8; }
+
+  /* ---------- Property type tabs ---------- */
+  .filter-tab {
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  .filter-tab.active,
+  .filter-tab:hover {
+    color: #4BBFB8;
+    border-bottom-color: #4BBFB8;
+  }
+
+  /* ---------- Dark background section ---------- */
+  .dark-bg-section {
+    position: relative;
+    background-color: #1e2a35;
+    overflow: hidden;
+    padding: 8rem 0;
+  }
+  .dark-bg-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(75,191,184,0.18), transparent);
+    transform: skewX(-12deg) translateX(-8rem);
+    pointer-events: none;
+  }
+
+  /* ---------- World map overlay ---------- */
+  .world-map-wrap {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .world-map-wrap img {
+    position: absolute;
+    width: 120%;
+    max-width: none;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+  }
+  .world-map-num {
+    position: relative;
+    z-index: 10;
+    font-size: 8rem;
+    font-weight: 700;
+    color: #4BBFB8;
+    line-height: 1;
+    text-align: center;
+  }
+  .world-map-label {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    background-color: rgba(255,255,255,0.9);
+    padding: 0.75rem 2rem;
+    margin-top: -1.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  /* ---------- Years experience floating card ---------- */
+  .years-card {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .years-card-num {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #4BBFB8;
+    line-height: 1;
+  }
+  .years-card-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #1e2a35;
+    line-height: 1.4;
+  }
+
+  /* ---------- Icon grid (dark section) ---------- */
+  .icon-grid-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .icon-grid-circle {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .icon-grid-item:hover .icon-grid-circle {
+    border-color: #4BBFB8;
+    color: #4BBFB8;
+  }
+  .icon-grid-label {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #fff;
+    max-width: 140px;
+    line-height: 1.3;
+  }
+
+  /* ---------- Building overview bottom tabs ---------- */
+  .prop-type-tab {
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    color: #1e2a35;
+    transition: background-color 0.2s, color 0.2s;
+    border-left: 1px solid #f0f0f0;
+  }
+  .prop-type-tab:first-child { border-left: none; }
+  .prop-type-tab:hover,
+  .prop-type-tab.active {
+    background-color: #4BBFB8;
+    color: #fff;
+  }
+  .prop-type-tab svg { color: #4BBFB8; width: 3rem; height: 3rem; }
+  .prop-type-tab:hover svg,
+  .prop-type-tab.active svg { color: #fff; }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    background-color: #0f1f2e;
+    color: rgba(255,255,255,0.7);
+    padding: 5rem 0 2rem;
+  }
+  .footer-heading {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: inline-block;
+  }
+  .footer-link {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.55);
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .footer-link:hover { color: #4BBFB8; }
+  .footer-social {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .footer-social:hover {
+    background-color: #4BBFB8;
+    color: #fff;
+  }
+}
+
+/* ============================================================
+   UTILITIES LAYER (custom helpers)
+   ============================================================ */
+@layer utilities {
+  .text-teal   { color: #4BBFB8; }
+  .text-navy   { color: #0f1f2e; }
+  .bg-teal     { background-color: #4BBFB8; }
+  .bg-navy     { background-color: #0f1f2e; }
+  .bg-charcoal { background-color: #1e2a35; }
+  .border-teal { border-color: #4BBFB8; }
+
+  .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
+
+  /* Teal brush stroke (decorative pseudo) */
+  .teal-brush-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(75,191,184,0.18), transparent);
+    transform: skewX(-12deg) translateX(-8rem);
+    pointer-events: none;
+  }
+}
+
+/*
+ ============================================================
+  TAILWIND CONFIG  (tailwind.config.js / tailwind.config.ts)
+  Add the following to extend your Tailwind theme in Next.js:
+ ============================================================
+
+  const config = {
+    content: ['./app/**\/*.{ts,tsx}', './components/**\/*.{ts,tsx}'],
+    theme: {
+      extend: {
+        colors: {
+          teal:    '#4BBFB8',
+          navy:    '#0f1f2e',
+          charcoal:'#1e2a35',
+        },
+        fontFamily: {
+          sans:  ['Poppins', 'sans-serif'],
+          serif: ['Playfair Display', 'serif'],
+        },
+        borderRadius: {
+          DEFAULT: '0',
+        },
+      },
+    },
+    plugins: [],
+  };
+  export default config;
+
+ ============================================================
+  LAYOUT USAGE EXAMPLE  (app/layout.tsx)
+ ============================================================
+
+  import './globals.css'
+  import { Poppins, Playfair_Display } from 'next/font/google'
+
+  const poppins = Poppins({
+    subsets: ['latin'],
+    weight: ['300','400','500','600','700','800','900'],
+    variable: '--font-sans',
+  });
+
+  const playfair = Playfair_Display({
+    subsets: ['latin'],
+    style: ['normal','italic'],
+    weight: ['400','600','700'],
+    variable: '--font-serif',
+  });
+
+  export default function RootLayout({ children }) {
+    return (
+      <html lang="en" className={\`\${poppins.variable} \${playfair.variable}\`}>
+        <body>{children}</body>
+      </html>
+    );
+  }
+ ============================================================
+*/

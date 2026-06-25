@@ -1,53 +1,33 @@
+"use client"
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { 
+import {
   Building2, ArrowRight, Check, MapPin, Star,
-  ChevronLeft, ChevronRight, Building, Home, 
+  ChevronLeft, ChevronRight, Building, Home,
   Store, Trophy, Phone, Globe, Leaf, Cpu, Quote,
   User, Bed, Sofa, Smile, Zap
 } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-
-
-const contactSchema = z.object({
-  name: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
-  subject: z.string().optional(),
-  message: z.string().optional()
-});
+import { ContactForm } from "./ContactForm";
 
 export default function HomePage() {
-  const form = useForm<z.infer<typeof contactSchema>>({
-    resolver: zodResolver(contactSchema),
-    defaultValues: { name: "", email: "", phone: "", subject: "", message: "" }
-  });
-
-  function onSubmit(values: z.infer<typeof contactSchema>) {
-    console.log("Contact submitted", values);
-  }
-
   return (
     <div className="w-full font-sans">
-      
+
       {/* SECTION 1: Hero */}
       <section className="relative h-[100dvh] w-full flex items-end overflow-hidden pt-24 pb-16 md:pb-24">
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/hero-bg.png" 
-            alt="Hero background" 
+          <Image
+            src="/images/hero-bg.png"
+            alt="Hero background"
             fill
+            sizes="100vw"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/55" />
         </div>
-        
+
         <div className="relative z-10 container mx-auto px-4 md:px-6 text-white w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -99,36 +79,38 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left: Images */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="relative h-[650px] w-full mt-10 md:mt-0"
             >
               {/* Main living room image */}
-              <Image 
-                src="/images/interior-living.png" 
-                alt="Living Room" 
+              <Image
+                src="/images/interior-living.png"
+                alt="Living Room"
                 fill
-                className="object-cover shadow-2xl"/>
-            
+                // sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover shadow-2xl" />
+
               {/* Overlapping bedroom image */}
-              <Image 
-                src="/images/interior-bedroom.png" 
-                alt="Bedroom" 
+              <Image
+                src="/images/interior-bedroom.png"
+                alt="Bedroom"
                 fill
+                // sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover border-[12px] border-white shadow-xl z-10"
               />
-              
+
               {/* Teal building icon card */}
               <div className="absolute top-12 right-6 bg-[#4BBFB8] w-24 h-24 flex items-center justify-center shadow-lg z-20">
                 <Building className="w-12 h-12 text-white stroke-[1.5]" />
               </div>
-              
+
               {/* 5 Years experience card */}
               <div className="absolute bottom-16 left-6 bg-white border border-gray-100 shadow-xl p-6 flex items-center gap-5 z-20">
                 <div className="text-6xl font-bold text-[#4BBFB8] leading-none">5</div>
-                <div className="text-sm font-bold leading-snug text-navy uppercase tracking-wider">Years of<br/>experience</div>
+                <div className="text-sm font-bold leading-snug text-navy uppercase tracking-wider">Years of<br />experience</div>
               </div>
             </motion.div>
 
@@ -145,7 +127,7 @@ export default function HomePage() {
               <p className="text-gray-500 mb-10 leading-relaxed text-lg">
                 We believe that true luxury is not just about opulent structures, but the environment they inhabit. Our developments are carefully curated to provide the perfect balance of modern comfort and natural tranquility.
               </p>
-              
+
               <ul className="space-y-5 mb-12">
                 {["Luxury living experience", "Building the future cities", "Winning architecture project"].map((item, i) => (
                   <li key={i} className="flex items-center gap-4 font-bold text-navy text-lg">
@@ -156,7 +138,7 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              
+
               <Button className="bg-navy hover:bg-navy/90 text-white rounded-none h-14 px-10 tracking-wider font-bold text-sm">
                 DISCOVER MORE
               </Button>
@@ -165,11 +147,11 @@ export default function HomePage() {
 
           {/* Bottom Tabs */}
           <div className="grid grid-cols-2 md:grid-cols-4 w-full mt-32 border border-gray-100 bg-gray-50/50">
-            {[ 
-              {icon: Building2, label: "Apartment"}, 
-              {icon: Home, label: "Villa"}, 
-              {icon: Store, label: "Commercial"}, 
-              {icon: MapPin, label: "Plots"} 
+            {[
+              { icon: Building2, label: "Apartment" },
+              { icon: Home, label: "Villa" },
+              { icon: Store, label: "Commercial" },
+              { icon: MapPin, label: "Plots" }
             ].map((item, i) => (
               <div key={i} className={`py-12 flex flex-col items-center justify-center gap-4 hover:bg-[#4BBFB8] hover:text-white transition-colors group cursor-pointer text-navy ${i !== 0 ? 'border-l border-gray-100' : ''}`}>
                 <item.icon className="w-12 h-12 group-hover:text-white text-[#4BBFB8] stroke-[1.5]" />
@@ -184,9 +166,9 @@ export default function HomePage() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
+
             {/* Column 1 (Left ~35%) */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -197,11 +179,11 @@ export default function HomePage() {
               <p className="text-gray-500 mb-10 leading-relaxed">
                 Discover uncompromised quality and thoughtful design in every detail of our properties. We blend nature with modern lifestyle perfectly.
               </p>
-              
+
               <Button variant="outline" className="border-2 border-[#4BBFB8] text-[#4BBFB8] rounded-none hover:bg-[#4BBFB8] hover:text-white h-14 px-10 font-bold tracking-widest text-xs w-fit mb-12">
                 READ MORE
               </Button>
-              
+
               <div className="flex gap-5 items-start mb-10">
                 <Trophy className="w-12 h-12 text-[#4BBFB8] shrink-0 stroke-[1.5]" />
                 <div>
@@ -209,7 +191,7 @@ export default function HomePage() {
                   <p className="text-gray-500 text-sm mt-2 leading-relaxed">Recognized nationally for integrating sustainable concepts with modern luxury.</p>
                 </div>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row items-center gap-8 mt-auto">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center">
@@ -227,7 +209,7 @@ export default function HomePage() {
             </motion.div>
 
             {/* Column 2 (Center ~32%) */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -242,7 +224,7 @@ export default function HomePage() {
                   READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white"><ArrowRight className="w-4 h-4" /></div>
                 </Link>
               </div>
-              
+
               <div className="bg-[#2d3748] p-10 flex-1 flex flex-col justify-center shadow-lg group hover:-translate-y-1 transition-transform">
                 <Globe className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-white mb-4">Attractive location</h3>
@@ -254,7 +236,7 @@ export default function HomePage() {
             </motion.div>
 
             {/* Column 3 (Right ~32%) */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -269,7 +251,7 @@ export default function HomePage() {
                   READ MORE <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
-              
+
               <div className="bg-white border border-gray-100 shadow-xl p-10 flex-1 flex flex-col justify-center group hover:-translate-y-1 transition-transform">
                 <Cpu className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-navy mb-4">Modern technology</h3>
@@ -279,7 +261,7 @@ export default function HomePage() {
                 </Link>
               </div>
             </motion.div>
-            
+
           </div>
         </div>
       </section>
@@ -289,14 +271,13 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
           <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">RECENT PROJECT ——</div>
           <h2 className="text-4xl md:text-5xl font-bold text-navy mb-12 text-center">Choose your Dream Home</h2>
-          
+
           <div className="flex flex-wrap justify-center gap-8 border-b border-gray-200 mb-14 w-full max-w-2xl">
             {['All[3]', 'PLOT', 'FLAT'].map((tab, i) => (
-              <button 
-                key={tab} 
-                className={`pb-4 px-2 text-sm font-bold uppercase tracking-widest border-b-2 transition-colors ${
-                  i === 0 ? 'border-[#4BBFB8] text-[#4BBFB8]' : 'border-transparent text-gray-400 hover:text-navy'
-                }`}
+              <button
+                key={tab}
+                className={`pb-4 px-2 text-sm font-bold uppercase tracking-widest border-b-2 transition-colors ${i === 0 ? 'border-[#4BBFB8] text-[#4BBFB8]' : 'border-transparent text-gray-400 hover:text-navy'
+                  }`}
               >
                 {tab}
               </button>
@@ -309,8 +290,8 @@ export default function HomePage() {
               { img: "green-valley-villas.png", title: "Green Valley Villas", desc: "Luxury 4 BHK villas in gated community", type: "FLAT" },
               { img: "shivalik-plots.png", title: "Shivalik Estates", desc: "Scenic view residential plots", type: "PLOT" }
             ].map((c, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -318,21 +299,22 @@ export default function HomePage() {
                 className="relative h-[550px] group overflow-hidden bg-navy"
               >
                 {/* Background Image */}
-              <Image 
-                src={`/images/projects/${c.img}`} 
-                alt={c.title}
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90" 
-              />
+                <Image
+                  src={`/images/projects/${c.img}`}
+                  alt={c.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f1f2e] via-[#0f1f2e]/40 to-transparent opacity-90" />
-                
+
                 <div className="absolute bottom-10 left-0 right-0 px-8 flex flex-col items-center text-center z-10">
                   <div className="bg-[#4BBFB8] text-white text-[10px] font-bold uppercase tracking-[0.2em] py-1.5 px-4 mb-5">
                     {c.type}
                   </div>
                   <h3 className="text-[26px] font-bold text-white mb-3 leading-tight">{c.title}</h3>
                   <p className="text-gray-300 text-sm mb-8 leading-relaxed max-w-[250px]">{c.desc}</p>
-                  
+
                   <button className="w-12 h-12 rounded-full border-2 border-[#4BBFB8] flex items-center justify-center text-[#4BBFB8] group-hover:bg-[#4BBFB8] group-hover:text-white transition-all duration-300">
                     <ArrowRight className="w-5 h-5" />
                   </button>
@@ -347,9 +329,9 @@ export default function HomePage() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Left */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -366,7 +348,7 @@ export default function HomePage() {
             </motion.div>
 
             {/* Right */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -374,11 +356,11 @@ export default function HomePage() {
             >
               <div className="border-[3px] border-[#4BBFB8] bg-white p-10 md:p-14 relative shadow-2xl">
                 <Quote className="absolute top-10 right-10 w-24 h-24 text-gray-100" fill="currentColor" />
-                
+
                 <p className="text-2xl md:text-[28px] font-semibold text-navy leading-snug mb-12 relative z-10 italic">
                   "Very smooth experience from site visit to registration. The team is honest and professional. Dharatal Greens has been the best investment for my family's future."
                 </p>
-                
+
                 <div className="flex items-center gap-5 relative z-10 mb-2">
                   <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 overflow-hidden">
                     <User className="w-8 h-8" />
@@ -388,10 +370,10 @@ export default function HomePage() {
                     <div className="text-xs text-[#4BBFB8] font-bold uppercase tracking-widest mt-1">Udaipur</div>
                   </div>
                 </div>
-                
+
                 <div className="absolute bottom-0 left-0 right-0 bg-[#4BBFB8] h-2.5" />
                 <div className="absolute -bottom-5 right-10 bg-[#4BBFB8] text-white px-5 py-2.5 flex gap-1 shadow-lg">
-                  {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
+                  {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
                 </div>
               </div>
             </motion.div>
@@ -403,15 +385,16 @@ export default function HomePage() {
       <section className="relative py-32 bg-[#1e2a35] overflow-hidden w-full">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/hero-bg.png" 
-            alt="Building Dark" 
+          <Image
+            src="/images/hero-bg.png"
+            alt="Building Dark"
             fill
-            className="object-cover mix-blend-luminosity opacity-20" 
+            sizes="100vw"
+            className="object-cover mix-blend-luminosity opacity-20"
           />
           <div className="absolute inset-0 bg-[#0f1f2e]/80" />
         </div>
-        
+
         {/* Decorative Teal brush/shape would go here, simulated with gradient */}
         <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#4BBFB8]/20 to-transparent -skew-x-12 -translate-x-32" />
 
@@ -427,18 +410,18 @@ export default function HomePage() {
               EXPLORE NOW
             </Button>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="grid grid-cols-2 gap-x-8 gap-y-12"
           >
             {[
-              {icon: Building2, text: "Luxury Living"},
-              {icon: Bed, text: "Amenities Buildings"},
-              {icon: MapPin, text: "Center downtown"},
-              {icon: Sofa, text: "Contemporary Lifestyle"}
+              { icon: Building2, text: "Luxury Living" },
+              { icon: Bed, text: "Amenities Buildings" },
+              { icon: MapPin, text: "Center downtown" },
+              { icon: Sofa, text: "Contemporary Lifestyle" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-5 group">
                 <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:border-[#4BBFB8] group-hover:text-[#4BBFB8] transition-colors shrink-0 bg-white/5">
@@ -454,24 +437,25 @@ export default function HomePage() {
       {/* SECTION 8: Stats with Bg Images */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
         {[
-          {num: "50+", label: "Total apartments", bg: "stats-bg-1.png", icon: Building2, highlight: false},
-          {num: "100+", label: "Quality features", bg: "stats-bg-2.png", icon: Star, highlight: true},
-          {num: "100+", label: "Happy Clients", bg: "stats-bg-3.png", icon: Smile, highlight: false},
-          {num: "98%", label: "Success rates", bg: "stats-bg-4.png", icon: Zap, highlight: false},
+          { num: "50+", label: "Total apartments", bg: "stats-bg-1.png", icon: Building2, highlight: false },
+          { num: "100+", label: "Quality features", bg: "stats-bg-2.png", icon: Star, highlight: true },
+          { num: "100+", label: "Happy Clients", bg: "stats-bg-3.png", icon: Smile, highlight: false },
+          { num: "98%", label: "Success rates", bg: "stats-bg-4.png", icon: Zap, highlight: false },
         ].map((stat, i) => (
           <div key={i} className="relative h-72 md:h-[380px] flex flex-col items-center justify-center text-white text-center p-8 overflow-hidden group">
-            <Image 
-              src={`/images/${stat.bg}`} 
+            <Image
+              src={`/images/${stat.bg}`}
               alt={stat.label}
               fill
-              className="object-cover group-hover:scale-110 transition-transform duration-1000" 
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="object-cover group-hover:scale-110 transition-transform duration-1000"
             />
             <div className={`absolute inset-0 ${stat.highlight ? 'bg-navy/80' : 'bg-black/70'}`} />
-            
+
             <div className="relative z-10 flex flex-col items-center">
               <stat.icon className="w-12 h-12 mb-6 text-white/80 stroke-[1.5]" />
               <div className="text-[56px] font-bold mb-4 leading-none tracking-tight">{stat.num}</div>
-              
+
               <div className="relative inline-block mt-2">
                 {stat.highlight && (
                   <div className="absolute inset-0 bg-[#4BBFB8] -z-10 -skew-x-12 scale-x-125 scale-y-150" />
@@ -492,7 +476,7 @@ export default function HomePage() {
             <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">WHAT WE'RE OFFERING ——</div>
             <h2 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-navy max-w-3xl mx-auto leading-[1.1]">We're giving all the best services to you</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: "Plot for Sale", img: "projects/shivalik-plots.png", isDark: false },
@@ -500,26 +484,26 @@ export default function HomePage() {
               { title: "Flats & Apartments", img: "projects/valley-view-retreat.png", isDark: false },
               { title: "Property Documentation Work", img: "projects/green-valley-villas.png", isDark: true }
             ].map((srv, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={srv.isDark ? 
-                  "bg-[#1e2a35] shadow-xl p-10 pt-16 flex flex-col justify-end group cursor-pointer" : 
+                className={srv.isDark ?
+                  "bg-[#1e2a35] shadow-xl p-10 pt-16 flex flex-col justify-end group cursor-pointer" :
                   "bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 group cursor-pointer"
                 }
               >
                 {!srv.isDark && (
                   <div className="relative h-[220px]">
-                    <Image src={`/images/${srv.img}`} alt={srv.title} fill className="object-cover" />
+                    <Image src={`/images/${srv.img}`} alt={srv.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover" />
                     <div className="absolute -bottom-6 left-8 w-14 h-14 bg-[#4BBFB8] flex items-center justify-center shadow-lg group-hover:-translate-y-2 transition-transform">
                       <Building className="w-6 h-6 text-white stroke-[1.5]" />
                     </div>
                   </div>
                 )}
-                
+
                 <div className={srv.isDark ? "relative z-10" : "p-8 pt-12"}>
                   <h3 className={`text-[22px] font-bold mb-4 leading-snug ${srv.isDark ? 'text-white' : 'text-navy'}`}>{srv.title}</h3>
                   <p className={`text-sm mb-8 leading-relaxed ${srv.isDark ? 'text-gray-400' : 'text-gray-500'}`}>
@@ -545,7 +529,7 @@ export default function HomePage() {
           >
             <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">GET TO KNOW US ——</div>
             <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-navy mb-10 leading-[1.1]">An outstanding way of luxury life</h2>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <div className="bg-white border border-gray-100 shadow-md px-6 py-4 rounded-full flex items-center gap-4 font-bold text-navy text-sm w-fit">
                 <div className="w-6 h-6 rounded-full bg-[#4BBFB8]/10 flex items-center justify-center">
@@ -560,7 +544,7 @@ export default function HomePage() {
                 Peaceful, calm luxury living
               </div>
             </div>
-            
+
             <div className="flex items-center gap-6 pt-10 border-t border-gray-100">
               <div className="w-[72px] h-[72px] rounded-full bg-[#4BBFB8] flex items-center justify-center text-white shrink-0 shadow-xl shadow-[#4BBFB8]/30">
                 <Leaf className="w-8 h-8 stroke-[1.5]" />
@@ -571,14 +555,14 @@ export default function HomePage() {
               </div>
             </div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="relative flex justify-center items-center h-[400px]"
           >
-            <Image src="/images/world-map.png" alt="Map" fill className="opacity-40 mix-blend-multiply" />
+            <Image src="/images/world-map.png" alt="Map" fill sizes="(max-width: 768px) 100vw, 50vw" className="opacity-40 mix-blend-multiply" />
             <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
               <div className="text-[140px] font-bold text-[#4BBFB8] leading-none drop-shadow-2xl">20+</div>
               <div className="text-[22px] font-bold text-navy uppercase tracking-[0.2em] bg-white/90 backdrop-blur-sm px-8 py-3 shadow-xl -mt-6">Project complete</div>
@@ -591,74 +575,27 @@ export default function HomePage() {
       <section className="py-0 bg-gray-50 relative overflow-hidden">
         {/* Subtle Diamond background shape */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-white rotate-45 -z-10 shadow-2xl" />
-        
+
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             <div className="lg:col-span-7 py-24">
               <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">CONTACT US ——</div>
               <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-navy mb-12">Get in touch!</h2>
-              
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="name" render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Your Name" className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#4BBFB8] bg-white rounded-none text-base" {...field} />
-                        </FormControl>
-                      </FormItem>
-                    )} />
-                    <FormField control={form.control} name="email" render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Email Address" className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#4BBFB8] bg-white rounded-none text-base" {...field} />
-                        </FormControl>
-                      </FormItem>
-                    )} />
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField control={form.control} name="phone" render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Phone Number" className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#4BBFB8] bg-white rounded-none text-base" {...field} />
-                        </FormControl>
-                      </FormItem>
-                    )} />
-                    <FormField control={form.control} name="subject" render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Subject" className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#4BBFB8] bg-white rounded-none text-base" {...field} />
-                        </FormControl>
-                      </FormItem>
-                    )} />
-                  </div>
-                  
-                  <FormField control={form.control} name="message" render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <textarea placeholder="Write a Message" rows={6} className="border border-gray-200 p-5 w-full resize-none focus:outline-none focus:border-[#4BBFB8] bg-white rounded-none text-base transition-colors" {...field} />
-                      </FormControl>
-                    </FormItem>
-                  )} />
-                  
-                  <Button type="submit" className="bg-[#4BBFB8] hover:bg-[#4BBFB8]/90 text-white rounded-none h-[60px] px-12 font-bold tracking-[0.15em] text-sm uppercase mt-4">
-                    SEND A MESSAGE
-                  </Button>
-                </form>
-              </Form>
+
+              <ContactForm />
             </div>
-            
+
             <div className="lg:col-span-5 hidden lg:flex h-full min-h-[800px] items-end justify-center relative">
-              <Image 
-                src="/images/agent.png" 
-                alt="Real Estate Agent" 
+              <Image
+                src="/images/agent.png"
+                alt="Real Estate Agent"
                 fill
-                className="object-contain object-bottom drop-shadow-2xl" 
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-contain object-bottom drop-shadow-2xl"
               />
             </div>
-            
+
           </div>
         </div>
       </section>

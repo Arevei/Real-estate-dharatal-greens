@@ -1,47 +1,28 @@
+
 "use client"
 
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
-import { useForm, useController, UseFormReturn, ControllerProps, FieldPath, FieldValues } from "react-hook-form"
+import {
+  Controller,
+  FormProvider,
+  useFormContext,
+  type ControllerProps,
+  type FieldPath,
+  type FieldValues,
+} from "react-hook-form"
 
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
 
-// Form Provider Context
-type FormProviderProps<TFieldValues extends FieldValues = FieldValues> = {
-  children: React.ReactNode
-  form: UseFormReturn<TFieldValues>
-}
-
-const FormContext = React.createContext<UseFormReturn<FieldValues> | null>(null)
-
-const FormProvider = <TFieldValues extends FieldValues = FieldValues>({ 
-  children, 
-  form 
-}: FormProviderProps<TFieldValues>) => {
-  return (
-    <FormContext.Provider value={form as UseFormReturn<FieldValues>}>
-      {children}
-    </FormContext.Provider>
-  )
-}
-
-const useFormContext = <TFieldValues extends FieldValues = FieldValues>() => {
-  const context = React.useContext(FormContext) as UseFormReturn<TFieldValues> | null
-  if (!context) {
-    throw new Error("useFormContext must be used within a FormProvider")
-  }
-  return context
-}
+const Form = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 > = {
-  id: string
   name: TName
-  control: UseFormReturn<TFieldValues>["control"]
 }
 
 const FormFieldContext = React.createContext<FormFieldContextValue | null>(null)
@@ -50,25 +31,11 @@ const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 >({
-  control,
-  name,
-  children,
   ...props
-}: {
-  control: UseFormReturn<TFieldValues>["control"]
-  name: TName
-  children: React.ReactNode
-} & Omit<ControllerProps<TFieldValues, TName>, "name" | "control">) => {
-  const form = useFormContext<TFieldValues>()
-  const { id } = React.useId()
-  
+}: ControllerProps<TFieldValues, TName>) => {
   return (
-    <FormFieldContext.Provider value={{ 
-      id,
-      name,
-      control: control || form.control 
-    }}>
-      {children}
+    <FormFieldContext.Provider value={{ name: props.name }}>
+      <Controller {...props} />
     </FormFieldContext.Provider>
   )
 }
@@ -76,7 +43,7 @@ const FormField = <
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext)
   const itemContext = React.useContext(FormItemContext)
-  const form = useFormContext()
+  const { getFieldState, formState } = useFormContext()
 
   if (!fieldContext) {
     throw new Error("useFormField should be used within <FormField>")
@@ -86,7 +53,7 @@ const useFormField = () => {
     throw new Error("useFormField should be used within <FormItem>")
   }
 
-  const fieldState = form.getFieldState(fieldContext.name, form.formState)
+  const fieldState = getFieldState(fieldContext.name, formState)
 
   const { id } = itemContext
 
@@ -97,7 +64,6 @@ const useFormField = () => {
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
     ...fieldState,
-    form,
   }
 }
 
@@ -203,8 +169,7 @@ FormMessage.displayName = "FormMessage"
 
 export {
   useFormField,
-  useFormContext,
-  FormProvider,
+  Form,
   FormItem,
   FormLabel,
   FormControl,

@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -10,7 +11,7 @@ export default function About() {
       {/* Hero Banner */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center pt-20">
         <div className="absolute inset-0">
-          <Image src="/images/hero-bg.png" alt="About Us" fill className="object-cover" />
+          <Image src="/images/hero-bg.png" alt="About Us" fill sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-navy/80" />
         </div>
         <div className="relative z-10 text-center text-white">
@@ -30,8 +31,9 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
+              className="relative h-[400px] w-full"
             >
-              <Image src="/images/about/team-vision.png" alt="Vision" fill className="object-cover rounded-none shadow-xl" />
+              <Image src="/images/about/team-vision.png" alt="Vision" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover rounded-none shadow-xl" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -50,7 +52,9 @@ export default function About() {
             </motion.div>
           </div>
         </div>
+
       </section>
     </div>
+
   );
 }

@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,7 +19,7 @@ export default function Services() {
     <div className="w-full font-sans pb-20 bg-zinc-50">
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center pt-20">
         <div className="absolute inset-0">
-          <Image src="/images/projects/nilgiri-estates.png" alt="Services" fill className="object-cover" />
+          <Image src="/images/projects/nilgiri-estates.png" alt="Services" fill sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-navy/80" />
         </div>
         <div className="relative z-10 text-center text-white">

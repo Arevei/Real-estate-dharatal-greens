@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import Link from "next/link";
@@ -19,7 +20,7 @@ export default function Projects() {
     <div className="w-full font-sans pb-20 bg-zinc-50">
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center pt-20">
         <div className="absolute inset-0">
-          <Image src="/images/projects/valley-view-retreat.png" alt="Projects" fill className="object-cover" />
+          <Image src="/images/projects/valley-view-retreat.png" alt="Projects" fill sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-navy/80" />
         </div>
         <div className="relative z-10 text-center text-white">
@@ -52,7 +53,7 @@ export default function Projects() {
                 className="group relative overflow-hidden"
               >
                 <div className="relative h-80 overflow-hidden">
-                  <Image src={`/images/projects/${prop.img}`} alt={prop.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src={`/images/projects/${prop.img}`} alt={prop.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute top-4 left-4 bg-accent text-white px-4 py-1 text-sm font-bold uppercase tracking-wider">{prop.type}</div>
                 </div>
                 <div className="bg-white p-6 border border-t-0 border-zinc-100 shadow-sm relative z-10 -mt-6 mx-4">

@@ -400,8 +400,10 @@ export default function HomePage() {
                 </div>
               </div>
 
+            </motion.div>
+          </div>
               {/* YouTube Video Testimonial Card */}
-              <div className="border-[3px] border-[#1e2a35] bg-white shadow-2xl overflow-hidden aspect-video relative group">
+              <div className="border-[3px] border-[#1e2a35] bg-white shadow-2xl overflow-hidden aspect-video relative group max-w-6xl mx-auto mt-8">
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/Pu2WhSbXIzg"
@@ -410,8 +412,6 @@ export default function HomePage() {
                   allowFullScreen
                 ></iframe>
               </div>
-            </motion.div>
-          </div>
         </div>
       </section>
 

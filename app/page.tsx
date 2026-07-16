@@ -35,13 +35,24 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="max-w-4xl"
           >
-            <div className="text-sm md:text-base font-light tracking-[0.2em] mb-4">LIVE SMART. LIVE STYLISH</div>
-            <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold leading-[1.05] tracking-tight">
-              SMART LIVING WITH <br />
-              SERVICES <span className="font-serif italic text-[#4BBFB8] font-normal lowercase tracking-normal text-4xl md:text-6xl lg:text-[5.5rem]">5 stars</span>
+            <div className="text-sm md:text-base font-light tracking-[0.2em] mb-4">DOON ALLIANCE REAL ESTATE</div>
+            <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold leading-[1.05] tracking-tight mb-6">
+              WE BUILD <span className="font-serif italic text-[#4BBFB8] font-normal lowercase tracking-normal text-4xl md:text-6xl lg:text-[5.5rem]">the</span><br />
+              FUTURE
             </h1>
+            <p className="text-white/80 text-base md:text-lg max-w-2xl mb-8 leading-relaxed font-light">
+              We create exceptional living experiences across Delhi, Saharanpur, Dehradun, and beyond, with premium farmhouses, villas, residential plots, value homes, builder floors, and commercial spaces.
+            </p>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 bg-[#4BBFB8] hover:bg-[#3aada6] text-white font-bold uppercase tracking-widest text-xs px-8 h-[52px] transition-colors"
+            >
+              KNOW MORE ABOUT US <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
         </div>
+
+  
 
         {/* Carousel Arrows */}
         <button className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-colors z-20">
@@ -65,12 +76,12 @@ export default function HomePage() {
           <div className="flex items-center gap-5">
             <Building2 className="w-12 h-12 text-white stroke-[1.5]" />
             <h2 className="text-2xl md:text-[28px] font-bold text-white max-w-xl leading-tight">
-              Beautiful spaces in the best places
+              Gated townships, farmhouses, villas, flats, plots, builder floors, and commercial spaces
             </h2>
           </div>
-          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#8bb8b6] h-[52px] px-10 text-sm font-bold uppercase tracking-[0.15em] rounded-none shrink-0 bg-transparent">
-            EXPLORE NOW
-          </Button>
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#8bb8b6] h-[52px] px-10 text-sm font-bold uppercase tracking-[0.15em] rounded-none shrink-0 bg-transparent">
+                EXPLORE NOW
+              </Button>
         </div>
       </section>
 
@@ -83,24 +94,29 @@ export default function HomePage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative h-[650px] w-full mt-10 md:mt-0"
+              className="relative h-[520px] w-full mt-10 md:mt-0"
             >
               {/* Main living room image */}
-              <Image
-                src="/images/interior-living.png"
-                alt="Living Room"
-                fill
-                // sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover shadow-2xl" />
+              <div className="absolute bottom-0 right-0 h-[86%] w-[82%] overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/interior-living.png"
+                  alt="Doon Alliance living space"
+                  fill
+                  sizes="(max-width: 1024px) 82vw, 42vw"
+                  className="object-cover"
+                />
+              </div>
 
               {/* Overlapping bedroom image */}
-              <Image
-                src="/images/interior-bedroom.png"
-                alt="Bedroom"
-                fill
-                // sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover border-[12px] border-white shadow-xl z-10"
-              />
+              <div className="absolute left-0 top-0 z-10 h-[52%] w-[52%] overflow-hidden border-[12px] border-white shadow-xl">
+                <Image
+                  src="/images/interior-bedroom.png"
+                  alt="Doon Alliance bedroom"
+                  fill
+                  sizes="(max-width: 1024px) 52vw, 26vw"
+                  className="object-cover"
+                />
+              </div>
 
               {/* Teal building icon card */}
               <div className="absolute top-12 right-6 bg-[#4BBFB8] w-24 h-24 flex items-center justify-center shadow-lg z-20">
@@ -121,15 +137,15 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4 flex items-center gap-3">
-                THE BUILDING OVERVIEW <span className="w-8 h-[2px] bg-[#4BBFB8]"></span>
+                WHO ARE WE? <span className="w-8 h-[2px] bg-[#4BBFB8]"></span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-navy mb-8 leading-[1.1]">Luxury-Inspired City Living</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-navy mb-8 leading-[1.1]">Premium living, planned with transparency</h2>
               <p className="text-gray-500 mb-10 leading-relaxed text-lg">
-                We believe that true luxury is not just about opulent structures, but the environment they inhabit. Our developments are carefully curated to provide the perfect balance of modern comfort and natural tranquility.
+                At Doon Alliance, we blend comfort, security, and luxury through sustainable real estate solutions. With over 2,333,520 square feet of residential projects and 772,785 square feet of farmhouse developments completed, we build communities people are proud to call home.
               </p>
 
               <ul className="space-y-5 mb-12">
-                {["Luxury living experience", "Building the future cities", "Winning architecture project"].map((item, i) => (
+                {["Government approved gated townships", "Farmhouses, villas, plots, flats and builder floors", "Trusted by 1850+ satisfied residents"].map((item, i) => (
                   <li key={i} className="flex items-center gap-4 font-bold text-navy text-lg">
                     <div className="w-6 h-6 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white shrink-0">
                       <Check className="w-4 h-4 stroke-[3]" />
@@ -204,7 +220,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="text-xs text-gray-400 font-bold uppercase tracking-wider">Call Experts</div>
-                    <div className="font-bold text-navy text-lg mt-0.5">+91-XXXXXXXXXX</div>
+                    <div className="font-bold text-navy text-lg mt-0.5">+91 92660 40973</div>
                   </div>
                 </div>
                 <Button className="bg-navy text-white rounded-none h-14 px-8 font-bold text-xs tracking-widest hover:bg-navy/90 w-full sm:w-auto">
@@ -307,7 +323,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             {[
-              { img: "dharatal-meadows.png", title: "Dharatal Meadows", desc: "Premium plots with world class amenities", type: "PLOT" },
+              { img: "dharatal-meadows.png", title: "Doon Meadows", desc: "Premium plots with world class amenities", type: "PLOT" },
               { img: "green-valley-villas.png", title: "Green Valley Villas", desc: "Luxury 4 BHK villas in gated community", type: "FLAT" },
               { img: "shivalik-plots.png", title: "Shivalik Estates", desc: "Scenic view residential plots", type: "PLOT" }
             ].map((c, i) => (
@@ -359,7 +375,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="lg:col-span-5"
             >
-              <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">ABOUT COMPANY ——</div>
+              <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">ABOUT COMPANY</div>
               <h2 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-navy mb-8 leading-[1.1]">What they're talking about us?</h2>
               <p className="text-gray-500 mb-10 text-lg leading-relaxed">
                 Hear how we've helped them find the right space with confidence and care. Our clients' satisfaction is our greatest reward.
@@ -381,7 +397,7 @@ export default function HomePage() {
                 <Quote className="absolute top-10 right-10 w-24 h-24 text-gray-100" fill="currentColor" />
 
                 <p className="text-2xl md:text-[28px] font-semibold text-navy leading-snug mb-12 relative z-10 italic">
-                  "Very smooth experience from site visit to registration. The team is honest and professional. Dharatal Greens has been the best investment for my family's future."
+                  "Very smooth experience from site visit to registration. The team is honest and professional. Doon Alliance has been the best investment for my family's future."
                 </p>
 
                 <div className="flex items-center gap-5 relative z-10 mb-2">
@@ -407,11 +423,45 @@ export default function HomePage() {
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/Pu2WhSbXIzg"
-                  title="Dharatal Greens Customer Review"
+                  title="Doon Alliance Customer Review"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 ></iframe>
               </div>
+        </div>
+      </section>
+
+      {/* SECTION 6B: Project Glimpses */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-16">
+            <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">PROJECT GLIMPSES</div>
+            <h2 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-navy mb-6">Doon Alliance Lifestyle</h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+              Demo visuals from our local assets show the kind of green, comfortable, and secure spaces we build.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { img: "/images/about/nature-focus.png", title: "Green community planning" },
+              { img: "/images/interior-living.png", title: "Comfort-first homes" },
+              { img: "/images/projects/shivalik-plots.png", title: "Approved residential plots" },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="relative h-[360px] overflow-hidden bg-gray-100 shadow-lg group"
+              >
+                <Image src={item.img} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f1f2e]/80 to-transparent" />
+                <h3 className="absolute bottom-8 left-8 right-8 text-xl font-bold text-white">{item.title}</h3>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -438,8 +488,8 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">GET TO KNOW US ——</div>
-            <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-white mb-10 leading-[1.1]">Modern & luxury living complexes</h2>
+            <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">OUR VISION</div>
+            <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-white mb-10 leading-[1.1]">Sustainable, secure, and harmonious living spaces</h2>
             <Button className="bg-[#4BBFB8] hover:bg-[#4BBFB8]/90 text-white rounded-none h-[52px] px-10 tracking-[0.15em] font-bold text-xs uppercase">
               EXPLORE NOW
             </Button>
@@ -452,10 +502,10 @@ export default function HomePage() {
             className="grid grid-cols-2 gap-x-8 gap-y-12"
           >
             {[
-              { icon: Building2, text: "Luxury Living" },
-              { icon: Bed, text: "Amenities Buildings" },
-              { icon: MapPin, text: "Center downtown" },
-              { icon: Sofa, text: "Contemporary Lifestyle" }
+              { icon: Building2, text: "Gated Townships" },
+              { icon: Bed, text: "Value Homes" },
+              { icon: MapPin, text: "Residential Plots" },
+              { icon: Sofa, text: "Commercial Spaces" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-5 group">
                 <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:border-[#4BBFB8] group-hover:text-[#4BBFB8] transition-colors shrink-0 bg-white/5">
@@ -471,9 +521,9 @@ export default function HomePage() {
       {/* SECTION 8: Stats with Bg Images */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
         {[
-          { num: "5.2M+", label: "Residential Completed (Sq. Ft.)", bg: "stats-bg-1.png", icon: Building2, highlight: false },
-          { num: "1.5M+", label: "Farmhouse Completed (Sq. Ft.)", bg: "stats-bg-2.png", icon: Home, highlight: true },
-          { num: "2,500+", label: "Happy Residents", bg: "stats-bg-3.png", icon: Smile, highlight: false },
+          { num: "2,333,520", label: "Residential Projects (Sq. Ft.)", bg: "stats-bg-1.png", icon: Building2, highlight: false },
+          { num: "1,850+", label: "Satisfied Residents", bg: "stats-bg-3.png", icon: Smile, highlight: true },
+          { num: "772,785", label: "Farmhouse Developments (Sq. Ft.)", bg: "stats-bg-2.png", icon: Home, highlight: false },
           { num: "20+", label: "Projects Delivered", bg: "stats-bg-4.png", icon: Zap, highlight: false },
         ].map((stat, i) => (
           <div key={i} className="relative h-72 md:h-[380px] flex flex-col items-center justify-center text-white text-center p-8 overflow-hidden group">

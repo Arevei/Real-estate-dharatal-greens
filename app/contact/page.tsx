@@ -3,28 +3,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import { ContactForm } from "../ContactForm";
 
-
-const formSchema = z.object({
-  name: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
-  subject: z.string().optional(),
-  message: z.string().optional(),
-});
 export default function Contact() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", phone: "", subject: "", message: "" },
-  });
-
   return (
     <div className="w-full font-sans pb-20 bg-white">
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center pt-20">
@@ -42,7 +23,40 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Get In Touch Section */}
+      {/* Contact Form */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-3xl mx-auto bg-white shadow-xl p-10 md:p-14">
+            <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-3 flex items-center gap-2">
+              WRITE A MESSAGE <span className="w-8 h-[2px] bg-[#4BBFB8]" />
+            </div>
+            <h2 className="text-4xl md:text-[44px] font-bold text-[#1e2a35] mb-10 leading-tight">
+              Feel free to write
+            </h2>
+
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+
+      {/* Google Map — Full Width */}
+      <section className="w-full">
+        <iframe
+          title="Doon Alliance Location"
+          width="100%"
+          height="420"
+          frameBorder="0"
+          scrolling="no"
+          marginHeight={0}
+          marginWidth={0}
+          src="https://maps.google.com/maps?width=520&height=400&hl=en&q=GS%20Tower%20Canal%20Road%20Jakhan%20Dehradun%20248001&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+          style={{ display: "block", border: 0 }}
+          allowFullScreen
+        />
+      </section>
+
+     
+       {/* Get In Touch Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -104,10 +118,10 @@ export default function Contact() {
                   <div>
                     <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Write email</div>
                     <a
-                      href="mailto:info@dharatalgreens.com"
+                      href="mailto:info@doonalliance.com"
                       className="text-base font-bold text-[#1e2a35] hover:text-[#4BBFB8] transition-colors"
                     >
-                      info@dharatalgreens.com
+                      info@doonalliance.com
                     </a>
                   </div>
                 </div>
@@ -120,10 +134,10 @@ export default function Contact() {
                   <div>
                     <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Call expert</div>
                     <a
-                      href="tel:+91-XXXXXXXXXX"
+                      href="tel:+919266040973"
                       className="text-base font-bold text-[#1e2a35] hover:text-[#4BBFB8] transition-colors"
                     >
-                      +91-XXXXXXXXXX
+                      +91 135 414 8552, +91 92660 40973
                     </a>
                   </div>
                 </div>
@@ -136,116 +150,12 @@ export default function Contact() {
                   <div>
                     <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Visit office</div>
                     <p className="text-base font-bold text-[#1e2a35] leading-relaxed">
-                      Dharatal Greens Pvt. Ltd. 7th Floor, Metro Station, 703 704 & 709, near Neta Ji Subhash Place, Netaji Subhash Place, Pitampura, New Delhi, Delhi, 110034, India
+                      2nd Floor, GS Tower, Canal Road, Opposite to Superia Apartments, Jakhan, Dehradun 248001
                     </p>
                   </div>
                 </div>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Google Map — Full Width */}
-      <section className="w-full">
-        <iframe
-          title="Dharatal Greens Location"
-          width="100%"
-          height="420"
-          frameBorder="0"
-          scrolling="no"
-          marginHeight={0}
-          marginWidth={0}
-          src="https://maps.google.com/maps?width=520&height=400&hl=en&q=Dharatal%20Greens%20Pvt.%20Ltd.%20%20pritampura%20%20%20Delhi+()&t=&z=12&ie=UTF8&iwloc=B&output=embed"
-          style={{ display: "block", border: 0 }}
-          allowFullScreen
-        />
-      </section>
-
-      {/* Contact Form */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto bg-white shadow-xl p-10 md:p-14">
-            <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-3 flex items-center gap-2">
-              WRITE A MESSAGE <span className="w-8 h-[2px] bg-[#4BBFB8]" />
-            </div>
-            <h2 className="text-4xl md:text-[44px] font-bold text-[#1e2a35] mb-10 leading-tight">
-              Feel free to write
-            </h2>
-
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(() => { })} className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <FormField control={form.control} name="name" render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="Your Name"
-                          className="h-[54px] bg-gray-50 border border-gray-200 rounded-none focus-visible:ring-0 focus-visible:border-[#4BBFB8] text-base"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="email" render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="Email Address"
-                          className="h-[54px] bg-gray-50 border border-gray-200 rounded-none focus-visible:ring-0 focus-visible:border-[#4BBFB8] text-base"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )} />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <FormField control={form.control} name="phone" render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="Phone Number"
-                          className="h-[54px] bg-gray-50 border border-gray-200 rounded-none focus-visible:ring-0 focus-visible:border-[#4BBFB8] text-base"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="subject" render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="Subject"
-                          className="h-[54px] bg-gray-50 border border-gray-200 rounded-none focus-visible:ring-0 focus-visible:border-[#4BBFB8] text-base"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )} />
-                </div>
-
-                <FormField control={form.control} name="message" render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <textarea
-                        placeholder="Write a Message"
-                        rows={6}
-                        className="w-full bg-gray-50 border border-gray-200 p-4 text-base resize-none outline-none focus:border-[#4BBFB8] transition-colors rounded-none"
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )} />
-
-                <Button
-                  type="submit"
-                  className="bg-[#4BBFB8] hover:bg-[#3aada6] text-white rounded-none h-[54px] px-10 font-bold tracking-[0.15em] text-sm uppercase"
-                >
-                  SEND A MESSAGE
-                </Button>
-              </form>
-            </Form>
           </div>
         </div>
       </section>

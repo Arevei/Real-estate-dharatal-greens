@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -16,13 +17,36 @@ const contactSchema = z.object({
 });
 
 export function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: { name: "", email: "", phone: "", subject: "", message: "" },
   });
 
-  function onSubmit(values: z.infer<typeof contactSchema>) {
-    console.log("Contact submitted", values);
+  async function onSubmit(values: z.infer<typeof contactSchema>) {
+    setStatus("sending");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(data?.error || "Unable to send message.");
+      }
+
+      form.reset();
+      setStatus("success");
+      setMessage("Thank you. Our team will contact you soon.");
+    } catch (error) {
+      setStatus("error");
+      setMessage(error instanceof Error ? error.message : "Unable to send message.");
+    }
   }
 
   return (
@@ -113,10 +137,16 @@ export function ContactForm() {
 
         <Button
           type="submit"
-          className="bg-[#4BBFB8] hover:bg-[#4BBFB8]/90 text-white rounded-none h-[60px] px-12 font-bold tracking-[0.15em] text-sm uppercase mt-4"
+          disabled={status === "sending"}
+          className="bg-[#4BBFB8] hover:bg-[#4BBFB8]/90 text-white rounded-none h-[60px] px-12 font-bold tracking-[0.15em] text-sm uppercase mt-4 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          SEND A MESSAGE
+          {status === "sending" ? "SENDING..." : "SEND A MESSAGE"}
         </Button>
+        {message && (
+          <p className={`text-sm font-semibold ${status === "success" ? "text-[#1e2a35]" : "text-red-600"}`}>
+            {message}
+          </p>
+        )}
       </form>
     </Form>
   );

@@ -1,296 +1,232 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Eye, Shield, Target, Users, CheckCircle, Award } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight, Check, Home, Landmark, MapPin, Trees } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+
+const stats = [
+  { num: "2,333,520", label: "Square feet residential projects" },
+  { num: "772,785", label: "Square feet farmhouse developments" },
+  { num: "1,850+", label: "Satisfied residents" },
+];
+
+const highlights = [
+  "24x7 Security",
+  "Government Approved Society",
+  "Fully Gated Township",
+  "Street Lights on Every Road",
+  "Roadside Plantation",
+  "Approved Residential Plots",
+  "Beautiful Parks & Gardens",
+  "25 ft, 30 ft & 35 ft Wide Roads",
+  "Kids' Play Area",
+  "Complete Project Electrification",
+  "Primary School within the Township",
+  "Health Center for Residents",
+];
+
+const services = [
+  { icon: Trees, title: "Gated Townships" },
+  { icon: Landmark, title: "Farmhouses" },
+  { icon: Home, title: "Villas, Flats & Builder Floors" },
+  { icon: MapPin, title: "Plots & Commercial Spaces" },
+];
 
 export default function About() {
-  const stats = [
-    {
-      value: "2.3M+",
-      label: "Sq. Ft. Residential Completed",
-      desc: "Delivered premium townships & plotted layouts.",
-    },
-    {
-      value: "772K+",
-      label: "Sq. Ft. Farmhouse Projects",
-      desc: "Developing luxury nature-integrated estates.",
-    },
-    {
-      value: "1,850+",
-      label: "Satisfied Residents",
-      desc: "Trusted families living in happy communities.",
-    },
-  ];
-
-  const features = [
-    {
-      icon: Shield,
-      title: "Uncompromising Security",
-      desc: "Gated perimeters, smart access controls, and 24/7 security systems.",
-    },
-    {
-      icon: Award,
-      title: "Eco-Friendly Design",
-      desc: "RCC roads, lush green plantations, and nature preservation.",
-    },
-    {
-      icon: CheckCircle,
-      title: "Absolute Transparency",
-      desc: "End-to-end legal verification, clear titles, and transparent processes.",
-    },
-  ];
-
   return (
-    <div className="w-full font-sans bg-white overflow-hidden pb-12">
-      {/* SECTION 1: Hero Banner */}
-      <section className="relative h-[60vh] min-h-[450px] flex items-center justify-center pt-24">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero-bg.png"
-            alt="About Us Hero"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-[#0f1f2e]/80 backdrop-blur-[2px]" />
-        </div>
-        <div className="relative z-10 text-center px-4 max-w-4xl">
-          <motion.span
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-[#4BBFB8] font-bold tracking-[0.25em] text-xs md:text-sm uppercase mb-4 block"
-          >
-            DISCOVER OUR JOURNEY ——
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-none"
-          >
-            Crafting Communities <br />
-            <span className="font-serif italic text-[#4BBFB8] font-normal lowercase tracking-normal">where</span> Nature Leads
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="flex items-center justify-center gap-2.5 text-sm font-semibold tracking-wider uppercase text-zinc-300"
-          >
-            <Link href="/" className="hover:text-[#4BBFB8] transition-colors">
-              HOME
+    <div className="w-full overflow-x-hidden bg-white font-sans">
+      <section className="relative flex min-h-[420px] items-center justify-center pt-24 text-center text-white">
+        <Image
+          src="/images/hero-bg.png"
+          alt="Doon Alliance homes"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#1e2a35]/80" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-[#4BBFB8]">
+            Know More About Us
+          </p>
+          <h1 className="text-4xl font-bold tracking-tight md:text-6xl">Doon Alliance</h1>
+          <div className="mt-5 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-zinc-300">
+            <Link href="/" className="transition-colors hover:text-[#4BBFB8]">
+              Home
             </Link>
-            <span className="text-zinc-500">/</span>
-            <span className="text-[#4BBFB8]">ABOUT US</span>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SECTION 2: Who Are We? */}
-      <section className="py-24 md:py-32 relative bg-zinc-50/50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            {/* Left: Interactive/Animated Image Showcase */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="lg:col-span-6 relative h-[500px] w-full"
-            >
-              {/* Main Image */}
-              <div className="absolute right-0 bottom-0 w-[85%] h-[85%] overflow-hidden shadow-2xl group">
-                <Image
-                  src="/images/about/team-vision.png"
-                  alt="Our Team"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-[#0f1f2e]/10 group-hover:bg-transparent transition-colors duration-500" />
-              </div>
-
-              {/* Overlapping Secondary Image */}
-              <div className="absolute left-0 top-0 w-[55%] h-[55%] overflow-hidden border-[10px] border-white shadow-xl z-10 group">
-                <Image
-                  src="/images/interior-living.png"
-                  alt="Living Spaces"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 30vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Abstract decorative frame */}
-              <div className="absolute bottom-[8%] right-[17%] w-[20%] h-[20%] border-[4px] border-[#4BBFB8] -z-10 animate-pulse" />
-              
-              {/* Floating Tag */}
-              <motion.div 
-                whileHover={{ y: -5 }}
-                className="absolute bottom-8 left-4 bg-[#1e2a35] text-white p-6 shadow-xl z-20 border-l-4 border-[#4BBFB8]"
-              >
-                <div className="text-4xl font-extrabold text-[#4BBFB8] leading-none mb-1">10+</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 leading-snug">
-                  Premium townships<br />developed
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Right: Content details */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-6 flex flex-col justify-center"
-            >
-              <span className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4 flex items-center gap-2">
-                WHO ARE WE? <span className="w-8 h-[2px] bg-[#4BBFB8]" />
-              </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-navy mb-8 leading-[1.15]">
-                Dedicated to creating exceptional living experiences
-              </h2>
-              <p className="text-zinc-600 mb-6 text-lg leading-relaxed">
-                At <strong className="text-navy font-semibold">Dharatal Greens Pvt Ltd</strong>, we are dedicated to creating exceptional living experiences that blend comfort, security, and luxury. Operating across Delhi, Saharanpur, and beyond, we specialize in premium real estate solutions, including farmhouses, villas, residential plots, value homes, and independent living spaces.
-              </p>
-              <p className="text-zinc-600 mb-8 text-lg leading-relaxed">
-                Our approach is rooted in transparency, efficiency, and sustainability, ensuring our clients receive tailored solutions that meet their aspirations. With over <strong className="text-navy font-semibold">2,333,520 Square feet</strong> of residential projects and <strong className="text-navy font-semibold">772,785 Square feet</strong> of farmhouse developments completed, we have built a strong reputation for delivering quality and value. Trusted by <strong className="text-[#4BBFB8] font-bold">1,850+ satisfied residents</strong>, our mission is to go beyond construction—we craft vibrant communities that people are proud to call home.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/projects"
-                  className="bg-[#4BBFB8] hover:bg-[#3cacb0] text-white px-8 py-4 text-xs font-bold uppercase tracking-widest transition-colors inline-flex items-center gap-2 group"
-                >
-                  VIEW PROJECTS <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="border border-[#1e2a35] hover:bg-[#1e2a35] hover:text-white text-[#1e2a35] px-8 py-4 text-xs font-bold uppercase tracking-widest transition-colors"
-                >
-                  CONTACT US
-                </Link>
-              </div>
-            </motion.div>
+            <span>/</span>
+            <span className="text-[#4BBFB8]">About Us</span>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: Stats Showcase */}
-      <section className="bg-[#1e2a35] py-20 text-white relative">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4BBFB8_1px,transparent_1px)] [background-size:16px_16px]" />
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
-            {stats.map((stat, index) => (
+      <section className="py-20 md:py-24">
+        <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 md:px-6 lg:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative min-h-[360px] overflow-hidden shadow-xl md:min-h-[500px]"
+          >
+            <Image
+              src="/images/about/nature-focus.png"
+              alt="Green living at Doon Alliance"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+            <div className="absolute bottom-5 left-5 bg-[#1e2a35] p-5 text-white shadow-xl">
+              <div className="text-4xl font-bold text-[#4BBFB8]">1850+</div>
+              <div className="mt-1 text-xs font-bold uppercase tracking-wider text-zinc-300">
+                Satisfied Residents
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#4BBFB8]">
+              <span className="h-[2px] w-8 bg-[#4BBFB8]" /> Who Are We?
+            </p>
+            <h2 className="mb-6 text-3xl font-bold leading-tight text-[#1e2a35] md:text-5xl">
+              Creating exceptional living experiences with comfort, security, and luxury.
+            </h2>
+            <p className="mb-5 text-base leading-relaxed text-zinc-600">
+              At <strong className="text-[#1e2a35]">Doon Alliance</strong>, we are dedicated to creating exceptional living experiences that blend comfort, security, and luxury. Operating across Delhi, Saharanpur, and beyond, we specialize in premium real estate solutions, including farmhouses, villas, residential plots, value homes, and independent living spaces.
+            </p>
+            <p className="mb-8 text-base leading-relaxed text-zinc-600">
+              Our approach is rooted in transparency, efficiency, and sustainability, ensuring our clients receive tailored solutions that meet their aspirations. With over <strong className="text-[#1e2a35]">2,333,520 square feet</strong> residential projects and <strong className="text-[#1e2a35]">772,785 square feet</strong> farmhouse developments completed, we have built a strong reputation for delivering quality and value. Our mission is to go beyond construction. We craft vibrant communities that people are proud to call home.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex h-[52px] items-center gap-2 bg-[#4BBFB8] px-8 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#3aada6]"
+            >
+              Contact Us <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-[#1e2a35] py-14 text-white">
+        <div className="container mx-auto grid grid-cols-1 gap-8 px-4 text-center md:grid-cols-3 md:px-6">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+            >
+              <div className="mb-2 text-4xl font-bold text-[#4BBFB8]">{stat.num}</div>
+              <div className="text-xs font-bold uppercase tracking-[0.18em] text-zinc-300">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-gray-50 py-20 md:py-24">
+        <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 md:px-6 lg:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#4BBFB8]">
+              <span className="h-[2px] w-8 bg-[#4BBFB8]" /> Our Vision
+            </p>
+            <h2 className="mb-6 text-3xl font-bold leading-tight text-[#1e2a35] md:text-5xl">
+              Redefining modern living with sustainable, high-quality real estate.
+            </h2>
+            <p className="text-base leading-relaxed text-zinc-600">
+              At Doon Alliance, our vision is simple yet profound: to redefine modern living with
+sustainable, high-quality real estate solutions. We strive to create secure and harmonious
+spaces that cater to diverse lifestyle needs, offering affordable luxury without compromise.
+Our commitment to innovation and excellence drives us to develop properties that not only
+provide value but also foster lasting happiness for generations to come. Whether you are
+looking for a peaceful retreat, an investment opportunity, or a dream home, Doon Alliance
+is here to make your vision a reality.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative min-h-[360px] overflow-hidden shadow-xl md:min-h-[500px]"
+          >
+            <Image
+              src="/images/about/team-vision.png"
+              alt="Doon Alliance team vision"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-24">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#4BBFB8]">
+              Project Highlights
+            </p>
+            <h2 className="text-3xl font-bold text-[#1e2a35] md:text-[44px]">Amenities Built For Community Living</h2>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {highlights.map((item, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
+                key={item}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="flex flex-col md:flex-row items-center md:items-start gap-6 border-b md:border-b-0 md:border-r border-white/10 last:border-0 pb-8 md:pb-0 md:pr-8 last:pr-0"
+                transition={{ delay: (index % 4) * 0.05 }}
+                className="flex min-h-[76px] items-center gap-4 border border-gray-100 bg-gray-50 px-5 py-4"
               >
-                <div className="text-5xl md:text-6xl font-extrabold text-[#4BBFB8] tracking-tight shrink-0 font-serif leading-none">
-                  {stat.value}
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-white mb-2 leading-tight uppercase tracking-wider">
-                    {stat.label}
-                  </h4>
-                  <p className="text-zinc-400 text-sm leading-relaxed">
-                    {stat.desc}
-                  </p>
-                </div>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center bg-[#4BBFB8]/10 text-[#4BBFB8]">
+                  <Check className="h-4 w-4 stroke-[3]" />
+                </span>
+                <span className="text-sm font-semibold leading-snug text-[#1e2a35]">{item}</span>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: Our Vision & Mission */}
-      <section className="py-24 md:py-32 bg-white">
+      <section className="bg-[#1e2a35] py-20 text-white md:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            {/* Left: Text & Features List */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="lg:col-span-7"
-            >
-              <span className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4 flex items-center gap-2">
-                OUR VISION <span className="w-8 h-[2px] bg-[#4BBFB8]" />
-              </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-navy mb-8 leading-[1.15]">
-                Redefining modern living with sustainable solutions
-              </h2>
-              <p className="text-zinc-600 mb-10 text-lg leading-relaxed">
-                At Dharatal Greens, our vision is simple yet profound: to redefine modern living with sustainable, high-quality real estate solutions. We strive to create secure and harmonious spaces that cater to diverse lifestyle needs, offering affordable luxury without compromise. Our commitment to innovation and excellence drives us to develop properties that not only provide value but also foster lasting happiness for generations to come. Whether you are looking for a peaceful retreat, an investment opportunity, or a dream home, Dharatal Greens is here to make your vision a reality.
-              </p>
-
-              {/* Feature Highlights Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {features.map((feat, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ y: -5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="p-6 bg-zinc-50 border border-zinc-100 hover:shadow-xl hover:border-[#4BBFB8]/30 transition-all rounded-sm"
-                  >
-                    <div className="w-12 h-12 bg-[#4BBFB8]/10 text-[#4BBFB8] rounded-sm flex items-center justify-center mb-4">
-                      <feat.icon className="w-6 h-6" />
-                    </div>
-                    <h4 className="font-bold text-navy text-sm uppercase tracking-wide mb-2">
-                      {feat.title}
-                    </h4>
-                    <p className="text-zinc-500 text-xs leading-relaxed">
-                      {feat.desc}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Right: Visual Accent Banner */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-5 relative h-[550px] w-full"
-            >
-              <div className="absolute inset-0 shadow-2xl overflow-hidden group">
-                <Image
-                  src="/images/projects/valley-view-retreat.png"
-                  alt="Luxury Retreat"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover transition-transform duration-[2s] group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-[#1e2a35]/40 mix-blend-multiply" />
-              </div>
-
-              {/* Decorative outline block */}
-              <div className="absolute -top-6 -left-6 w-[80px] h-[80px] border-t-4 border-l-4 border-[#4BBFB8] -z-10" />
-              <div className="absolute -bottom-6 -right-6 w-[80px] h-[80px] border-b-4 border-r-4 border-[#4BBFB8] -z-10" />
-
-              {/* Floating Quote/Accent */}
-              <div className="absolute inset-0 flex items-center justify-center p-8 text-center text-white z-10 pointer-events-none">
-                <div className="max-w-xs">
-                  <div className="text-5xl font-serif text-[#4BBFB8] mb-4">“</div>
-                  <p className="font-semibold text-lg italic leading-relaxed">
-                    Sustainable living is not a choice, it is a legacy we build together.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#4BBFB8]">
+              Build And Construct
+            </p>
+            <h2 className="text-3xl font-bold md:text-[44px]">Spaces Doon Alliance Develops</h2>
           </div>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {services.map((service) => (
+              <div key={service.title} className="border border-white/10 bg-white/5 p-7">
+                <service.icon className="mb-5 h-9 w-9 text-[#4BBFB8]" />
+                <h3 className="text-lg font-bold">{service.title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#4BBFB8] py-12">
+        <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 text-center md:flex-row md:px-6 md:text-left">
+          <div>
+            <h3 className="text-2xl font-bold text-white md:text-3xl">Looking for a home, retreat, or investment?</h3>
+            <p className="mt-2 text-sm text-white/85">Doon Alliance is here to make your vision a reality.</p>
+          </div>
+          <Link
+            href="/contact"
+            className="inline-flex h-[52px] items-center gap-2 bg-[#1e2a35] px-8 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#15202b]"
+          >
+            Get In Touch <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </div>

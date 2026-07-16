@@ -12,10 +12,10 @@ export function Footer() {
           {/* Column 1: Brand */}
           <div className="space-y-6">
             <Link href="/" className="inline-block bg-white p-3 rounded-lg">
-              <Image src="/images/logo.png" alt="Dharatal Greens" width={48} height={48} className="h-12 w-auto" />
+              <Image src="/images/logo.png" alt="Doon Alliance" width={48} height={48} className="h-12 w-auto" />
             </Link>
             <p className="text-zinc-400 text-sm leading-relaxed">
-              Dharatal Greens represents the pinnacle of luxury farmhouse and villa living. We curate spaces where nature leads and luxury follows.
+              Doon Alliance creates premium townships, farmhouses, villas, plots, builder floors, and commercial spaces with transparent service and sustainable planning.
             </p>
             {/* <div className="flex gap-3">
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-all">
@@ -51,15 +51,15 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-zinc-400">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-accent shrink-0 mt-1" />
-                <span>Dharatal Greens Pvt. Ltd. 7th Floor, Metro Station, 703 704 & 709, near Neta Ji Subhash Place, Netaji Subhash Place, Pitampura, New Delhi, Delhi, 110034, India</span>
+                <span>2nd Floor, GS Tower, Canal Road, Opposite to Superia Apartments, Jakhan, Dehradun 248001</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-accent shrink-0" />
-                <span>+91-XXXXXXXXXX</span>
+                <span>+91 135 414 8552, +91 92660 40973</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-accent shrink-0" />
-                <span>info@dharatalgreens.com</span>
+                <span>info@doonalliance.com</span>
               </li>
             </ul>
           </div>
@@ -83,7 +83,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-500">
-          <p>Copyright &copy; {new Date().getFullYear()} Dharatal Greens. All rights reserved.</p>
+          <p>Copyright &copy; {new Date().getFullYear()} Doon Alliance. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms-conditions" className="hover:text-white transition-colors">Terms of Service</Link>

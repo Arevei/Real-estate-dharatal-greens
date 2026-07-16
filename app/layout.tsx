@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dharatal Greens",
-  description: "Dharatal Greens represents the pinnacle of luxury farmhouse and villa living. We curate spaces where nature leads and luxury follows.",
+  title: "Doon Alliance - Real Estate",
+  description: "Doon Alliance - Premium real estate solutions including farmhouses, villas, residential plots, value homes and luxury townships across Delhi, Saharanpur and beyond.",
 };
 
 export default function RootLayout({

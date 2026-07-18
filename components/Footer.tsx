@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="bg-navy text-white pt-20 pb-8 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           {/* Column 1: Brand */}
           <div className="space-y-6">
             <Link href="/" className="inline-block bg-white p-3 rounded-lg">
@@ -68,7 +68,7 @@ export function Footer() {
           </div>
 
           {/* Column 4: Newsletter */}
-          <div>
+          {/* <div>
             <h4 className="text-lg font-bold mb-6 border-b border-white/10 pb-4 inline-block">Newsletter</h4>
             <p className="text-zinc-400 text-sm mb-4">Subscribe to our newsletter to receive the latest updates and property insights.</p>
             <div className="flex">
@@ -83,7 +83,7 @@ export function Footer() {
                 </Link>
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Bar */}

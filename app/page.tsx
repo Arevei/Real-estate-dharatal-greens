@@ -1,5 +1,12 @@
 "use client"
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import {
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -12,77 +19,170 @@ import {
 import { ContactForm } from "./ContactForm";
 
 export default function HomePage() {
+  const heroStats = [
+    { value: "2,333,520", label: "Sq. Ft. residential projects" },
+    { value: "772,785", label: "Sq. Ft. farmhouse developments" },
+    { value: "1,850+", label: "Satisfied residents" },
+  ];
+
+  const featureCards = [
+    {
+      icon: Building,
+      title: "Secure Community Living",
+      desc: "Fully gated developments designed with 24x7 security and practical community infrastructure.",
+      href: "/services",
+    },
+    {
+      icon: Globe,
+      title: "Accessible Locations",
+      desc: "Properties planned around accessible locations, natural surroundings and important regional connections.",
+      href: "/projects",
+    },
+    {
+      icon: Leaf,
+      title: "Green Community Planning",
+      desc: "Roadside plantations, parks, gardens and thoughtfully planned open spaces support cleaner and more harmonious living.",
+      href: "/services",
+    },
+    {
+      icon: Cpu,
+      title: "Complete Infrastructure",
+      desc: "Wide roads, street lighting, project electrification and essential community amenities planned for comfortable everyday living.",
+      href: "/services",
+    },
+  ];
+
+  const heroRef = useRef<HTMLElement>(null);
+  const blurLayerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end end"],
+  });
+
+  const smoothHero = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 24,
+  });
+
+  const bgScale = useTransform(smoothHero, [0, 0.7], [1.04, 1.12]);
+  const vignetteOpacity = useTransform(smoothHero, [0, 0.38, 0.8], [0.72, 0.88, 0.62]);
+  const whiteWashOpacity = useTransform(smoothHero, [0.72, 1], [0, 0.92]);
+  const s1Opacity = useTransform(smoothHero, [0, 0.22, 0.45], [1, 1, 0]);
+  const s1Y = useTransform(smoothHero, [0, 0.45], ["0px", "-64px"]);
+  const s2Opacity = useTransform(smoothHero, [0.42, 0.66], [0, 1]);
+  const s2Y = useTransform(smoothHero, [0.42, 0.66], ["56px", "0px"]);
+
+  useMotionValueEvent(smoothHero, "change", (value) => {
+    if (!blurLayerRef.current) return;
+
+    const clear = 58 - Math.min(value, 0.72) * 34;
+    const edge = 78 - Math.min(value, 0.72) * 22;
+    const mask = `radial-gradient(ellipse ${clear}% ${clear * 0.82}% at 54% 52%, transparent 0%, transparent ${clear * 0.9}%, rgba(0,0,0,0.6) ${edge}%, black 100%)`;
+
+    blurLayerRef.current.style.maskImage = mask;
+    (blurLayerRef.current.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask;
+  });
+
+  useEffect(() => {
+    if (!blurLayerRef.current) return;
+    const mask =
+      "radial-gradient(ellipse 58% 48% at 54% 52%, transparent 0%, transparent 52%, rgba(0,0,0,0.6) 78%, black 100%)";
+    blurLayerRef.current.style.maskImage = mask;
+    (blurLayerRef.current.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask;
+  }, []);
+
   return (
     <div className="w-full font-sans">
 
       {/* SECTION 1: Hero */}
-      <section className="ploy-dark relative h-[100dvh] w-full flex items-end overflow-hidden pt-24 pb-16 md:pb-24">
+      <section className="relative min-h-[100svh] w-full overflow-hidden bg-[#08131f] pt-28 pb-12 md:pt-36 md:pb-16">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/hero-bg.png"
             alt="Hero background"
             fill
             sizes="100vw"
-            className="object-cover opacity-55 mix-blend-luminosity"
+            className="object-cover opacity-70"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07111c] via-[#07111c]/72 to-[#07111c]/20" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,19,31,0.96)_0%,rgba(8,19,31,0.82)_46%,rgba(8,19,31,0.42)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#08131f] to-transparent" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 md:px-6 text-white w-full">
+        <div className="relative z-10 container mx-auto grid min-h-[calc(100svh-10rem)] grid-cols-1 items-center gap-12 px-4 md:px-6 lg:grid-cols-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl"
+            className="text-white lg:col-span-7"
           >
-            <div className="ploy-kicker mb-6 border-white/15 bg-white/10 text-white">Government Approved Communities</div>
-            <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold leading-[1.05] tracking-tight mb-6">
-              DOON ALLIANCE <span className="font-serif italic text-[#4BBFB8] font-normal lowercase tracking-normal text-4xl md:text-6xl lg:text-[5.5rem]">builds</span><br />
-              BETTER LIVING
+            <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md">
+              <span className="h-2 w-2 rounded-full bg-[#4BBFB8]" />
+              Government Approved Communities
+            </div>
+            <h1 className="mb-7 max-w-5xl text-4xl font-black leading-[0.98] tracking-tight md:text-5xl lg:text-[4rem]">
+              Planned Spaces.
+              <span className="block text-[#4BBFB8]">Peaceful Living.</span>
             </h1>
-            <p className="text-white/80 text-base md:text-lg max-w-2xl mb-8 leading-relaxed font-light">
+            <p className="mb-9 max-w-2xl text-base leading-relaxed text-white/78 md:text-xl">
               We create exceptional living experiences across Delhi, Saharanpur and beyond through thoughtfully planned farmhouses, villas, residential plots, value homes and independent living spaces.
             </p>
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="mb-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/about"
-                className="ploy-button inline-flex items-center gap-2 bg-[#4BBFB8] hover:bg-[#3aada6] text-white font-bold uppercase tracking-widest text-xs px-8 h-[54px] transition-colors"
+                className="group inline-flex h-[58px] items-center gap-3 rounded-full bg-[#4BBFB8] px-8 text-xs font-bold uppercase tracking-widest text-white shadow-[0_18px_45px_rgba(75,191,184,0.34)] transition-all hover:-translate-y-1 hover:bg-[#3aada6]"
               >
-                KNOW MORE ABOUT US <ArrowRight className="w-4 h-4" />
+                Know More About Us <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex h-[54px] items-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-md transition-colors hover:bg-white hover:text-[#1e2a35]"
+                className="inline-flex h-[58px] items-center rounded-full border border-white/25 bg-white/10 px-8 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white hover:text-[#1e2a35]"
               >
-                BOOK A SITE VISIT
+                Book A Site Visit
               </Link>
             </div>
+            <div className="grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
+              {heroStats.map((stat) => (
+                <div key={stat.label} className="rounded-lg border border-white/12 bg-white/10 p-4 backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white/15">
+                  <div className="text-2xl font-black text-white">{stat.value}</div>
+                  <div className="mt-1 text-[11px] font-bold uppercase leading-snug tracking-[0.16em] text-white/58">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </motion.div>
-        </div>
 
-  
-
-        {/* Carousel Arrows */}
-        <Link href="/projects" aria-label="View projects" className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-colors z-20">
-          <ChevronLeft className="w-8 h-8" />
-        </Link>
-        <Link href="/projects" aria-label="View projects" className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-colors z-20">
-          <ChevronRight className="w-8 h-8" />
-        </Link>
-
-        {/* Dots */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10 items-center">
-          <div className="w-3.5 h-3.5 rounded-full border-[2px] border-white bg-transparent" />
-          <div className="w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white/80 transition-colors cursor-pointer" />
-          <div className="w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white/80 transition-colors cursor-pointer" />
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.12 }}
+            className="hidden lg:col-span-5 lg:block"
+          >
+            <div className="relative ml-auto h-[560px] max-w-[520px]">
+              <div className="absolute right-0 top-0 h-[78%] w-[82%] overflow-hidden rounded-lg border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
+                <Image src="/images/about/doon-construction-team.png" alt="Doon Alliance planning team" fill sizes="40vw" className="object-cover" />
+              </div>
+              <div className="absolute bottom-0 left-0 w-[68%] rounded-lg border border-white/12 bg-white p-5 shadow-[0_24px_70px_rgba(0,0,0,0.25)]">
+                <div className="relative mb-4 h-40 overflow-hidden rounded-md">
+                  <Image src="/images/projects/shivalik-plots.png" alt="Shivalik Estate" fill sizes="28vw" className="object-cover" />
+                </div>
+                <div className="text-xs font-black uppercase tracking-[0.18em] text-[#4BBFB8]">Featured Estate</div>
+                <div className="mt-2 text-2xl font-black leading-tight text-[#1e2a35]">Shivalik Estate</div>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-500">Documented development in Ganeshpur with planned residential layouts.</p>
+              </div>
+              <div className="absolute right-6 bottom-24 rounded-full bg-[#4BBFB8] px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-white shadow-[0_18px_42px_rgba(75,191,184,0.35)]">
+                24x7 Security
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* SECTION 2: Teal Accent Strip */}
       <section className="ploy-surface py-10 w-full relative z-20">
         <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="ploy-card flex items-center gap-5 p-5 md:p-6">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1e2a35] text-white">
+          <div className="group flex items-center gap-5 rounded-lg border border-[#0f1f2e]/10 bg-[#4BBFB8] p-5 shadow-[0_18px_45px_rgba(15,31,46,0.06)] transition-all hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,31,46,0.12)] md:p-6">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#4BBFB8]/14 text-[#0f1f2e] transition-colors group-hover:bg-[#0f1f2e] group-hover:text-white">
               <Building2 className="w-7 h-7 stroke-[1.5]" />
             </div>
             <h2 className="text-xl md:text-[26px] font-bold text-[#1e2a35] max-w-2xl leading-tight">
@@ -174,7 +274,7 @@ export default function HomePage() {
           </div>
 
           {/* Bottom Tabs */}
-          <div className="grid grid-cols-2 md:grid-cols-4 w-full mt-32 border border-gray-100 bg-gray-50/50 overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-4 w-full mt-32 overflow-hidden rounded-lg border border-[#0f1f2e]/10 bg-white shadow-[0_18px_48px_rgba(15,31,46,0.07)]">
             {[
               { icon: Building2, label: "Apartment" },
               { icon: Home, label: "Villa" },
@@ -183,12 +283,12 @@ export default function HomePage() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -6, backgroundColor: "#4BBFB8", color: "#ffffff" }}
+                whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className={`group text-navy transition-colors duration-200 ${i !== 0 ? 'border-l border-gray-100' : ''}`}
+                className={`group text-[#0f1f2e] transition-colors duration-200 hover:bg-[#0f1f2e] hover:text-white ${i !== 0 ? 'border-l border-[#0f1f2e]/10' : ''}`}
               >
                 <Link href="/projects" className="py-12 flex flex-col items-center justify-center gap-4">
-                  <item.icon className="w-12 h-12 group-hover:text-white text-[#4BBFB8] stroke-[1.5] transition-colors" />
+                  <item.icon className="w-12 h-12 text-[#0f1f2e] group-hover:text-[#4BBFB8] stroke-[1.5] transition-colors" />
                   <span className="font-bold text-lg">{item.label}</span>
                 </Link>
               </motion.div>
@@ -197,29 +297,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 4: Main Property Features (3-Col) */}
+      {/* SECTION 4: Main Property Features */}
       <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-
-            {/* Column 1 (Left ~35%) */}
+        <div className="container flex flex-col md:flex-row mx-auto px-4 md:px-6 gap-y-6">
+          <div className="w-full md:w-[40%] mb-12 ">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-5 pr-0 lg:pr-8 flex flex-col"
+              className="lg:col-span-5 pr-0 lg:pr-8 flex flex-col "
             >
-              <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">MAIN FEATURES ——</div>
-              <h2 className="text-4xl lg:text-[44px] font-bold text-navy mb-6 leading-tight">Our main property features</h2>
-              <p className="text-gray-500 mb-10 leading-relaxed">
+              <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">MAIN FEATURES</div>
+              <h2 className="text-4xl lg:text-[48px] font-black text-navy mb-6 leading-tight">Our main property features</h2>
+              <p className="text-gray-500 mb-10 leading-relaxed text-lg">
                 Discover uncompromised quality and thoughtful design in every detail of our properties. We blend nature with modern lifestyle perfectly.
               </p>
 
-              <Button asChild variant="outline" className="border-2 border-[#4BBFB8] text-[#4BBFB8] rounded-none hover:bg-[#4BBFB8] hover:text-white h-14 px-10 font-bold tracking-widest text-xs w-fit mb-12">
-                <Link href="/services">
+              <Link
+                href="/services"
+                className="mb-12 inline-flex h-14 w-fit items-center justify-center border-2 border-[#4BBFB8] px-10 text-xs font-black uppercase tracking-widest text-[#4BBFB8] transition-all hover:-translate-y-1 hover:bg-[#4BBFB8] hover:text-white"
+              >
                 READ MORE
-                </Link>
-              </Button>
+              </Link>
 
               <div className="flex gap-5 items-start mb-10">
                 <Trophy className="w-12 h-12 text-[#4BBFB8] shrink-0 stroke-[1.5]" />
@@ -239,85 +338,54 @@ export default function HomePage() {
                     <div className="font-bold text-navy text-lg mt-0.5">+91 92660 40973</div>
                   </div>
                 </a>
-                <Button asChild className="bg-navy text-white rounded-none h-14 px-8 font-bold text-xs tracking-widest hover:bg-navy/90 w-full sm:w-auto">
-                  <Link href="/about">
+                <Link href="/about" className="flex h-14 w-full items-center justify-center bg-navy px-8 text-xs font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-[#4BBFB8] sm:w-auto">
                   DISCOVER MORE
-                  </Link>
-                </Button>
+                </Link>
               </div>
             </motion.div>
-
-            {/* Column 2 (Center ~32%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="lg:col-span-4 flex flex-col gap-6"
-            >
-              <motion.div
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-[#2d3748] p-10 flex-1 flex flex-col justify-center shadow-lg group transition-all"
-              >
-                <Building className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
-                <h3 className="text-[22px] font-bold text-white mb-4">Secure Community Living</h3>
-                <p className="text-gray-400 mb-8 leading-relaxed">Fully gated developments designed with 24x7 security and practical community infrastructure.</p>
-                <Link href="/services" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
-                  READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></div>
-                </Link>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-[#2d3748] p-10 flex-1 flex flex-col justify-center shadow-lg group transition-all"
-              >
-                <Globe className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
-                <h3 className="text-[22px] font-bold text-white mb-4">Accessible Locations</h3>
-                <p className="text-gray-400 mb-8 leading-relaxed">Properties planned around accessible locations, natural surroundings and important regional connections.</p>
-                <Link href="/projects" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
-                  READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></div>
-                </Link>
-              </motion.div>
-            </motion.div>
-
-            {/* Column 3 (Right ~32%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="lg:col-span-3 flex flex-col gap-6"
-            >
-              <motion.div
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-white border border-gray-100 shadow-xl p-10 flex-1 flex flex-col justify-center group transition-all"
-              >
-                <Leaf className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
-                <h3 className="text-[22px] font-bold text-navy mb-4">Green Community Planning</h3>
-                <p className="text-gray-500 mb-8 leading-relaxed">Roadside plantations, parks, gardens and thoughtfully planned open spaces support cleaner and more harmonious living.</p>
-                <Link href="/services" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
-                  READ MORE <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-white border border-gray-100 shadow-xl p-10 flex-1 flex flex-col justify-center group transition-all"
-              >
-                <Cpu className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
-                <h3 className="text-[22px] font-bold text-navy mb-4">Complete Infrastructure</h3>
-                <p className="text-gray-500 mb-8 leading-relaxed">Wide roads, street lighting, project electrification and essential community amenities planned for comfortable everyday living.</p>
-                <Link href="/services" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
-                  READ MORE <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
-            </motion.div>
-
           </div>
+            <div className=" w-full md:w-[60%]">
+
+            <div className="lg:grid-cols-2 grid grid-cols-1 ">
+              {featureCards.slice(0, 2).map((feature, index) => (
+                <motion.article
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group flex min-h-[300px] flex-col bg-white border border-gray-100 p-10 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:bg-[#2d3748] hover:border-[#2d3748] hover:shadow-2xl"
+                >
+                  <feature.icon className="w-8 h-8 text-[#4BBFB8] mb-8 stroke-[1.5]" />
+                  <h3 className="text-[24px] font-black text-navy mb-5 transition-colors group-hover:text-white">{feature.title}</h3>
+                  <p className="text-gray-500 mb-8 leading-relaxed transition-colors group-hover:text-gray-300">{feature.desc}</p>
+                  <Link href={feature.href} className="mt-auto flex items-center gap-3 text-[#4BBFB8] font-black text-sm tracking-wider uppercase">
+                    READ MORE <span className="w-10 h-10 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></span>
+                  </Link>
+                </motion.article>
+              ))}
+            </div>
+
+            <div className="lg:grid-cols-2 grid grid-cols-1 ">
+              {featureCards.slice(2).map((feature, index) => (
+                <motion.article
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (index + 2) * 0.1 }}
+                  className="group flex min-h-[300px] flex-col bg-white border border-gray-100 p-10 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:bg-[#2d3748] hover:border-[#2d3748] hover:shadow-2xl"
+                >
+                  <feature.icon className="w-8 h-8 text-[#4BBFB8] mb-8 stroke-[1.5]" />
+                  <h3 className="text-[24px] font-black text-navy mb-5 transition-colors group-hover:text-white">{feature.title}</h3>
+                  <p className="text-gray-500 mb-8 leading-relaxed transition-colors group-hover:text-gray-300">{feature.desc}</p>
+                  <Link href={feature.href} className="mt-auto flex items-center gap-3 text-[#4BBFB8] font-black text-sm tracking-wider uppercase">
+                    READ MORE <span className="w-10 h-10 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></span>
+                  </Link>
+                </motion.article>
+              ))}
+            </div>
+            </div>
         </div>
       </section>
 
@@ -618,26 +686,22 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -8 }}
-                className={srv.isDark ?
-                  "bg-[#1e2a35] shadow-xl p-10 pt-16 flex flex-col justify-end group cursor-pointer transition-all duration-300" :
-                  "bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 group cursor-pointer"
-                }
+                className="group flex min-h-[470px] cursor-pointer flex-col overflow-hidden rounded-lg border border-[#0f1f2e]/10 bg-white shadow-[0_18px_48px_rgba(15,31,46,0.07)] transition-all duration-300 hover:border-[#0f1f2e] hover:bg-[#0f1f2e] hover:shadow-[0_28px_70px_rgba(15,31,46,0.18)]"
               >
-                {!srv.isDark && (
-                  <div className="relative h-[220px]">
-                    <Image src={`/images/${srv.img}`} alt={srv.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover" />
-                    <div className="absolute -bottom-6 left-8 w-14 h-14 bg-[#4BBFB8] flex items-center justify-center shadow-lg group-hover:-translate-y-2 transition-transform">
-                      <Building className="w-6 h-6 text-white stroke-[1.5]" />
-                    </div>
+                <div className="relative h-[220px] overflow-hidden">
+                  <Image src={`/images/${srv.img}`} alt={srv.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1f2e]/35 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="absolute -bottom-6 left-8 flex h-14 w-14 items-center justify-center rounded-full bg-[#4BBFB8] text-white shadow-lg transition-transform group-hover:-translate-y-2">
+                    <Building className="w-6 h-6 stroke-[1.5]" />
                   </div>
-                )}
+                </div>
 
-                <div className={srv.isDark ? "relative z-10" : "p-8 pt-12"}>
-                  <h3 className={`text-[22px] font-bold mb-4 leading-snug ${srv.isDark ? 'text-white' : 'text-navy'}`}>{srv.title}</h3>
-                  <p className={`text-sm mb-8 leading-relaxed ${srv.isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                <div className="flex flex-1 flex-col p-8 pt-12">
+                  <h3 className="mb-4 text-[22px] font-black leading-snug text-[#0f1f2e] transition-colors group-hover:text-white">{srv.title}</h3>
+                  <p className="mb-8 text-sm leading-relaxed text-zinc-600 transition-colors group-hover:text-white/70">
                     {srv.desc}
                   </p>
-                  <Link href="/services" className={`text-sm font-bold tracking-widest uppercase transition-colors flex items-center gap-2 w-fit ${srv.isDark ? 'text-[#4BBFB8] hover:text-white' : 'text-navy hover:text-[#4BBFB8]'}`}>
+                  <Link href="/services" className="mt-auto flex w-fit items-center gap-2 text-sm font-black uppercase tracking-widest text-[#0f1f2e] transition-colors group-hover:text-[#4BBFB8]">
                     READ MORE <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>

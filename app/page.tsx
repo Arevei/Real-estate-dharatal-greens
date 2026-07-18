@@ -16,16 +16,16 @@ export default function HomePage() {
     <div className="w-full font-sans">
 
       {/* SECTION 1: Hero */}
-      <section className="relative h-[100dvh] w-full flex items-end overflow-hidden pt-24 pb-16 md:pb-24">
+      <section className="ploy-dark relative h-[100dvh] w-full flex items-end overflow-hidden pt-24 pb-16 md:pb-24">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/hero-bg.png"
             alt="Hero background"
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover opacity-55 mix-blend-luminosity"
           />
-          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07111c] via-[#07111c]/72 to-[#07111c]/20" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 md:px-6 text-white w-full">
@@ -35,20 +35,28 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="max-w-4xl"
           >
-            <div className="text-sm md:text-base font-light tracking-[0.2em] mb-4">DOON ALLIANCE REAL ESTATE</div>
+            <div className="ploy-kicker mb-6 border-white/15 bg-white/10 text-white">Government Approved Communities</div>
             <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold leading-[1.05] tracking-tight mb-6">
-              WE BUILD <span className="font-serif italic text-[#4BBFB8] font-normal lowercase tracking-normal text-4xl md:text-6xl lg:text-[5.5rem]">the</span><br />
-              FUTURE
+              DOON ALLIANCE <span className="font-serif italic text-[#4BBFB8] font-normal lowercase tracking-normal text-4xl md:text-6xl lg:text-[5.5rem]">builds</span><br />
+              BETTER LIVING
             </h1>
             <p className="text-white/80 text-base md:text-lg max-w-2xl mb-8 leading-relaxed font-light">
-              We create exceptional living experiences across Delhi, Saharanpur, Dehradun, and beyond, with premium farmhouses, villas, residential plots, value homes, builder floors, and commercial spaces.
+              We create exceptional living experiences across Delhi, Saharanpur and beyond through thoughtfully planned farmhouses, villas, residential plots, value homes and independent living spaces.
             </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 bg-[#4BBFB8] hover:bg-[#3aada6] text-white font-bold uppercase tracking-widest text-xs px-8 h-[52px] transition-colors"
-            >
-              KNOW MORE ABOUT US <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/about"
+                className="ploy-button inline-flex items-center gap-2 bg-[#4BBFB8] hover:bg-[#3aada6] text-white font-bold uppercase tracking-widest text-xs px-8 h-[54px] transition-colors"
+              >
+                KNOW MORE ABOUT US <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex h-[54px] items-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-md transition-colors hover:bg-white hover:text-[#1e2a35]"
+              >
+                BOOK A SITE VISIT
+              </Link>
+            </div>
           </motion.div>
         </div>
 
@@ -71,15 +79,17 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 2: Teal Accent Strip */}
-      <section className="bg-[#8bb8b6] py-8 w-full relative z-20">
+      <section className="ploy-surface py-10 w-full relative z-20">
         <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-5">
-            <Building2 className="w-12 h-12 text-white stroke-[1.5]" />
-            <h2 className="text-2xl md:text-[28px] font-bold text-white max-w-xl leading-tight">
+          <div className="ploy-card flex items-center gap-5 p-5 md:p-6">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1e2a35] text-white">
+              <Building2 className="w-7 h-7 stroke-[1.5]" />
+            </div>
+            <h2 className="text-xl md:text-[26px] font-bold text-[#1e2a35] max-w-2xl leading-tight">
               Gated townships, farmhouses, villas, flats, plots, builder floors, and commercial spaces
             </h2>
           </div>
-              <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#8bb8b6] h-[52px] px-10 text-sm font-bold uppercase tracking-[0.15em] rounded-none shrink-0 bg-transparent">
+              <Button asChild variant="outline" className="ploy-button-dark border-0 h-[54px] px-10 text-sm font-bold uppercase tracking-[0.15em] shrink-0">
                 <Link href="/projects">
                 EXPLORE NOW
                 </Link>
@@ -88,7 +98,7 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 3: Split Overlapping Images */}
-      <section className="py-24 bg-gray-50/50">
+      <section className="ploy-surface py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left: Images */}
@@ -125,10 +135,10 @@ export default function HomePage() {
                 <Building className="w-12 h-12 text-white stroke-[1.5]" />
               </div>
 
-              {/* 5 Years experience card */}
+              {/* Supported resident statistic */}
               <div className="absolute bottom-16 left-6 bg-white border border-gray-100 shadow-xl p-6 flex items-center gap-5 z-20">
-                <div className="text-6xl font-bold text-[#4BBFB8] leading-none">5</div>
-                <div className="text-sm font-bold leading-snug text-navy uppercase tracking-wider">Years of<br />experience</div>
+                <div className="text-5xl font-bold text-[#4BBFB8] leading-none">1,850+</div>
+                <div className="text-sm font-bold leading-snug text-navy uppercase tracking-wider">Satisfied<br />Residents</div>
               </div>
             </motion.div>
 
@@ -138,9 +148,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4 flex items-center gap-3">
-                WHO ARE WE? <span className="w-8 h-[2px] bg-[#4BBFB8]"></span>
-              </div>
+              <div className="ploy-kicker mb-5">WHO ARE WE?</div>
               <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-navy mb-8 leading-[1.1]">Premium living, planned with transparency</h2>
               <p className="text-gray-500 mb-10 leading-relaxed text-lg">
                 At Doon Alliance, we blend comfort, security, and luxury through sustainable real estate solutions. With over 2,333,520 square feet of residential projects and 772,785 square feet of farmhouse developments completed, we build communities people are proud to call home.
@@ -216,8 +224,8 @@ export default function HomePage() {
               <div className="flex gap-5 items-start mb-10">
                 <Trophy className="w-12 h-12 text-[#4BBFB8] shrink-0 stroke-[1.5]" />
                 <div>
-                  <h4 className="font-bold text-navy text-xl">Winning Architecture</h4>
-                  <p className="text-gray-500 text-sm mt-2 leading-relaxed">Recognized nationally for integrating sustainable concepts with modern luxury.</p>
+                  <h4 className="font-bold text-navy text-xl">Thoughtful Community Planning</h4>
+                  <p className="text-gray-500 text-sm mt-2 leading-relaxed">Carefully planned developments that bring together comfort, security, quality and sustainable living.</p>
                 </div>
               </div>
 
@@ -253,8 +261,8 @@ export default function HomePage() {
                 className="bg-[#2d3748] p-10 flex-1 flex flex-col justify-center shadow-lg group transition-all"
               >
                 <Building className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
-                <h3 className="text-[22px] font-bold text-white mb-4">Smart living</h3>
-                <p className="text-gray-400 mb-8 leading-relaxed">Integrated home automation and intelligent design for a seamless lifestyle.</p>
+                <h3 className="text-[22px] font-bold text-white mb-4">Secure Community Living</h3>
+                <p className="text-gray-400 mb-8 leading-relaxed">Fully gated developments designed with 24x7 security and practical community infrastructure.</p>
                 <Link href="/services" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></div>
                 </Link>
@@ -266,8 +274,8 @@ export default function HomePage() {
                 className="bg-[#2d3748] p-10 flex-1 flex flex-col justify-center shadow-lg group transition-all"
               >
                 <Globe className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
-                <h3 className="text-[22px] font-bold text-white mb-4">Attractive location</h3>
-                <p className="text-gray-400 mb-8 leading-relaxed">Situated in prime areas with easy access to city centers and natural escapes.</p>
+                <h3 className="text-[22px] font-bold text-white mb-4">Accessible Locations</h3>
+                <p className="text-gray-400 mb-8 leading-relaxed">Properties planned around accessible locations, natural surroundings and important regional connections.</p>
                 <Link href="/projects" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></div>
                 </Link>
@@ -288,8 +296,8 @@ export default function HomePage() {
                 className="bg-white border border-gray-100 shadow-xl p-10 flex-1 flex flex-col justify-center group transition-all"
               >
                 <Leaf className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
-                <h3 className="text-[22px] font-bold text-navy mb-4">Eco construction</h3>
-                <p className="text-gray-500 mb-8 leading-relaxed">Sustainable materials and energy-efficient building methodologies.</p>
+                <h3 className="text-[22px] font-bold text-navy mb-4">Green Community Planning</h3>
+                <p className="text-gray-500 mb-8 leading-relaxed">Roadside plantations, parks, gardens and thoughtfully planned open spaces support cleaner and more harmonious living.</p>
                 <Link href="/services" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -301,8 +309,8 @@ export default function HomePage() {
                 className="bg-white border border-gray-100 shadow-xl p-10 flex-1 flex flex-col justify-center group transition-all"
               >
                 <Cpu className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
-                <h3 className="text-[22px] font-bold text-navy mb-4">Modern technology</h3>
-                <p className="text-gray-500 mb-8 leading-relaxed">State-of-the-art facilities designed for tomorrow's living needs.</p>
+                <h3 className="text-[22px] font-bold text-navy mb-4">Complete Infrastructure</h3>
+                <p className="text-gray-500 mb-8 leading-relaxed">Wide roads, street lighting, project electrification and essential community amenities planned for comfortable everyday living.</p>
                 <Link href="/services" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -314,7 +322,7 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 5: Choose Your Dream Home */}
-      <section className="py-24 bg-gray-50">
+      <section className="ploy-surface py-24">
         <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
           <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">RECENT PROJECT ——</div>
           <h2 className="text-4xl md:text-5xl font-bold text-navy mb-12 text-center">Choose your Dream Home</h2>
@@ -334,9 +342,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             {[
-              { img: "dharatal-meadows.png", title: "Doon Meadows", desc: "Premium plots with world class amenities", type: "PLOT" },
-              { img: "green-valley-villas.png", title: "Green Valley Villas", desc: "Luxury 4 BHK villas in gated community", type: "FLAT" },
-              { img: "shivalik-plots.png", title: "Shivalik Estates", desc: "Scenic view residential plots", type: "PLOT" }
+              { img: "shivalik-plots.png", title: "Shivalik Estate", desc: "A delivered real estate development in Ganeshpur featuring multiple planned residential layouts.", type: "ESTATE" },
+              { img: "dharatal-meadows.png", title: "Shakumbhari Estate", desc: "A large planned estate development presented across multiple phases with residential and farmhouse layouts.", type: "ESTATE" },
+              { img: "green-valley-villas.png", title: "Backwoods Development", desc: "Part of the wider Backwoods and Shivalik Estate development shown within the project master plans.", type: "MASTER PLAN" }
             ].map((c, i) => (
               <motion.div
                 key={i}
@@ -539,7 +547,7 @@ export default function HomePage() {
           { num: "2,333,520", label: "Residential Projects (Sq. Ft.)", bg: "stats-bg-1.png", icon: Building2, highlight: false },
           { num: "1,850+", label: "Satisfied Residents", bg: "stats-bg-3.png", icon: Smile, highlight: true },
           { num: "772,785", label: "Farmhouse Developments (Sq. Ft.)", bg: "stats-bg-2.png", icon: Home, highlight: false },
-          { num: "20+", label: "Projects Delivered", bg: "stats-bg-4.png", icon: Zap, highlight: false },
+          { num: "24x7", label: "Security In Gated Communities", bg: "stats-bg-4.png", icon: Zap, highlight: false },
         ].map((stat, i) => (
           <div key={i} className="relative h-72 md:h-[380px] flex flex-col items-center justify-center text-white text-center p-8 overflow-hidden group">
             <Image
@@ -569,7 +577,7 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 9: Services Grid */}
-      <section className="py-24 bg-gray-50/50">
+      <section className="ploy-surface py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">WHAT WE'RE OFFERING ——</div>
@@ -578,10 +586,30 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Plot for Sale", img: "projects/shivalik-plots.png", isDark: false },
-              { title: "Land for Sale", img: "projects/dharatal-meadows.png", isDark: false },
-              { title: "Flats & Apartments", img: "projects/valley-view-retreat.png", isDark: false },
-              { title: "Property Documentation Work", img: "projects/green-valley-villas.png", isDark: true }
+              {
+                title: "Residential Plots",
+                img: "projects/shivalik-plots.png",
+                desc: "Thoughtfully planned residential plots within gated developments featuring wide roads, green spaces and essential community infrastructure.",
+                isDark: false,
+              },
+              {
+                title: "Farmhouse Developments",
+                img: "projects/dharatal-meadows.png",
+                desc: "Spacious farmhouse developments planned around greenery, privacy, comfort and peaceful living.",
+                isDark: false,
+              },
+              {
+                title: "Flats & Apartments",
+                img: "projects/valley-view-retreat.png",
+                desc: "Quality living spaces designed to offer comfort, security and long-term value for residents.",
+                isDark: false,
+              },
+              {
+                title: "Township Development",
+                img: "projects/green-valley-villas.png",
+                desc: "Gated township developments planned with roads, lighting, plantations, parks and practical community amenities.",
+                isDark: true,
+              }
             ].map((srv, i) => (
               <motion.div
                 key={i}
@@ -607,7 +635,7 @@ export default function HomePage() {
                 <div className={srv.isDark ? "relative z-10" : "p-8 pt-12"}>
                   <h3 className={`text-[22px] font-bold mb-4 leading-snug ${srv.isDark ? 'text-white' : 'text-navy'}`}>{srv.title}</h3>
                   <p className={`text-sm mb-8 leading-relaxed ${srv.isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                    Providing premium quality {srv.title.toLowerCase()} with complete amenities, transparency, and legal assurance.
+                    {srv.desc}
                   </p>
                   <Link href="/services" className={`text-sm font-bold tracking-widest uppercase transition-colors flex items-center gap-2 w-fit ${srv.isDark ? 'text-[#4BBFB8] hover:text-white' : 'text-navy hover:text-[#4BBFB8]'}`}>
                     READ MORE <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -628,20 +656,20 @@ export default function HomePage() {
             viewport={{ once: true }}
           >
             <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">GET TO KNOW US ——</div>
-            <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-navy mb-10 leading-[1.1]">An outstanding way of luxury life</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-navy mb-10 leading-[1.1]">Thoughtfully planned living for comfort and long-term value</h2>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <div className="bg-white border border-gray-100 shadow-md px-6 py-4 rounded-full flex items-center gap-4 font-bold text-navy text-sm w-fit">
                 <div className="w-6 h-6 rounded-full bg-[#4BBFB8]/10 flex items-center justify-center">
                   <Check className="w-4 h-4 text-[#4BBFB8] stroke-[3]" />
                 </div>
-                Total comfort and pleasure
+                Comfort, security and quality
               </div>
               <div className="bg-white border border-gray-100 shadow-md px-6 py-4 rounded-full flex items-center gap-4 font-bold text-navy text-sm w-fit">
                 <div className="w-6 h-6 rounded-full bg-[#4BBFB8]/10 flex items-center justify-center">
                   <Check className="w-4 h-4 text-[#4BBFB8] stroke-[3]" />
                 </div>
-                Peaceful, calm luxury living
+                Sustainable community planning
               </div>
             </div>
 
@@ -650,8 +678,8 @@ export default function HomePage() {
                 <Leaf className="w-8 h-8 stroke-[1.5]" />
               </div>
               <div>
-                <h4 className="text-[22px] font-bold text-navy">Eco construction</h4>
-                <p className="text-gray-500 mt-2 text-lg">Green living, modern design</p>
+                <h4 className="text-[22px] font-bold text-navy">Green Community Planning</h4>
+                <p className="text-gray-500 mt-2 text-lg">Parks, gardens and open spaces</p>
               </div>
             </div>
           </motion.div>
@@ -664,15 +692,15 @@ export default function HomePage() {
           >
             <Image src="/images/world-map.png" alt="Map" fill sizes="(max-width: 768px) 100vw, 50vw" className="opacity-40 mix-blend-multiply" />
             <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-              <div className="text-[140px] font-bold text-[#4BBFB8] leading-none drop-shadow-2xl">20+</div>
-              <div className="text-[22px] font-bold text-navy uppercase tracking-[0.2em] bg-white/90 backdrop-blur-sm px-8 py-3 shadow-xl -mt-6">Project complete</div>
+              <div className="text-[110px] md:text-[140px] font-bold text-[#4BBFB8] leading-none drop-shadow-2xl">1,850+</div>
+              <div className="text-[18px] md:text-[22px] font-bold text-navy uppercase tracking-[0.2em] bg-white/90 backdrop-blur-sm px-8 py-3 shadow-xl -mt-6">Satisfied Residents</div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* SECTION 11: Contact (Get in Touch) */}
-      <section className="py-0 bg-gray-50 relative overflow-hidden">
+      <section className="ploy-surface py-0 relative overflow-hidden">
         {/* Subtle Diamond background shape */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-white rotate-45 -z-10 shadow-2xl" />
 

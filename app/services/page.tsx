@@ -1,54 +1,87 @@
-"use client"
-import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import { Building2, Landmark, Map, Gavel, Paintbrush, Shield } from "lucide-react";
+"use client";
 
+import { motion } from "framer-motion";
+import { Building2, Home, Landmark, Map, Trees, Zap } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+const services = [
+  {
+    icon: Map,
+    title: "Residential Plot Development",
+    desc: "Thoughtfully planned residential plots within gated developments featuring wide roads, green spaces and essential community infrastructure.",
+  },
+  {
+    icon: Trees,
+    title: "Farmhouse Development",
+    desc: "Spacious farmhouse developments planned around greenery, privacy, comfort and peaceful living.",
+  },
+  {
+    icon: Landmark,
+    title: "Gated Township Planning",
+    desc: "Planning gated communities with wide roads, street lighting, green spaces and essential resident amenities.",
+  },
+  {
+    icon: Home,
+    title: "Villas & Independent Living",
+    desc: "Villas and independent living spaces planned with comfort, security, quality and long-term residential value in mind.",
+  },
+  {
+    icon: Building2,
+    title: "Value Homes & Flats",
+    desc: "Quality living spaces designed to offer comfort, security and long-term value for residents.",
+  },
+  {
+    icon: Zap,
+    title: "Community Infrastructure",
+    desc: "Roads, lighting, electrification, plantations, parks and practical amenities planned for comfortable everyday living.",
+  },
+];
 
 export default function Services() {
-  const services = [
-    { icon: Building2, title: "Property Development", desc: "Creating world-class farmhouses and villas." },
-    { icon: Landmark, title: "Investment Advisory", desc: "Strategic guidance on real estate investments." },
-    { icon: Map, title: "Site Visits & Tours", desc: "Curated experiences to explore properties." },
-    { icon: Gavel, title: "Legal Assistance", desc: "End-to-end legal support ensuring clear titles." },
-    { icon: Paintbrush, title: "Interior Design", desc: "Bespoke interior design services." },
-    { icon: Shield, title: "Property Management", desc: "Comprehensive maintenance services." }
-  ];
-
   return (
-    <div className="w-full font-sans pb-20 bg-zinc-50">
-      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center pt-20">
-        <div className="absolute inset-0">
-          <Image src="/images/projects/nilgiri-estates.png" alt="Services" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-navy/80" />
-        </div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">OUR SERVICES</h1>
-          <div className="flex items-center justify-center gap-2 text-sm font-semibold tracking-wider uppercase text-zinc-300">
-            <Link href="/" className="hover:text-accent transition-colors">HOME</Link>
-            <span>/</span>
-            <span className="text-accent">SERVICES</span>
-          </div>
+    <div className="w-full bg-zinc-50 pb-20 font-sans">
+      <section className="ploy-dark relative flex h-[52vh] min-h-[420px] items-center justify-center overflow-hidden pt-20">
+        <Image src="/images/projects/nilgiri-estates.png" alt="Doon Alliance services" fill priority sizes="100vw" className="object-cover opacity-55 mix-blend-luminosity" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07111c] via-[#07111c]/70 to-transparent" />
+        <div className="relative z-10 max-w-4xl px-4 text-center text-white">
+          <div className="ploy-kicker mb-5 border-white/15 bg-white/10 text-white">What We Build</div>
+          <h1 className="mb-5 text-5xl font-bold tracking-tight md:text-7xl">Services</h1>
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+            Focused real estate development offerings connected to Doon Alliance project material and community planning.
+          </p>
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="ploy-surface py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mx-auto mb-14 max-w-3xl text-center">
+            <div className="ploy-kicker mb-5">Supported Service Areas</div>
+            <h2 className="text-4xl font-bold leading-tight text-[#1e2a35] md:text-5xl">
+              Real estate solutions planned around comfort, security and sustainable community living.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
             {services.map((srv, i) => (
-              <motion.div
-                key={i}
+              <motion.article
+                key={srv.title}
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-10 border border-zinc-100 hover:border-accent transition-colors group text-center"
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -8 }}
+                className="ploy-card group p-8"
               >
-                <div className="w-20 h-20 mx-auto bg-zinc-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors">
-                  <srv.icon className="w-10 h-10 text-accent group-hover:text-white transition-colors" />
+                <div className="mb-7 flex h-16 w-16 items-center justify-center rounded-full bg-[#4BBFB8]/12 text-[#4BBFB8] transition-colors group-hover:bg-[#4BBFB8] group-hover:text-white">
+                  <srv.icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-navy mb-4">{srv.title}</h3>
-                <p className="text-zinc-500 leading-relaxed">{srv.desc}</p>
-              </motion.div>
+                <h3 className="mb-4 text-2xl font-bold text-[#1e2a35]">{srv.title}</h3>
+                <p className="min-h-[96px] text-sm leading-relaxed text-zinc-500">{srv.desc}</p>
+                <Link href="/contact" className="mt-8 inline-flex text-xs font-bold uppercase tracking-[0.16em] text-[#4BBFB8] transition-colors hover:text-[#1e2a35]">
+                  Discuss Requirement
+                </Link>
+              </motion.article>
             ))}
           </div>
         </div>

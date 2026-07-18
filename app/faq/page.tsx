@@ -8,7 +8,7 @@ import { useState } from "react";
 const faqs = [
   {
     q: "What is Doon Alliance?",
-    a: "Doon Alliance is a trusted real estate company creating premium residential and commercial spaces across Delhi, Saharanpur, Dehradun, and beyond. We specialize in gated townships, farmhouses, villas, flats, residential plots, builder floors, and commercial spaces.",
+    a: "Doon Alliance is a trusted real estate company creating premium residential and commercial spaces across Delhi, Saharanpur and beyond. We specialize in gated townships, farmhouses, villas, flats, residential plots, builder floors, and commercial spaces.",
   },
   {
     q: "What types of properties does Doon Alliance offer?",

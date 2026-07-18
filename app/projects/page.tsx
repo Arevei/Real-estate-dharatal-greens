@@ -1,171 +1,81 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useState } from "react";
+
+const projects = [
+  {
+    title: "Shivalik Estate",
+    group: "Estate",
+    loc: "Ganeshpur",
+    img: "shivalik-plots.png",
+    desc: "A delivered project in Ganeshpur covering a documented project area of 150 hectares.",
+  },
+  {
+    title: "Shakumbhari Estate",
+    group: "Estate",
+    loc: "Shakumbhari region",
+    img: "dharatal-meadows.png",
+    desc: "A planned estate development presented across multiple phases with residential plots, farmhouse areas, internal roads and green community spaces.",
+  },
+  ...Array.from({ length: 10 }, (_, index) => ({
+    title: `Backwoods ${index + 1}`,
+    group: "Backwoods",
+    loc: "Wider Backwoods development area",
+    img: [
+      "green-valley-villas.png",
+      "valley-view-retreat.png",
+      "aravalli-greens.png",
+      "nilgiri-estates.png",
+      "shivalik-plots.png",
+    ][index % 5],
+    desc: `Part of the wider Backwoods and Shivalik Estate development shown within the project master plans.`,
+  })),
+];
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All");
-
-  const projects = [
-    {
-      title: "Shivalik Project",
-      loc: "Haiderpur Hinduwala, Saharanpur",
-      price: "₹15L - ₹45L",
-      type: "Residential",
-      img: "shivalik-plots.png",
-      desc: "Premium residential land development with natural views.",
-    },
-    {
-      title: "Shakumbhari Estate",
-      loc: "Haiderpur Hinduwala, Saharanpur",
-      price: "₹25L - ₹85L",
-      type: "Farm House",
-      img: "dharatal-meadows.png",
-      desc: "Residential land and lush green farmhouse setups.",
-    },
-    {
-      title: "Backwoods 1",
-      loc: "Ganeshpur, near Rajaji National Park",
-      price: "₹18L - ₹40L",
-      type: "Residential",
-      img: "green-valley-villas.png",
-      desc: "Residential plots surrounded by Rajaji national forest aura.",
-    },
-    {
-      title: "Backwoods 2",
-      loc: "Near Rajaji National Park, Saharanpur",
-      price: "₹65L - ₹1.2Cr",
-      type: "Residential",
-      img: "valley-view-retreat.png",
-      desc: "Elegant modern bungalow setups near nature corridor.",
-    },
-    {
-      title: "Backwoods 3",
-      loc: "Near Rajaji National Park, Saharanpur",
-      price: "₹45L - ₹95L",
-      type: "Farm House",
-      img: "aravalli-greens.png",
-      desc: "Spacious estate farmhouses for calm weekend living.",
-    },
-    {
-      title: "Backwoods 4",
-      loc: "Near Rajaji National Park, Saharanpur",
-      price: "₹20L - ₹45L",
-      type: "Residential",
-      img: "nilgiri-estates.png",
-      desc: "Scenic residential plots in a gated township layout.",
-    },
-    {
-      title: "Backwoods 5",
-      loc: "Near Rajaji National Park, Saharanpur",
-      price: "₹22L - ₹48L",
-      type: "Residential",
-      img: "shivalik-plots.png",
-      desc: "Beautifully planned residential spaces with premium access.",
-    },
-    {
-      title: "Backwoods 6",
-      loc: "Near Rajaji National Park, Saharanpur",
-      price: "₹24L - ₹52L",
-      type: "Residential",
-      img: "green-valley-villas.png",
-      desc: "Nature connected premium residential plot development.",
-    },
-    {
-      title: "Backwoods 7",
-      loc: "Near Rajaji National Park, Saharanpur",
-      price: "₹26L - ₹56L",
-      type: "Residential",
-      img: "valley-view-retreat.png",
-      desc: "Premium residential plots with clear skies and forest views.",
-    },
-    {
-      title: "Backwoods 8",
-      loc: "Near Rajaji National Park, Saharanpur",
-      price: "₹55L - ₹1.1Cr",
-      type: "Farm House",
-      img: "aravalli-greens.png",
-      desc: "Exclusive mini farmhouse properties with green landscaping.",
-    },
-    {
-      title: "Backwoods 9",
-      loc: "Near Rajaji National Park, Saharanpur",
-      price: "₹28L - ₹60L",
-      type: "Residential",
-      img: "nilgiri-estates.png",
-      desc: "Sustainable residential land layouts with wide RCC roads.",
-    },
-    {
-      title: "Backwoods 10",
-      loc: "Near Rajaji National Park, Saharanpur",
-      price: "₹30L - ₹65L",
-      type: "Residential",
-      img: "shivalik-plots.png",
-      desc: "Secured plotted development with smart facilities.",
-    },
-  ];
-
-  const filteredProjects =
-    activeTab === "All"
-      ? projects
-      : projects.filter((p) => p.type === activeTab);
+  const filteredProjects = activeTab === "All" ? projects : projects.filter((p) => p.group === activeTab);
 
   return (
-    <div className="w-full font-sans pb-20 bg-zinc-50">
-      {/* Hero Banner */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center pt-20">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/projects/valley-view-retreat.png"
-            alt="Our Projects"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover animate-pulse-subtle"
-          />
-          <div className="absolute inset-0 bg-[#0f1f2e]/85" />
-        </div>
-        <div className="relative z-10 text-center text-white px-4">
-          <motion.span
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-3 block"
-          >
-            OUR EXQUISITE PORTFOLIO ——
+    <div className="w-full bg-zinc-50 pb-20 font-sans">
+      <section className="ploy-dark relative flex h-[52vh] min-h-[420px] items-center justify-center overflow-hidden pt-20">
+        <Image
+          src="/images/projects/valley-view-retreat.png"
+          alt="Doon Alliance projects"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-55 mix-blend-luminosity"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07111c] via-[#07111c]/70 to-transparent" />
+        <div className="relative z-10 max-w-4xl px-4 text-center text-white">
+          <motion.span initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="ploy-kicker mb-5 border-white/15 bg-white/10 text-white">
+            Documented Project Portfolio
           </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-5xl md:text-6xl font-bold mb-4 tracking-tight"
-          >
-            OUR PROJECTS
+          <motion.h1 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="mb-5 text-5xl font-bold tracking-tight md:text-7xl">
+            Projects & Master Plans
           </motion.h1>
-          <div className="flex items-center justify-center gap-2 text-sm font-semibold tracking-wider uppercase text-zinc-300">
-            <Link href="/" className="hover:text-[#4BBFB8] transition-colors">
-              HOME
-            </Link>
-            <span>/</span>
-            <span className="text-[#4BBFB8]">PROJECTS</span>
-          </div>
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+            A clear view of estate and Backwoods developments presented from the available project material.
+          </p>
         </div>
       </section>
 
-      {/* Filter Tabs & Projects Grid */}
-      <section className="py-24">
+      <section className="ploy-surface py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
-            {["All", "Residential", "Farm House"].map((tab) => (
+          <div className="mb-12 flex flex-wrap justify-center gap-3">
+            {["All", "Estate", "Backwoods"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-8 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 rounded-none cursor-pointer ${
+                className={`rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
                   activeTab === tab
-                    ? "bg-[#4BBFB8] text-white shadow-lg"
-                    : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-50 hover:border-[#4BBFB8]"
+                    ? "bg-[#1e2a35] text-white shadow-lg"
+                    : "border border-zinc-200 bg-white text-zinc-600 hover:border-[#4BBFB8] hover:text-[#1e2a35]"
                 }`}
               >
                 {tab}
@@ -173,63 +83,49 @@ export default function Projects() {
             ))}
           </div>
 
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <motion.div layout className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((prop, i) => (
-                <motion.div
+                <motion.article
                   layout
                   key={prop.title}
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.94 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4 }}
+                  exit={{ opacity: 0, scale: 0.94 }}
+                  transition={{ duration: 0.35, delay: i * 0.02 }}
                   whileHover={{ y: -8 }}
-                  className="group relative overflow-hidden bg-white border border-zinc-100 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
+                  className="ploy-card group overflow-hidden"
                 >
-                  <div>
-                    <div className="relative h-72 overflow-hidden">
-                      <Image
-                        src={`/images/projects/${prop.img}`}
-                        alt={prop.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute top-4 left-4 bg-[#4BBFB8] text-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-md">
-                        {prop.type}
-                      </div>
-                    </div>
-                    <div className="p-6 pb-0">
-                      <div className="flex justify-between items-start mb-3">
-                        <h3 className="text-xl font-bold text-navy group-hover:text-[#4BBFB8] transition-colors">
-                          {prop.title}
-                        </h3>
-                        <span className="text-[#4BBFB8] font-extrabold text-lg shrink-0">
-                          {prop.price}
-                        </span>
-                      </div>
-                      <p className="text-zinc-500 text-sm leading-relaxed mb-4">
-                        {prop.desc}
-                      </p>
+                  <div className="relative h-72 overflow-hidden">
+                    <Image
+                      src={`/images/projects/${prop.img}`}
+                      alt={prop.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f1f2e]/82 to-transparent" />
+                    <div className="absolute bottom-5 left-5 rounded-full bg-[#4BBFB8] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-md">
+                      {prop.group}
                     </div>
                   </div>
-
-                  <div className="p-6 pt-0 mt-4">
-                    <p className="text-zinc-400 flex items-center gap-1.5 text-xs mb-4 border-t border-zinc-50 pt-4">
-                      <MapPin className="w-4 h-4 text-[#4BBFB8] shrink-0" />{" "}
+                  <div className="p-7">
+                    <h3 className="mb-3 text-2xl font-bold text-[#1e2a35] transition-colors group-hover:text-[#4BBFB8]">
+                      {prop.title}
+                    </h3>
+                    <p className="mb-6 min-h-[84px] text-sm leading-relaxed text-zinc-500">{prop.desc}</p>
+                    <div className="mb-6 flex items-center gap-2 border-t border-zinc-100 pt-5 text-sm font-semibold text-zinc-500">
+                      <MapPin className="h-4 w-4 shrink-0 text-[#4BBFB8]" />
                       {prop.loc}
-                    </p>
+                    </div>
                     <Link
                       href="/contact"
-                      className="w-full bg-[#1e2a35] hover:bg-[#4BBFB8] text-white py-3 px-4 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg"
+                      className="ploy-button-dark flex h-12 w-full items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider"
                     >
-                      INQUIRE NOW <ArrowRight className="w-4 h-4" />
+                      Inquire Now <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
-                </motion.div>
+                </motion.article>
               ))}
             </AnimatePresence>
           </motion.div>

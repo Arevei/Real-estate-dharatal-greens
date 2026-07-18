@@ -55,12 +55,12 @@ export default function HomePage() {
   
 
         {/* Carousel Arrows */}
-        <button className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-colors z-20">
+        <Link href="/projects" aria-label="View projects" className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-colors z-20">
           <ChevronLeft className="w-8 h-8" />
-        </button>
-        <button className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-colors z-20">
+        </Link>
+        <Link href="/projects" aria-label="View projects" className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-colors z-20">
           <ChevronRight className="w-8 h-8" />
-        </button>
+        </Link>
 
         {/* Dots */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10 items-center">
@@ -79,8 +79,10 @@ export default function HomePage() {
               Gated townships, farmhouses, villas, flats, plots, builder floors, and commercial spaces
             </h2>
           </div>
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#8bb8b6] h-[52px] px-10 text-sm font-bold uppercase tracking-[0.15em] rounded-none shrink-0 bg-transparent">
+              <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#8bb8b6] h-[52px] px-10 text-sm font-bold uppercase tracking-[0.15em] rounded-none shrink-0 bg-transparent">
+                <Link href="/projects">
                 EXPLORE NOW
+                </Link>
               </Button>
         </div>
       </section>
@@ -155,8 +157,10 @@ export default function HomePage() {
                 ))}
               </ul>
 
-              <Button className="bg-navy hover:bg-navy/90 text-white rounded-none h-14 px-10 tracking-wider font-bold text-sm">
+              <Button asChild className="bg-navy hover:bg-navy/90 text-white rounded-none h-14 px-10 tracking-wider font-bold text-sm">
+                <Link href="/about">
                 DISCOVER MORE
+                </Link>
               </Button>
             </motion.div>
           </div>
@@ -173,10 +177,12 @@ export default function HomePage() {
                 key={i}
                 whileHover={{ y: -6, backgroundColor: "#4BBFB8", color: "#ffffff" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className={`py-12 flex flex-col items-center justify-center gap-4 group cursor-pointer text-navy transition-colors duration-200 ${i !== 0 ? 'border-l border-gray-100' : ''}`}
+                className={`group text-navy transition-colors duration-200 ${i !== 0 ? 'border-l border-gray-100' : ''}`}
               >
-                <item.icon className="w-12 h-12 group-hover:text-white text-[#4BBFB8] stroke-[1.5] transition-colors" />
-                <span className="font-bold text-lg">{item.label}</span>
+                <Link href="/projects" className="py-12 flex flex-col items-center justify-center gap-4">
+                  <item.icon className="w-12 h-12 group-hover:text-white text-[#4BBFB8] stroke-[1.5] transition-colors" />
+                  <span className="font-bold text-lg">{item.label}</span>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -201,8 +207,10 @@ export default function HomePage() {
                 Discover uncompromised quality and thoughtful design in every detail of our properties. We blend nature with modern lifestyle perfectly.
               </p>
 
-              <Button variant="outline" className="border-2 border-[#4BBFB8] text-[#4BBFB8] rounded-none hover:bg-[#4BBFB8] hover:text-white h-14 px-10 font-bold tracking-widest text-xs w-fit mb-12">
+              <Button asChild variant="outline" className="border-2 border-[#4BBFB8] text-[#4BBFB8] rounded-none hover:bg-[#4BBFB8] hover:text-white h-14 px-10 font-bold tracking-widest text-xs w-fit mb-12">
+                <Link href="/services">
                 READ MORE
+                </Link>
               </Button>
 
               <div className="flex gap-5 items-start mb-10">
@@ -214,7 +222,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center gap-8 mt-auto">
-                <div className="flex items-center gap-4">
+                <a href="tel:+919266040973" className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center">
                     <Phone className="w-6 h-6 text-[#4BBFB8]" fill="currentColor" />
                   </div>
@@ -222,9 +230,11 @@ export default function HomePage() {
                     <div className="text-xs text-gray-400 font-bold uppercase tracking-wider">Call Experts</div>
                     <div className="font-bold text-navy text-lg mt-0.5">+91 92660 40973</div>
                   </div>
-                </div>
-                <Button className="bg-navy text-white rounded-none h-14 px-8 font-bold text-xs tracking-widest hover:bg-navy/90 w-full sm:w-auto">
+                </a>
+                <Button asChild className="bg-navy text-white rounded-none h-14 px-8 font-bold text-xs tracking-widest hover:bg-navy/90 w-full sm:w-auto">
+                  <Link href="/about">
                   DISCOVER MORE
+                  </Link>
                 </Button>
               </div>
             </motion.div>
@@ -245,7 +255,7 @@ export default function HomePage() {
                 <Building className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-white mb-4">Smart living</h3>
                 <p className="text-gray-400 mb-8 leading-relaxed">Integrated home automation and intelligent design for a seamless lifestyle.</p>
-                <Link href="#" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
+                <Link href="/services" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></div>
                 </Link>
               </motion.div>
@@ -258,7 +268,7 @@ export default function HomePage() {
                 <Globe className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-white mb-4">Attractive location</h3>
                 <p className="text-gray-400 mb-8 leading-relaxed">Situated in prime areas with easy access to city centers and natural escapes.</p>
-                <Link href="#" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
+                <Link href="/projects" className="flex items-center gap-3 text-white font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <div className="w-8 h-8 rounded-full bg-[#4BBFB8] flex items-center justify-center text-white transition-transform group-hover:translate-x-1"><ArrowRight className="w-4 h-4" /></div>
                 </Link>
               </motion.div>
@@ -280,7 +290,7 @@ export default function HomePage() {
                 <Leaf className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-navy mb-4">Eco construction</h3>
                 <p className="text-gray-500 mb-8 leading-relaxed">Sustainable materials and energy-efficient building methodologies.</p>
-                <Link href="#" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
+                <Link href="/services" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
@@ -293,7 +303,7 @@ export default function HomePage() {
                 <Cpu className="w-12 h-12 text-[#4BBFB8] mb-6 stroke-[1.5]" />
                 <h3 className="text-[22px] font-bold text-navy mb-4">Modern technology</h3>
                 <p className="text-gray-500 mb-8 leading-relaxed">State-of-the-art facilities designed for tomorrow's living needs.</p>
-                <Link href="#" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
+                <Link href="/services" className="flex items-center gap-2 text-[#4BBFB8] font-bold text-sm tracking-wider uppercase mt-auto">
                   READ MORE <ArrowRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
@@ -311,13 +321,14 @@ export default function HomePage() {
 
           <div className="flex flex-wrap justify-center gap-8 border-b border-gray-200 mb-14 w-full max-w-2xl">
             {['All[3]', 'PLOT', 'FLAT'].map((tab, i) => (
-              <button
+              <Link
                 key={tab}
+                href="/projects"
                 className={`pb-4 px-2 text-sm font-bold uppercase tracking-widest border-b-2 transition-colors ${i === 0 ? 'border-[#4BBFB8] text-[#4BBFB8]' : 'border-transparent text-gray-400 hover:text-navy'
                   }`}
               >
                 {tab}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -353,9 +364,9 @@ export default function HomePage() {
                   <h3 className="text-[26px] font-bold text-white mb-3 leading-tight">{c.title}</h3>
                   <p className="text-gray-300 text-sm mb-8 leading-relaxed max-w-[250px]">{c.desc}</p>
 
-                  <button className="w-12 h-12 rounded-full border-2 border-[#4BBFB8] flex items-center justify-center text-[#4BBFB8] group-hover:bg-[#4BBFB8] group-hover:text-white transition-all duration-300">
+                  <Link href="/projects" aria-label={`View ${c.title}`} className="w-12 h-12 rounded-full border-2 border-[#4BBFB8] flex items-center justify-center text-[#4BBFB8] group-hover:bg-[#4BBFB8] group-hover:text-white transition-all duration-300">
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -380,8 +391,10 @@ export default function HomePage() {
               <p className="text-gray-500 mb-10 text-lg leading-relaxed">
                 Hear how we've helped them find the right space with confidence and care. Our clients' satisfaction is our greatest reward.
               </p>
-              <Button className="bg-[#4BBFB8] hover:bg-[#4BBFB8]/90 text-white rounded-none h-[52px] px-10 tracking-[0.15em] font-bold text-xs uppercase">
+              <Button asChild className="bg-[#4BBFB8] hover:bg-[#4BBFB8]/90 text-white rounded-none h-[52px] px-10 tracking-[0.15em] font-bold text-xs uppercase">
+                <Link href="/contact">
                 ALL TESTIMONIALS
+                </Link>
               </Button>
             </motion.div>
 
@@ -490,8 +503,10 @@ export default function HomePage() {
           >
             <div className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4">OUR VISION</div>
             <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-white mb-10 leading-[1.1]">Sustainable, secure, and harmonious living spaces</h2>
-            <Button className="bg-[#4BBFB8] hover:bg-[#4BBFB8]/90 text-white rounded-none h-[52px] px-10 tracking-[0.15em] font-bold text-xs uppercase">
+            <Button asChild className="bg-[#4BBFB8] hover:bg-[#4BBFB8]/90 text-white rounded-none h-[52px] px-10 tracking-[0.15em] font-bold text-xs uppercase">
+              <Link href="/projects">
               EXPLORE NOW
+              </Link>
             </Button>
           </motion.div>
 
@@ -594,7 +609,7 @@ export default function HomePage() {
                   <p className={`text-sm mb-8 leading-relaxed ${srv.isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                     Providing premium quality {srv.title.toLowerCase()} with complete amenities, transparency, and legal assurance.
                   </p>
-                  <Link href="#" className={`text-sm font-bold tracking-widest uppercase transition-colors flex items-center gap-2 w-fit ${srv.isDark ? 'text-[#4BBFB8] hover:text-white' : 'text-navy hover:text-[#4BBFB8]'}`}>
+                  <Link href="/services" className={`text-sm font-bold tracking-widest uppercase transition-colors flex items-center gap-2 w-fit ${srv.isDark ? 'text-[#4BBFB8] hover:text-white' : 'text-navy hover:text-[#4BBFB8]'}`}>
                     READ MORE <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>

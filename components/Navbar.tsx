@@ -48,10 +48,10 @@ export function Navbar() {
 
         {/* Right Actions */}
         <div className="hidden lg:flex items-center gap-8 shrink-0">
-          <button className="text-white hover:text-[#4BBFB8] transition-colors">
+          <Link href="/projects" aria-label="Search projects" className="text-white hover:text-[#4BBFB8] transition-colors">
             <Search size={22} />
-          </button>
-          <div className="flex items-center gap-4 border-l border-white/20 pl-8">
+          </Link>
+          <a href="tel:+919266040973" className="flex items-center gap-4 border-l border-white/20 pl-8">
             <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-[#4BBFB8]">
               <Phone size={20} fill="currentColor" />
             </div>
@@ -59,7 +59,7 @@ export function Navbar() {
               <span className="text-xs font-medium text-white/70 tracking-wider">Call experts</span>
               <span className="text-base font-bold text-white tracking-wide">+91 92660 40973</span>
             </div>
-          </div>
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -85,10 +85,10 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <div className="mt-8 flex flex-col items-center gap-2">
+            <a href="tel:+919266040973" className="mt-8 flex flex-col items-center gap-2">
               <div className="text-xs font-medium text-white/70 tracking-wider">Call experts</div>
               <div className="text-lg font-bold text-[#4BBFB8] tracking-wide">+91 92660 40973</div>
-            </div>
+            </a>
           </div>
         )}
       </div>

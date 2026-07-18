@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: "How can I contact Doon Alliance for inquiries?",
-    a: "You can reach out through the website contact form, visit the Contact page, or call +91 135 414 8552 / +91 92660 40973.",
+    a: "You can reach out through the website contact form, visit the Contact page, or use the call button below.",
   },
   {
     q: "Are Doon Alliance properties environmentally friendly?",

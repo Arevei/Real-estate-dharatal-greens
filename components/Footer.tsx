@@ -53,9 +53,12 @@ export function Footer() {
                 <MapPin size={18} className="text-accent shrink-0 mt-1" />
                 <span>2nd Floor, GS Tower, Canal Road, Opposite to Superia Apartments, Jakhan, Dehradun 248001</span>
               </li>
-              <li className="flex items-center gap-3">
+              <li className="flex items-start gap-3">
                 <Phone size={18} className="text-accent shrink-0" />
-                <span>+91 135 414 8552, +91 92660 40973</span>
+                <span className="flex flex-col gap-1">
+                  <a href="tel:+911354148552" className="hover:text-accent transition-colors">+91 135 414 8552</a>
+                  <a href="tel:+919266040973" className="hover:text-accent transition-colors">+91 92660 40973</a>
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-accent shrink-0" />
@@ -74,8 +77,10 @@ export function Footer() {
                 placeholder="Your Email Address" 
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/50 rounded-r-none h-12 focus-visible:ring-accent"
               />
-              <Button className="bg-accent hover:bg-accent/90 text-white rounded-l-none h-12 px-6">
+              <Button asChild className="bg-accent hover:bg-accent/90 text-white rounded-l-none h-12 px-6">
+                <Link href="/contact" aria-label="Contact Doon Alliance">
                 <ArrowRight size={18} />
+                </Link>
               </Button>
             </div>
           </div>

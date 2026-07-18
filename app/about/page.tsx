@@ -70,8 +70,8 @@ export default function About() {
             className="relative min-h-[360px] overflow-hidden shadow-xl md:min-h-[500px]"
           >
             <Image
-              src="/images/about/nature-focus.png"
-              alt="Green living at Doon Alliance"
+              src="/images/about/doon-construction-team.png"
+              alt="Doon Alliance construction planning team"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -158,8 +158,8 @@ is here to make your vision a reality.
             className="relative min-h-[360px] overflow-hidden shadow-xl md:min-h-[500px]"
           >
             <Image
-              src="/images/about/team-vision.png"
-              alt="Doon Alliance team vision"
+              src="/images/about/doon-vision-target.png"
+              alt="Doon Alliance vision and planning"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

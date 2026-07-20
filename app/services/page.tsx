@@ -41,7 +41,7 @@ const services = [
 export default function Services() {
   return (
     <div className="w-full bg-zinc-50 pb-20 font-sans">
-      <section className="ploy-dark relative flex h-[52vh] min-h-[420px] items-center justify-center overflow-hidden pt-20">
+      <section className=" relative flex h-[52vh] min-h-[420px] items-center justify-center overflow-hidden pt-20">
         <Image src="/images/projects/nilgiri-estates.png" alt="Doon Alliance services" fill priority sizes="100vw" className="object-cover opacity-55 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#07111c] via-[#07111c]/70 to-transparent" />
         <div className="relative z-10 max-w-4xl px-4 text-center text-white">

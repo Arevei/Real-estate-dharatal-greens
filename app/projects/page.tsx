@@ -42,7 +42,7 @@ export default function Projects() {
 
   return (
     <div className="w-full bg-zinc-50 pb-20 font-sans">
-      <section className="ploy-dark relative flex h-[52vh] min-h-[420px] items-center justify-center overflow-hidden pt-20">
+      <section className="relative flex h-[52vh] min-h-[420px] items-center justify-center overflow-hidden pt-20">
         <Image
           src="/images/projects/valley-view-retreat.png"
           alt="Doon Alliance projects"

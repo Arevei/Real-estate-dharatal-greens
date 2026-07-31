@@ -61,7 +61,7 @@ export function ContactForm() {
                 <FormControl>
                   <Input
                     placeholder="Your Name"
-                    className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#4BBFB8] bg-white rounded-none text-base"
+                    className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#763300] bg-white rounded-none text-base"
                     {...field}
                   />
                 </FormControl>
@@ -76,7 +76,7 @@ export function ContactForm() {
                 <FormControl>
                   <Input
                     placeholder="Email Address"
-                    className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#4BBFB8] bg-white rounded-none text-base"
+                    className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#763300] bg-white rounded-none text-base"
                     {...field}
                   />
                 </FormControl>
@@ -94,7 +94,7 @@ export function ContactForm() {
                 <FormControl>
                   <Input
                     placeholder="Phone Number"
-                    className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#4BBFB8] bg-white rounded-none text-base"
+                    className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#763300] bg-white rounded-none text-base"
                     {...field}
                   />
                 </FormControl>
@@ -109,7 +109,7 @@ export function ContactForm() {
                 <FormControl>
                   <Input
                     placeholder="Subject"
-                    className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#4BBFB8] bg-white rounded-none text-base"
+                    className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#763300] bg-white rounded-none text-base"
                     {...field}
                   />
                 </FormControl>
@@ -127,7 +127,7 @@ export function ContactForm() {
                 <textarea
                   placeholder="Write a Message"
                   rows={6}
-                  className="border border-gray-200 p-5 w-full resize-none focus:outline-none focus:border-[#4BBFB8] bg-white rounded-none text-base transition-colors"
+                  className="border border-gray-200 p-5 w-full resize-none focus:outline-none focus:border-[#763300] bg-white rounded-none text-base transition-colors"
                   {...field}
                 />
               </FormControl>
@@ -138,12 +138,12 @@ export function ContactForm() {
         <Button
           type="submit"
           disabled={status === "sending"}
-          className="bg-[#4BBFB8] hover:bg-[#4BBFB8]/90 text-white rounded-none h-[60px] px-12 font-bold tracking-[0.15em] text-sm uppercase mt-4 disabled:cursor-not-allowed disabled:opacity-70"
+          className="text-[#F1EFE8] bg-[#763300] hover:bg-[#F1EFE8] hover:text-[#763300] border text-white rounded-none h-[60px] px-12 font-bold tracking-[0.15em] text-sm uppercase mt-4 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {status === "sending" ? "SENDING..." : "SEND A MESSAGE"}
         </Button>
         {message && (
-          <p className={`text-sm font-semibold ${status === "success" ? "text-[#1e2a35]" : "text-red-600"}`}>
+          <p className={`text-sm font-semibold ${status === "success" ? "text-zinc-800" : "text-red-600"}`}>
             {message}
           </p>
         )}

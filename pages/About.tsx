@@ -55,14 +55,14 @@ export default function About() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[#0f1f2e]/80 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-[#1a1a1a]/80 backdrop-blur-[2px]" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <motion.span
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-[#4BBFB8] font-bold tracking-[0.25em] text-xs md:text-sm uppercase mb-4 block"
+            className="text-[#763300] font-bold tracking-[0.25em] text-xs md:text-sm uppercase mb-4 block"
           >
             DISCOVER OUR JOURNEY ——
           </motion.span>
@@ -73,7 +73,7 @@ export default function About() {
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-none"
           >
             Crafting Communities <br />
-            <span className="font-serif italic text-[#4BBFB8] font-normal lowercase tracking-normal">where</span> Nature Leads
+            <span className="font-serif italic text-[#763300] font-normal lowercase tracking-normal">where</span> Nature Leads
           </motion.h1>
           <motion.div
             initial={{ opacity: 0 }}
@@ -81,11 +81,11 @@ export default function About() {
             transition={{ duration: 1, delay: 0.4 }}
             className="flex items-center justify-center gap-2.5 text-sm font-semibold tracking-wider uppercase text-zinc-300"
           >
-            <Link href="/" className="hover:text-[#4BBFB8] transition-colors">
+            <Link href="/" className="hover:text-[#763300] transition-colors">
               HOME
             </Link>
             <span className="text-zinc-500">/</span>
-            <span className="text-[#4BBFB8]">ABOUT US</span>
+            <span className="text-[#763300]">ABOUT US</span>
           </motion.div>
         </div>
       </section>
@@ -111,7 +111,7 @@ export default function About() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-[#0f1f2e]/10 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="absolute inset-0 bg-[#1a1a1a]/10 group-hover:bg-transparent transition-colors duration-500" />
               </div>
 
               {/* Overlapping Secondary Image */}
@@ -126,14 +126,14 @@ export default function About() {
               </div>
 
               {/* Abstract decorative frame */}
-              <div className="absolute bottom-[8%] right-[17%] w-[20%] h-[20%] border-[4px] border-[#4BBFB8] -z-10 animate-pulse" />
+              <div className="absolute bottom-[8%] right-[17%] w-[20%] h-[20%] border-[4px] border-[#763300] -z-10 animate-pulse" />
               
               {/* Floating Tag */}
               <motion.div 
                 whileHover={{ y: -5 }}
-                className="absolute bottom-8 left-4 bg-[#1e2a35] text-white p-6 shadow-xl z-20 border-l-4 border-[#4BBFB8]"
+                className="absolute bottom-8 left-4 bg-[#2C2C2A] text-white p-6 shadow-xl z-20 border-l-4 border-[#763300]"
               >
-                <div className="text-4xl font-extrabold text-[#4BBFB8] leading-none mb-1">10+</div>
+                <div className="text-4xl font-extrabold text-[#763300] leading-none mb-1">10+</div>
                 <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 leading-snug">
                   Premium townships<br />developed
                 </div>
@@ -148,8 +148,8 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:col-span-6 flex flex-col justify-center"
             >
-              <span className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4 flex items-center gap-2">
-                WHO ARE WE? <span className="w-8 h-[2px] bg-[#4BBFB8]" />
+              <span className="text-[#763300] font-bold tracking-[0.2em] text-xs uppercase mb-4 flex items-center gap-2">
+                WHO ARE WE? <span className="w-8 h-[2px] bg-[#763300]" />
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-navy mb-8 leading-[1.15]">
                 Dedicated to creating exceptional living experiences
@@ -158,20 +158,20 @@ export default function About() {
                 At <strong className="text-navy font-semibold">Dharatal Greens Pvt Ltd</strong>, we are dedicated to creating exceptional living experiences that blend comfort, security, and luxury. Operating across Delhi, Saharanpur, and beyond, we specialize in premium real estate solutions, including farmhouses, villas, residential plots, value homes, and independent living spaces.
               </p>
               <p className="text-zinc-600 mb-8 text-lg leading-relaxed">
-                Our approach is rooted in transparency, efficiency, and sustainability, ensuring our clients receive tailored solutions that meet their aspirations. With over <strong className="text-navy font-semibold">2,333,520 Square feet</strong> of residential projects and <strong className="text-navy font-semibold">772,785 Square feet</strong> of farmhouse developments completed, we have built a strong reputation for delivering quality and value. Trusted by <strong className="text-[#4BBFB8] font-bold">1,850+ satisfied residents</strong>, our mission is to go beyond construction—we craft vibrant communities that people are proud to call home.
+                Our approach is rooted in transparency, efficiency, and sustainability, ensuring our clients receive tailored solutions that meet their aspirations. With over <strong className="text-navy font-semibold">2,333,520 Square feet</strong> of residential projects and <strong className="text-navy font-semibold">772,785 Square feet</strong> of farmhouse developments completed, we have built a strong reputation for delivering quality and value. Trusted by <strong className="text-[#763300] font-bold">1,850+ satisfied residents</strong>, our mission is to go beyond construction—we craft vibrant communities that people are proud to call home.
               </p>
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/projects"
-                  className="bg-[#4BBFB8] hover:bg-[#3cacb0] text-white px-8 py-4 text-xs font-bold uppercase tracking-widest transition-colors inline-flex items-center gap-2 group"
+                  className="bg-[#763300] hover:bg-[#3cacb0] text-white px-8 py-4 text-xs font-bold uppercase tracking-widest transition-colors inline-flex items-center gap-2 group"
                 >
                   VIEW PROJECTS <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="border border-[#1e2a35] hover:bg-[#1e2a35] hover:text-white text-[#1e2a35] px-8 py-4 text-xs font-bold uppercase tracking-widest transition-colors"
+                  className="border border-zinc-800 hover:bg-[#2C2C2A] hover:text-white text-zinc-800 px-8 py-4 text-xs font-bold uppercase tracking-widest transition-colors"
                 >
                   CONTACT US
                 </Link>
@@ -182,8 +182,8 @@ export default function About() {
       </section>
 
       {/* SECTION 3: Stats Showcase */}
-      <section className="bg-[#1e2a35] py-20 text-white relative">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4BBFB8_1px,transparent_1px)] [background-size:16px_16px]" />
+      <section className="bg-[#2C2C2A] py-20 text-white relative">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#763300_1px,transparent_1px)] [background-size:16px_16px]" />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
             {stats.map((stat, index) => (
@@ -195,7 +195,7 @@ export default function About() {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 className="flex flex-col md:flex-row items-center md:items-start gap-6 border-b md:border-b-0 md:border-r border-white/10 last:border-0 pb-8 md:pb-0 md:pr-8 last:pr-0"
               >
-                <div className="text-5xl md:text-6xl font-extrabold text-[#4BBFB8] tracking-tight shrink-0 font-serif leading-none">
+                <div className="text-5xl md:text-6xl font-extrabold text-[#763300] tracking-tight shrink-0 font-serif leading-none">
                   {stat.value}
                 </div>
                 <div>
@@ -224,8 +224,8 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="lg:col-span-7"
             >
-              <span className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-4 flex items-center gap-2">
-                OUR VISION <span className="w-8 h-[2px] bg-[#4BBFB8]" />
+              <span className="text-[#763300] font-bold tracking-[0.2em] text-xs uppercase mb-4 flex items-center gap-2">
+                OUR VISION <span className="w-8 h-[2px] bg-[#763300]" />
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-navy mb-8 leading-[1.15]">
                 Redefining modern living with sustainable solutions
@@ -241,9 +241,9 @@ export default function About() {
                     key={i}
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className="p-6 bg-zinc-50 border border-zinc-100 hover:shadow-xl hover:border-[#4BBFB8]/30 transition-all rounded-sm"
+                    className="p-6 bg-zinc-50 border border-zinc-100 hover:shadow-xl hover:border-[#763300]/30 transition-all rounded-sm"
                   >
-                    <div className="w-12 h-12 bg-[#4BBFB8]/10 text-[#4BBFB8] rounded-sm flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-[#763300]/10 text-[#763300] rounded-sm flex items-center justify-center mb-4">
                       <feat.icon className="w-6 h-6" />
                     </div>
                     <h4 className="font-bold text-navy text-sm uppercase tracking-wide mb-2">
@@ -273,17 +273,17 @@ export default function About() {
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover transition-transform duration-[2s] group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-[#1e2a35]/40 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-[#2C2C2A]/40 mix-blend-multiply" />
               </div>
 
               {/* Decorative outline block */}
-              <div className="absolute -top-6 -left-6 w-[80px] h-[80px] border-t-4 border-l-4 border-[#4BBFB8] -z-10" />
-              <div className="absolute -bottom-6 -right-6 w-[80px] h-[80px] border-b-4 border-r-4 border-[#4BBFB8] -z-10" />
+              <div className="absolute -top-6 -left-6 w-[80px] h-[80px] border-t-4 border-l-4 border-[#763300] -z-10" />
+              <div className="absolute -bottom-6 -right-6 w-[80px] h-[80px] border-b-4 border-r-4 border-[#763300] -z-10" />
 
               {/* Floating Quote/Accent */}
               <div className="absolute inset-0 flex items-center justify-center p-8 text-center text-white z-10 pointer-events-none">
                 <div className="max-w-xs">
-                  <div className="text-5xl font-serif text-[#4BBFB8] mb-4">“</div>
+                  <div className="text-5xl font-serif text-[#763300] mb-4">“</div>
                   <p className="font-semibold text-lg italic leading-relaxed">
                     Sustainable living is not a choice, it is a legacy we build together.
                   </p>

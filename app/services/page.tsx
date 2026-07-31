@@ -41,15 +41,18 @@ const services = [
 export default function Services() {
   return (
     <div className="w-full bg-zinc-50 pb-20 font-sans">
-      <section className=" relative flex h-[52vh] min-h-[420px] items-center justify-center overflow-hidden pt-20">
-        <Image src="/images/projects/nilgiri-estates.png" alt="Doon Alliance services" fill priority sizes="100vw" className="object-cover opacity-55 mix-blend-luminosity" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07111c] via-[#07111c]/70 to-transparent" />
-        <div className="relative z-10 max-w-4xl px-4 text-center text-white">
-          <div className="ploy-kicker mb-5 border-white/15 bg-white/10 text-white">What We Build</div>
-          <h1 className="mb-5 text-5xl font-bold tracking-tight md:text-7xl">Services</h1>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
-            Focused real estate development offerings connected to Doon Alliance project material and community planning.
-          </p>
+      <section className="relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
+        <div className="absolute inset-0">
+          <Image src="/images/hero-bg.png" alt="Contact Doon Alliance" fill priority sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-[#2C2C2A]/80" />
+        </div>
+        <div className="relative z-10 text-center text-white">
+          <h1 className="mb-4 text-5xl font-bold md:text-6xl">SERVICES</h1>
+          <div className="flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-zinc-300">
+            <Link href="/" className="transition-colors hover:text-accent">HOME</Link>
+            <span>/</span>
+            <span className="text-[#ba7517]">SERVICES</span>
+          </div>
         </div>
       </section>
 
@@ -57,7 +60,7 @@ export default function Services() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="mx-auto mb-14 max-w-3xl text-center">
             <div className="ploy-kicker mb-5">Supported Service Areas</div>
-            <h2 className="text-4xl font-bold leading-tight text-[#1e2a35] md:text-5xl">
+            <h2 className="text-4xl font-bold leading-tight text-zinc-800 md:text-5xl">
               Real estate solutions planned around comfort, security and sustainable community living.
             </h2>
           </div>
@@ -73,12 +76,12 @@ export default function Services() {
                 whileHover={{ y: -8 }}
                 className="ploy-card group p-8"
               >
-                <div className="mb-7 flex h-16 w-16 items-center justify-center rounded-full bg-[#4BBFB8]/12 text-[#4BBFB8] transition-colors group-hover:bg-[#4BBFB8] group-hover:text-white">
+                <div className="mb-7 flex h-16 w-16 items-center justify-center rounded-full bg-[#763300]/12 text-[#763300] transition-colors group-hover:bg-[#763300] group-hover:text-white">
                   <srv.icon className="h-8 w-8" />
                 </div>
-                <h3 className="mb-4 text-2xl font-bold text-[#1e2a35]">{srv.title}</h3>
+                <h3 className="mb-4 text-2xl font-bold text-zinc-800">{srv.title}</h3>
                 <p className="min-h-[96px] text-sm leading-relaxed text-zinc-500">{srv.desc}</p>
-                <Link href="/contact" className="mt-8 inline-flex text-xs font-bold uppercase tracking-[0.16em] text-[#4BBFB8] transition-colors hover:text-[#1e2a35]">
+                <Link href="/contact" className="mt-8 inline-flex text-xs font-bold uppercase tracking-[0.16em] text-[#763300] transition-colors hover:text-zinc-800">
                   Discuss Requirement
                 </Link>
               </motion.article>

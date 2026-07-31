@@ -42,26 +42,18 @@ export default function Projects() {
 
   return (
     <div className="w-full bg-zinc-50 pb-20 font-sans">
-      <section className="relative flex h-[52vh] min-h-[420px] items-center justify-center overflow-hidden pt-20">
-        <Image
-          src="/images/projects/valley-view-retreat.png"
-          alt="Doon Alliance projects"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-55 mix-blend-luminosity"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#07111c] via-[#07111c]/70 to-transparent" />
-        <div className="relative z-10 max-w-4xl px-4 text-center text-white">
-          <motion.span initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="ploy-kicker mb-5 border-white/15 bg-white/10 text-white">
-            Documented Project Portfolio
-          </motion.span>
-          <motion.h1 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="mb-5 text-5xl font-bold tracking-tight md:text-7xl">
-            Projects & Master Plans
-          </motion.h1>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
-            A clear view of estate and Backwoods developments presented from the available project material.
-          </p>
+      <section className="relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
+        <div className="absolute inset-0">
+          <Image src="/images/hero-bg.png" alt="Contact Doon Alliance" fill priority sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-[#2C2C2A]/80" />
+        </div>
+        <div className="relative z-10 text-center text-white">
+          <h1 className="mb-4 text-5xl font-bold md:text-6xl">PROJECTS</h1>
+          <div className="flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-zinc-300">
+            <Link href="/" className="transition-colors hover:text-accent">HOME</Link>
+            <span>/</span>
+            <span className="text-[#ba7517]">PROJECTS</span>
+          </div>
         </div>
       </section>
 
@@ -72,11 +64,10 @@ export default function Projects() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
-                  activeTab === tab
-                    ? "bg-[#1e2a35] text-white shadow-lg"
-                    : "border border-zinc-200 bg-white text-zinc-600 hover:border-[#4BBFB8] hover:text-[#1e2a35]"
-                }`}
+                className={`rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === tab
+                  ? "bg-[#763300] text-white shadow-lg"
+                  : "border border-zinc-200 bg-white text-zinc-600 hover:border-[#763300] hover:text-zinc-800"
+                  }`}
               >
                 {tab}
               </button>
@@ -104,23 +95,23 @@ export default function Projects() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f1f2e]/82 to-transparent" />
-                    <div className="absolute bottom-5 left-5 rounded-full bg-[#4BBFB8] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-md">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#173404]/82 to-transparent" />
+                    <div className="absolute bottom-5 left-5 rounded-full bg-[#763300] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-md">
                       {prop.group}
                     </div>
                   </div>
                   <div className="p-7">
-                    <h3 className="mb-3 text-2xl font-bold text-[#1e2a35] transition-colors group-hover:text-[#4BBFB8]">
+                    <h3 className="mb-3 text-2xl font-bold text-zinc-800 transition-colors group-hover:text-[#ba7517]">
                       {prop.title}
                     </h3>
-                    <p className="mb-6 min-h-[84px] text-sm leading-relaxed text-zinc-500">{prop.desc}</p>
-                    <div className="mb-6 flex items-center gap-2 border-t border-zinc-100 pt-5 text-sm font-semibold text-zinc-500">
-                      <MapPin className="h-4 w-4 shrink-0 text-[#4BBFB8]" />
+                    <p className="mb-6 line-clamp-2 text-sm leading-relaxed text-zinc-500">{prop.desc}</p>
+                    <div className="mb-6 flex items-center gap-2 border-t border-zinc-100  text-sm font-semibold text-zinc-500">
+                      <MapPin className="h-4 w-4 shrink-0 text-[#763300]" />
                       {prop.loc}
                     </div>
                     <Link
                       href="/contact"
-                      className="ploy-button-dark flex h-12 w-full items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider"
+                      className="text-[#F1EFE8] bg-[#763300] hover:bg-[#F1EFE8] hover:text-[#763300] flex h-12 w-full items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider border"
                     >
                       Inquire Now <ArrowRight className="h-4 w-4" />
                     </Link>

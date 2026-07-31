@@ -125,21 +125,21 @@ export default function Projects() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[#0f1f2e]/85" />
+          <div className="absolute inset-0 bg-[#1a1a1a]/85" />
         </div>
         <div className="relative z-10 text-center text-white px-4">
-          <span className="text-[#4BBFB8] font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
+          <span className="text-[#763300] font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
             OUR EXQUISITE PORTFOLIO ——
           </span>
           <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight">
             OUR PROJECTS
           </h1>
           <div className="flex items-center justify-center gap-2 text-sm font-semibold tracking-wider uppercase text-zinc-300">
-            <Link href="/" className="hover:text-[#4BBFB8] transition-colors">
+            <Link href="/" className="hover:text-[#763300] transition-colors">
               HOME
             </Link>
             <span>/</span>
-            <span className="text-[#4BBFB8]">PROJECTS</span>
+            <span className="text-[#763300]">PROJECTS</span>
           </div>
         </div>
       </section>
@@ -154,8 +154,8 @@ export default function Projects() {
                 onClick={() => setActiveTab(tab)}
                 className={`px-8 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 rounded-none cursor-pointer ${
                   activeTab === tab
-                    ? "bg-[#4BBFB8] text-white shadow-lg"
-                    : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-50 hover:border-[#4BBFB8]"
+                    ? "bg-[#763300] text-white shadow-lg"
+                    : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-50 hover:border-[#763300]"
                 }`}
               >
                 {tab}
@@ -188,16 +188,16 @@ export default function Projects() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute top-4 left-4 bg-[#4BBFB8] text-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-md">
+                      <div className="absolute top-4 left-4 bg-[#763300] text-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-md">
                         {prop.type}
                       </div>
                     </div>
                     <div className="p-6 pb-0">
                       <div className="flex justify-between items-start mb-3">
-                        <h3 className="text-xl font-bold text-navy group-hover:text-[#4BBFB8] transition-colors">
+                        <h3 className="text-xl font-bold text-navy group-hover:text-[#763300] transition-colors">
                           {prop.title}
                         </h3>
-                        <span className="text-[#4BBFB8] font-extrabold text-lg shrink-0">
+                        <span className="text-[#763300] font-extrabold text-lg shrink-0">
                           {prop.price}
                         </span>
                       </div>
@@ -209,12 +209,12 @@ export default function Projects() {
 
                   <div className="p-6 pt-0 mt-4">
                     <p className="text-zinc-400 flex items-center gap-1.5 text-xs mb-4 border-t border-zinc-50 pt-4">
-                      <MapPin className="w-4 h-4 text-[#4BBFB8] shrink-0" />{" "}
+                      <MapPin className="w-4 h-4 text-[#763300] shrink-0" />{" "}
                       {prop.loc}
                     </p>
                     <Link
                       href="/contact"
-                      className="w-full bg-[#1e2a35] hover:bg-[#4BBFB8] text-white py-3 px-4 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg"
+                      className="w-full bg-[#2C2C2A] hover:bg-[#763300] text-white py-3 px-4 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg"
                     >
                       INQUIRE NOW <ArrowRight className="w-4 h-4" />
                     </Link>

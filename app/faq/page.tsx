@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -52,11 +53,11 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
       className="border-b border-gray-100 last:border-none"
     >
       <button className="flex w-full items-center justify-between gap-6 py-5 text-left group" onClick={() => setOpen(!open)}>
-        <span className={`text-base font-bold leading-snug transition-colors ${open ? "text-[#4BBFB8]" : "text-[#1e2a35] group-hover:text-[#4BBFB8]"}`}>
+        <span className={`text-base font-bold leading-snug transition-colors ${open ? "text-[#763300]" : "text-zinc-800 group-hover:text-[#763300]"}`}>
           {q}
         </span>
-        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${open ? "bg-[#4BBFB8] text-white" : "bg-gray-100 text-gray-400 group-hover:bg-[#4BBFB8]/10 group-hover:text-[#4BBFB8]"}`}>
-          {open ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${open ? "bg-[#763300] text-white" : "bg-gray-100 text-gray-400 group-hover:bg-[#763300]/10 group-hover:text-[#763300]"}`}>
+          {open ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4 text-[#763300]" />}
         </span>
       </button>
 
@@ -80,19 +81,17 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
 export default function FAQ() {
   return (
     <div className="w-full bg-white font-sans">
-      <section className="relative flex h-[42vh] min-h-[280px] items-center justify-center pt-[72px]">
+      <section className="relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
         <div className="absolute inset-0">
-          <img src="/images/hero-bg.png" className="h-full w-full object-cover" alt="FAQ" />
-          <div className="absolute inset-0 bg-black/65" />
+          <Image src="/images/hero-bg.png" alt="Contact Doon Alliance" fill priority sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-[#2C2C2A]/80" />
         </div>
         <div className="relative z-10 text-center text-white">
-          <h1 className="mb-3 text-5xl font-bold md:text-6xl">FAQ</h1>
-          <div className="flex items-center justify-center gap-2 text-sm text-gray-300">
-            <Link href="/" className="transition-colors hover:text-[#4BBFB8]">
-              Home
-            </Link>
+          <h1 className="mb-4 text-5xl font-bold md:text-6xl">FAQ</h1>
+          <div className="flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-zinc-300">
+            <Link href="/" className="transition-colors hover:text-accent">HOME</Link>
             <span>/</span>
-            <span className="text-white">FAQ</span>
+            <span className="text-[#ba7517]">FAQ</span>
           </div>
         </div>
       </section>
@@ -100,8 +99,8 @@ export default function FAQ() {
       <section className="bg-white py-20">
         <div className="container mx-auto max-w-4xl px-4 md:px-6">
           <div className="mb-14 text-center">
-            <div className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#4BBFB8]">Got Questions?</div>
-            <h2 className="text-4xl font-bold text-[#1e2a35] md:text-[44px]">Frequently Asked Questions</h2>
+            <div className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#763300]">Got Questions?</div>
+            <h2 className="text-4xl font-bold text-zinc-800 md:text-[44px]">Frequently Asked Questions</h2>
           </div>
 
           <div className="border border-gray-100 bg-white px-6 py-4 shadow-sm md:px-10">
@@ -112,17 +111,17 @@ export default function FAQ() {
         </div>
       </section>
 
-      <section className="bg-[#1e2a35] py-14">
+      <section className="bg-[#2C2C2A] py-14">
         <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 text-center md:flex-row md:px-6 md:text-left">
           <div>
             <h3 className="mb-2 text-2xl font-bold text-white md:text-3xl">Still have questions?</h3>
             <p className="text-sm text-gray-400">Our team is ready to help you find the perfect property.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="tel:+919266040973" className="flex h-[52px] items-center bg-[#4BBFB8] px-8 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#3aada6]">
+            <a href="tel:+919266040973" className="flex h-[52px] items-center bg-[#763300] px-8 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#763300]">
               Call +91 92660 40973
             </a>
-            <Link href="/contact" className="flex h-[52px] items-center border-2 border-white px-8 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-[#1e2a35]">
+            <Link href="/contact" className="flex h-[52px] items-center border-2 border-white px-8 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-zinc-800">
               Contact Us
             </Link>
           </div>

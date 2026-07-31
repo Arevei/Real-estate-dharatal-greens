@@ -82,32 +82,32 @@ body {
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 210 50% 12%; /* #0f1f2e ish */
+  --foreground: 0 0% 10%; /* #173404 ish */
   --border: 214 32% 91%;
   --input: 214 32% 91%;
-  --ring: 176 46% 52%;
+  --ring: 26 100% 23%;
 
   --card: 0 0% 100%;
-  --card-foreground: 210 50% 12%;
+  --card-foreground: 0 0% 10%;
   --card-border: 214 32% 91%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 210 50% 12%;
+  --popover-foreground: 0 0% 10%;
   --popover-border: 214 32% 91%;
 
-  --primary: 210 50% 12%; 
+  --primary: 0 0% 10%; 
   --primary-foreground: 0 0% 100%;
 
   --secondary: 0 0% 96%;
-  --secondary-foreground: 210 50% 12%;
+  --secondary-foreground: 0 0% 10%;
 
   --muted: 210 40% 96%;
   --muted-foreground: 215 16% 47%;
 
-  --accent: 176 46% 52%; /* #4BBFB8 Teal */
+  --accent: 26 100% 23%; /* #763300 Teal */
   --accent-foreground: 0 0% 100%;
 
-  --navy: 210 50% 12%; /* Dark charcoal / Navy */
+  --navy: 0 0% 10%; /* Dark charcoal / Navy */
   --navy-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
@@ -117,21 +117,21 @@ body {
 }
 
 .dark {
-  --background: 210 50% 12%;
+  --background: 0 0% 10%;
   --foreground: 210 40% 98%;
   --border: 217 32% 17%;
   --input: 217 32% 17%;
-  --ring: 176 46% 52%;
+  --ring: 26 100% 23%;
 
-  --card: 210 50% 12%;
+  --card: 0 0% 10%;
   --card-foreground: 210 40% 98%;
   --card-border: 217 32% 17%;
 
-  --popover: 210 50% 12%;
+  --popover: 0 0% 10%;
   --popover-foreground: 210 40% 98%;
   --popover-border: 217 32% 17%;
 
-  --primary: 176 46% 52%;
+  --primary: 26 100% 23%;
   --primary-foreground: 0 0% 100%;
 
   --secondary: 217 32% 17%;
@@ -140,7 +140,7 @@ body {
   --muted: 217 32% 17%;
   --muted-foreground: 215 20.2% 65.1%;
 
-  --accent: 176 46% 52%;
+  --accent: 26 100% 23%;
   --accent-foreground: 0 0% 100%;
 
   --navy: 222 47% 6%;
@@ -166,7 +166,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 50;
-    background-color: #1e2a35;
+    background-color: #27500A;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     transition: box-shadow 0.3s ease;
   }
@@ -191,7 +191,7 @@ body {
   }
   .nav-link:hover,
   .nav-link.active {
-    color: #4BBFB8;
+    color: #763300;
   }
 
   /* ---------- Buttons ---------- */
@@ -213,16 +213,16 @@ body {
   }
 
   .btn-teal {
-    background-color: #4BBFB8;
+    background-color: #763300;
     color: #fff;
   }
-  .btn-teal:hover { background-color: #3aada6; }
+  .btn-teal:hover { background-color: #763300; }
 
   .btn-dark {
-    background-color: #1e2a35;
+    background-color: #27500A;
     color: #fff;
   }
-  .btn-dark:hover { background-color: #0f1f2e; }
+  .btn-dark:hover { background-color: #173404; }
 
   .btn-outline-white {
     background-color: transparent;
@@ -231,16 +231,16 @@ body {
   }
   .btn-outline-white:hover {
     background-color: #fff;
-    color: #4BBFB8;
+    color: #763300;
   }
 
   .btn-outline-teal {
     background-color: transparent;
-    border-color: #4BBFB8;
-    color: #4BBFB8;
+    border-color: #763300;
+    color: #763300;
   }
   .btn-outline-teal:hover {
-    background-color: #4BBFB8;
+    background-color: #763300;
     color: #fff;
   }
 
@@ -250,7 +250,7 @@ body {
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #4BBFB8;
+    color: #763300;
     margin-bottom: 1rem;
     display: block;
   }
@@ -268,7 +268,7 @@ body {
   .property-card {
     position: relative;
     overflow: hidden;
-    background-color: #0f1f2e;
+    background-color: #173404;
     height: 550px;
   }
   .property-card img {
@@ -282,7 +282,7 @@ body {
   .property-card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, #0f1f2e 0%, rgba(15,31,46,0.4) 50%, transparent 100%);
+    background: linear-gradient(to top, #173404 0%, rgba(23,52,4,0.4) 50%, transparent 100%);
     opacity: 0.9;
   }
   .property-card-body {
@@ -298,7 +298,7 @@ body {
     z-index: 10;
   }
   .property-type-pill {
-    background-color: #4BBFB8;
+    background-color: #763300;
     color: #fff;
     font-size: 0.625rem;
     font-weight: 700;
@@ -311,16 +311,16 @@ body {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    border: 2px solid #4BBFB8;
+    border: 2px solid #763300;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4BBFB8;
+    color: #763300;
     transition: background-color 0.3s, color 0.3s;
     margin-top: 2rem;
   }
   .property-card:hover .property-arrow-btn {
-    background-color: #4BBFB8;
+    background-color: #763300;
     color: #fff;
   }
 
@@ -355,7 +355,7 @@ body {
 
   /* ---------- Testimonial card ---------- */
   .testimonial-card {
-    border: 3px solid #4BBFB8;
+    border: 3px solid #763300;
     background-color: #fff;
     padding: 3.5rem;
     position: relative;
@@ -367,13 +367,13 @@ body {
     left: 0;
     right: 0;
     height: 10px;
-    background-color: #4BBFB8;
+    background-color: #763300;
   }
   .testimonial-card-stars {
     position: absolute;
     bottom: -1.25rem;
     right: 2.5rem;
-    background-color: #4BBFB8;
+    background-color: #763300;
     color: #fff;
     padding: 0.625rem 1.25rem;
     display: flex;
@@ -408,7 +408,7 @@ body {
     inset: 0;
     background: rgba(0,0,0,0.70);
   }
-  .stats-card-overlay.highlight { background: rgba(15,31,46,0.80); }
+  .stats-card-overlay.highlight { background: rgba(23,52,4,0.80); }
   .stats-card-num {
     position: relative;
     z-index: 10;
@@ -427,7 +427,7 @@ body {
     color: rgba(255,255,255,0.8);
   }
   .stats-card-label.highlight-label {
-    background-color: #4BBFB8;
+    background-color: #763300;
     padding: 0.25rem 0.75rem;
     color: #fff;
   }
@@ -457,11 +457,11 @@ body {
     left: 2rem;
     width: 3.5rem;
     height: 3.5rem;
-    background-color: #4BBFB8;
+    background-color: #763300;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(75,191,184,0.4);
+    box-shadow: 0 4px 12px rgba(118,51,0,0.4);
     transition: transform 0.2s;
   }
   .service-card:hover .service-card-icon { transform: translateY(-6px); }
@@ -470,7 +470,7 @@ body {
     padding-top: 3rem;
   }
   .service-card-dark {
-    background-color: #1e2a35;
+    background-color: #27500A;
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
@@ -490,7 +490,7 @@ body {
     outline: none;
     transition: border-color 0.2s;
   }
-  .contact-input:focus { border-color: #4BBFB8; }
+  .contact-input:focus { border-color: #763300; }
 
   .contact-textarea {
     width: 100%;
@@ -505,7 +505,7 @@ body {
     transition: border-color 0.2s;
     min-height: 160px;
   }
-  .contact-textarea:focus { border-color: #4BBFB8; }
+  .contact-textarea:focus { border-color: #763300; }
 
   /* ---------- Property type tabs ---------- */
   .filter-tab {
@@ -527,14 +527,14 @@ body {
   }
   .filter-tab.active,
   .filter-tab:hover {
-    color: #4BBFB8;
-    border-bottom-color: #4BBFB8;
+    color: #763300;
+    border-bottom-color: #763300;
   }
 
   /* ---------- Dark background section ---------- */
   .dark-bg-section {
     position: relative;
-    background-color: #1e2a35;
+    background-color: #27500A;
     overflow: hidden;
     padding: 8rem 0;
   }
@@ -545,7 +545,7 @@ body {
     left: 0;
     width: 33%;
     height: 100%;
-    background: linear-gradient(to right, rgba(75,191,184,0.18), transparent);
+    background: linear-gradient(to right, rgba(118,51,0,0.18), transparent);
     transform: skewX(-12deg) translateX(-8rem);
     pointer-events: none;
   }
@@ -570,7 +570,7 @@ body {
     z-index: 10;
     font-size: 8rem;
     font-weight: 700;
-    color: #4BBFB8;
+    color: #763300;
     line-height: 1;
     text-align: center;
   }
@@ -599,7 +599,7 @@ body {
   .years-card-num {
     font-size: 3.5rem;
     font-weight: 700;
-    color: #4BBFB8;
+    color: #763300;
     line-height: 1;
   }
   .years-card-text {
@@ -607,7 +607,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: #1e2a35;
+    color: #27500A;
     line-height: 1.4;
   }
 
@@ -631,8 +631,8 @@ body {
     transition: border-color 0.2s, color 0.2s;
   }
   .icon-grid-item:hover .icon-grid-circle {
-    border-color: #4BBFB8;
-    color: #4BBFB8;
+    border-color: #763300;
+    color: #763300;
   }
   .icon-grid-label {
     font-size: 1.125rem;
@@ -651,23 +651,23 @@ body {
     justify-content: center;
     gap: 1rem;
     cursor: pointer;
-    color: #1e2a35;
+    color: #27500A;
     transition: background-color 0.2s, color 0.2s;
     border-left: 1px solid #f0f0f0;
   }
   .prop-type-tab:first-child { border-left: none; }
   .prop-type-tab:hover,
   .prop-type-tab.active {
-    background-color: #4BBFB8;
+    background-color: #763300;
     color: #fff;
   }
-  .prop-type-tab svg { color: #4BBFB8; width: 3rem; height: 3rem; }
+  .prop-type-tab svg { color: #763300; width: 3rem; height: 3rem; }
   .prop-type-tab:hover svg,
   .prop-type-tab.active svg { color: #fff; }
 
   /* ---------- Footer ---------- */
   .footer {
-    background-color: #0f1f2e;
+    background-color: #173404;
     color: rgba(255,255,255,0.7);
     padding: 5rem 0 2rem;
   }
@@ -688,7 +688,7 @@ body {
     align-items: center;
     gap: 0.5rem;
   }
-  .footer-link:hover { color: #4BBFB8; }
+  .footer-link:hover { color: #763300; }
   .footer-social {
     width: 2.5rem;
     height: 2.5rem;
@@ -700,7 +700,7 @@ body {
     transition: background-color 0.2s, color 0.2s;
   }
   .footer-social:hover {
-    background-color: #4BBFB8;
+    background-color: #763300;
     color: #fff;
   }
 }
@@ -709,12 +709,12 @@ body {
    UTILITIES LAYER (custom helpers)
    ============================================================ */
 @layer utilities {
-  .text-teal   { color: #4BBFB8; }
-  .text-navy   { color: #0f1f2e; }
-  .bg-teal     { background-color: #4BBFB8; }
-  .bg-navy     { background-color: #0f1f2e; }
-  .bg-charcoal { background-color: #1e2a35; }
-  .border-teal { border-color: #4BBFB8; }
+  .text-teal   { color: #763300; }
+  .text-navy   { color: #173404; }
+  .bg-teal     { background-color: #763300; }
+  .bg-navy     { background-color: #173404; }
+  .bg-charcoal { background-color: #27500A; }
+  .border-teal { border-color: #763300; }
 
   .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
 
@@ -726,28 +726,28 @@ body {
     left: 0;
     width: 33%;
     height: 100%;
-    background: linear-gradient(to right, rgba(75,191,184,0.18), transparent);
+    background: linear-gradient(to right, rgba(118,51,0,0.18), transparent);
     transform: skewX(-12deg) translateX(-8rem);
     pointer-events: none;
   }
 
   .ploy-surface {
     background:
-      radial-gradient(circle at top left, rgba(75, 191, 184, 0.1), transparent 30rem),
+      radial-gradient(circle at top left, rgba(118, 51, 0, 0.1), transparent 30rem),
       linear-gradient(180deg, #ffffff 0%, #f8fbfa 100%);
-    color: #0f1f2e;
+    color: #173404;
   }
 
   .ploy-dark {
     background:
-      radial-gradient(circle at 20% 15%, rgba(75, 191, 184, 0.22), transparent 24rem),
-      linear-gradient(135deg, #08131f 0%, #142434 58%, #0f1f2e 100%);
+      radial-gradient(circle at 20% 15%, rgba(118, 51, 0, 0.22), transparent 24rem),
+      linear-gradient(135deg, #08131f 0%, #142434 58%, #173404 100%);
   }
 
   .ploy-card {
-    border: 1px solid rgba(15, 31, 46, 0.1);
+    border: 1px solid rgba(23, 52, 4, 0.1);
     background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 18px 48px rgba(15, 31, 46, 0.07);
+    box-shadow: 0 18px 48px rgba(23, 52, 4, 0.07);
     backdrop-filter: blur(16px);
     border-radius: 8px;
   }
@@ -756,8 +756,8 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.65rem;
-    border: 1px solid rgba(15, 31, 46, 0.12);
-    background: rgba(75, 191, 184, 0.12);
+    border: 1px solid rgba(23, 52, 4, 0.12);
+    background: rgba(118, 51, 0, 0.12);
     color: white;
     padding: 0.5rem 0.85rem;
     border-radius: 999px;
@@ -768,14 +768,14 @@ body {
 
   .ploy-button {
     border-radius: 999px !important;
-    box-shadow: 0 18px 38px rgba(75, 191, 184, 0.24);
+    box-shadow: 0 18px 38px rgba(118, 51, 0, 0.24);
   }
 
   .ploy-button-dark {
     border-radius: 999px !important;
-    background: #0f1f2e !important;
+    background: #173404 !important;
     color: #fff !important;
-    box-shadow: 0 18px 38px rgba(15, 31, 46, 0.18);
+    box-shadow: 0 18px 38px rgba(23, 52, 4, 0.18);
   }
 }
 
@@ -790,9 +790,9 @@ body {
     theme: {
       extend: {
         colors: {
-          teal:    '#4BBFB8',
-          navy:    '#0f1f2e',
-          charcoal:'#1e2a35',
+          teal:    '#763300',
+          navy:    '#173404',
+          charcoal:'#27500A',
         },
         fontFamily: {
           sans:  ['Poppins', 'sans-serif'],

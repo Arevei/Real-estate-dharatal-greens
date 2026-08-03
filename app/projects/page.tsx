@@ -42,17 +42,17 @@ export default function Projects() {
 
   return (
     <div className="w-full bg-zinc-50 pb-20 font-sans">
-      <section className="relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
+      <section className="inner-hero relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
         <div className="absolute inset-0">
           <Image src="/images/hero-bg.png" alt="Contact Doon Alliance" fill priority sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-[#2C2C2A]/80" />
+          <div className="inner-hero-overlay absolute inset-0" />
         </div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="mb-4 text-5xl font-bold md:text-6xl">PROJECTS</h1>
-          <div className="flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-zinc-300">
-            <Link href="/" className="transition-colors hover:text-accent">HOME</Link>
+        <div className="relative z-10 text-center">
+          <h1 className="inner-hero-title mb-4 text-5xl font-bold md:text-6xl">PROJECTS</h1>
+          <div className="inner-hero-breadcrumb flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider">
+            <Link href="/">HOME</Link>
             <span>/</span>
-            <span className="text-[#ba7517]">PROJECTS</span>
+            <span className="current">PROJECTS</span>
           </div>
         </div>
       </section>
@@ -64,10 +64,7 @@ export default function Projects() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === tab
-                  ? "bg-[#763300] text-white shadow-lg"
-                  : "border border-zinc-200 bg-white text-zinc-600 hover:border-[#763300] hover:text-zinc-800"
-                  }`}
+                className={`project-filter px-7 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === tab ? "is-active" : ""}`}
               >
                 {tab}
               </button>
@@ -95,8 +92,8 @@ export default function Projects() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#173404]/82 to-transparent" />
-                    <div className="absolute bottom-5 left-5 rounded-full bg-[#763300] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-md">
+                    <div className="project-image-overlay absolute inset-0" />
+                    <div className="project-category absolute bottom-5 left-5 px-4 py-1.5 text-xs font-bold uppercase tracking-wider shadow-md">
                       {prop.group}
                     </div>
                   </div>
@@ -111,7 +108,7 @@ export default function Projects() {
                     </div>
                     <Link
                       href="/contact"
-                      className="text-[#F1EFE8] bg-[#763300] hover:bg-[#F1EFE8] hover:text-[#763300] flex h-12 w-full items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider border"
+                      className="theme-primary-cta flex h-12 w-full items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider"
                     >
                       Inquire Now <ArrowRight className="h-4 w-4" />
                     </Link>

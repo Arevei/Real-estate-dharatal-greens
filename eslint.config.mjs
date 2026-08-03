@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Legacy Pages Router prototypes; production routes live in app/.
+    "pages/**",
   ]),
 ]);
 

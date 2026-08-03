@@ -50,14 +50,14 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      className="border-b border-gray-100 last:border-none"
+      className="faq-item border-b last:border-none"
     >
       <button className="flex w-full items-center justify-between gap-6 py-5 text-left group" onClick={() => setOpen(!open)}>
-        <span className={`text-base font-bold leading-snug transition-colors ${open ? "text-[#763300]" : "text-zinc-800 group-hover:text-[#763300]"}`}>
+        <span className="faq-question text-base font-bold leading-snug">
           {q}
         </span>
-        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${open ? "bg-[#763300] text-white" : "bg-gray-100 text-gray-400 group-hover:bg-[#763300]/10 group-hover:text-[#763300]"}`}>
-          {open ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4 text-[#763300]" />}
+        <span className={`faq-toggle flex h-9 w-9 shrink-0 items-center justify-center ${open ? "is-open" : ""}`}>
+          {open ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
         </span>
       </button>
 
@@ -70,7 +70,7 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
             transition={{ duration: 0.28, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="pb-6 pr-14 text-[15px] leading-relaxed text-gray-500">{a}</p>
+            <p className="faq-answer pb-6 pr-14 text-[15px] leading-relaxed">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -81,17 +81,17 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
 export default function FAQ() {
   return (
     <div className="w-full bg-white font-sans">
-      <section className="relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
+      <section className="inner-hero relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
         <div className="absolute inset-0">
           <Image src="/images/hero-bg.png" alt="Contact Doon Alliance" fill priority sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-[#2C2C2A]/80" />
+          <div className="inner-hero-overlay absolute inset-0" />
         </div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="mb-4 text-5xl font-bold md:text-6xl">FAQ</h1>
-          <div className="flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-zinc-300">
-            <Link href="/" className="transition-colors hover:text-accent">HOME</Link>
+        <div className="relative z-10 text-center">
+          <h1 className="inner-hero-title mb-4 text-5xl font-bold md:text-6xl">FAQ</h1>
+          <div className="inner-hero-breadcrumb flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider">
+            <Link href="/">HOME</Link>
             <span>/</span>
-            <span className="text-[#ba7517]">FAQ</span>
+            <span className="current">FAQ</span>
           </div>
         </div>
       </section>
@@ -99,11 +99,11 @@ export default function FAQ() {
       <section className="bg-white py-20">
         <div className="container mx-auto max-w-4xl px-4 md:px-6">
           <div className="mb-14 text-center">
-            <div className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#763300]">Got Questions?</div>
+            <div className="theme-kicker mb-3 text-xs font-bold uppercase tracking-[0.2em]">Got Questions?</div>
             <h2 className="text-4xl font-bold text-zinc-800 md:text-[44px]">Frequently Asked Questions</h2>
           </div>
 
-          <div className="border border-gray-100 bg-white px-6 py-4 shadow-sm md:px-10">
+          <div className="theme-card px-6 py-4 md:px-10">
             {faqs.map((item, i) => (
               <FaqItem key={item.q} q={item.q} a={item.a} index={i} />
             ))}
@@ -111,17 +111,17 @@ export default function FAQ() {
         </div>
       </section>
 
-      <section className="bg-[#2C2C2A] py-14">
+      <section className="theme-dark-section py-14">
         <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 text-center md:flex-row md:px-6 md:text-left">
           <div>
             <h3 className="mb-2 text-2xl font-bold text-white md:text-3xl">Still have questions?</h3>
-            <p className="text-sm text-gray-400">Our team is ready to help you find the perfect property.</p>
+            <p className="theme-dark-copy text-sm">Our team is ready to help you find the perfect property.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="tel:+919266040973" className="flex h-[52px] items-center bg-[#763300] px-8 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#763300]">
+            <a href="tel:+919266040973" className="theme-brass-cta flex h-[52px] items-center px-8 text-xs font-bold uppercase tracking-wider">
               Call +91 92660 40973
             </a>
-            <Link href="/contact" className="flex h-[52px] items-center border-2 border-white px-8 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-zinc-800">
+            <Link href="/contact" className="theme-outline-light-cta flex h-[52px] items-center px-8 text-xs font-bold uppercase tracking-wider">
               Contact Us
             </Link>
           </div>

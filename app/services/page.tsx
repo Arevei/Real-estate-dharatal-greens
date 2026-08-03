@@ -41,17 +41,17 @@ const services = [
 export default function Services() {
   return (
     <div className="w-full bg-zinc-50 pb-20 font-sans">
-      <section className="relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
+      <section className="inner-hero relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
         <div className="absolute inset-0">
           <Image src="/images/hero-bg.png" alt="Contact Doon Alliance" fill priority sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-[#2C2C2A]/80" />
+          <div className="inner-hero-overlay absolute inset-0" />
         </div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="mb-4 text-5xl font-bold md:text-6xl">SERVICES</h1>
-          <div className="flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-zinc-300">
-            <Link href="/" className="transition-colors hover:text-accent">HOME</Link>
+        <div className="relative z-10 text-center">
+          <h1 className="inner-hero-title mb-4 text-5xl font-bold md:text-6xl">SERVICES</h1>
+          <div className="inner-hero-breadcrumb flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider">
+            <Link href="/">HOME</Link>
             <span>/</span>
-            <span className="text-[#ba7517]">SERVICES</span>
+            <span className="current">SERVICES</span>
           </div>
         </div>
       </section>
@@ -76,13 +76,13 @@ export default function Services() {
                 whileHover={{ y: -8 }}
                 className="ploy-card group p-8"
               >
-                <div className="mb-7 flex h-16 w-16 items-center justify-center rounded-full bg-[#763300]/12 text-[#763300] transition-colors group-hover:bg-[#763300] group-hover:text-white">
+                <div className="theme-icon-tile mb-7 flex h-16 w-16 items-center justify-center transition-transform group-hover:-translate-y-1">
                   <srv.icon className="h-8 w-8" />
                 </div>
                 <h3 className="mb-4 text-2xl font-bold text-zinc-800">{srv.title}</h3>
                 <p className="min-h-[96px] text-sm leading-relaxed text-zinc-500">{srv.desc}</p>
-                <Link href="/contact" className="mt-8 inline-flex text-xs font-bold uppercase tracking-[0.16em] text-[#763300] transition-colors hover:text-zinc-800">
-                  Discuss Requirement
+                <Link href="/contact" className="service-card-link mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em]">
+                  Discuss Requirement <span aria-hidden="true">→</span>
                 </Link>
               </motion.article>
             ))}

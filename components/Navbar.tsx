@@ -2,43 +2,57 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Search, Phone, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 export function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { label: "HOME", path: "/" },
     { label: "ABOUT US", path: "/about" },
-    { label: "PROJECT", path: "/projects" },
+    { label: "PROJECTS", path: "/projects" },
     { label: "SERVICES", path: "/services" },
     { label: "FAQ", path: "/faq" },
     { label: "CONTACT", path: "/contact" },
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-gray-100">
-      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 z-50 shrink-0">
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+      <div className="site-header-inner">
+        <Link href="/" aria-label="Doon Alliance home" className="relative z-50 flex shrink-0 items-center gap-3">
           <Image 
             src="/images/logo.png" 
             alt="Doon Alliance" 
-            width={64}
-            height={64}
-            className="h-16 w-auto object-contain"
+            width={56}
+            height={56}
+            className="h-12 w-auto object-contain md:h-14"
           />
+          <span className="hidden border-l border-[#DED8CE] pl-3 text-[11px] font-semibold uppercase leading-tight tracking-[0.16em] text-[#6F706A] sm:block">Property with<br />purpose</span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav aria-label="Primary navigation" className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               href={link.path}
-              className={`text-xs font-bold tracking-[0.15em] uppercase transition-all hover:text-[#763300] ${
-                pathname === link.path ? "text-[#763300] border-b-2 border-[#763300] pb-1" : "text-zinc-800"
+              className={`nav-item ${
+                pathname === link.path ? "is-active" : ""
               }`}
             >
               {link.label}
@@ -47,48 +61,40 @@ export function Navbar() {
         </nav>
 
         {/* Right Actions */}
-        <div className="hidden lg:flex items-center gap-8 shrink-0">
-          <Link href="/projects" aria-label="Search projects" className="text-zinc-800 hover:text-[#763300] transition-colors">
-            <Search size={22} />
-          </Link>
-          <a href="tel:+919266040973" className="flex items-center gap-4 border-l border-gray-200 pl-8">
-            <div className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-[#763300]">
-              <Phone size={20} fill="currentColor" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs font-medium text-zinc-500 tracking-wider">Call experts</span>
-              <span className="text-base font-bold text-zinc-900 tracking-wide">+91 92660 40973</span>
-            </div>
-          </a>
+        <div className="hidden shrink-0 lg:flex">
+          <Link href="/contact" className="button-primary h-12 px-5">Book a site visit <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden z-50 p-2 text-zinc-800"
+          className="relative z-50 flex h-11 w-11 items-center justify-center rounded-full border border-[#DED8CE] text-[#173B20] lg:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
+          aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 pt-20">
+          <div id="mobile-navigation" className="fixed inset-0 z-40 flex flex-col bg-[#F7F4EE] px-6 pb-10 pt-28 lg:hidden">
+            <nav className="flex flex-1 flex-col justify-center gap-2" aria-label="Mobile navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 href={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-xl font-bold tracking-widest ${
-                  pathname === link.path ? "text-[#763300] border-b-2 border-[#763300]" : "text-zinc-800"
+                className={`border-b border-[#DED8CE] py-4 text-2xl font-medium tracking-tight ${
+                  pathname === link.path ? "text-[#9A4F2B]" : "text-[#173B20]"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <a href="tel:+919266040973" className="mt-8 flex flex-col items-center gap-2">
-              <div className="text-xs font-medium text-zinc-500 tracking-wider">Call experts</div>
-              <div className="text-lg font-bold text-[#763300] tracking-wide">+91 92660 40973</div>
-            </a>
+            </nav>
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="button-primary w-full">Book a site visit <ArrowUpRight className="h-4 w-4" /></Link>
+            <a href="tel:+919266040973" className="mt-4 text-center text-sm font-semibold text-[#173B20]">+91 92660 40973</a>
           </div>
         )}
       </div>

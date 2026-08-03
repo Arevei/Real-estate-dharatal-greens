@@ -14,17 +14,17 @@ const phoneNumbers = [
 export default function Contact() {
   return (
     <div className="w-full bg-white pb-20 font-sans">
-      <section className="relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
+      <section className="inner-hero relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
         <div className="absolute inset-0">
           <Image src="/images/hero-bg.png" alt="Contact Doon Alliance" fill priority sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-[#2C2C2A]/80" />
+          <div className="inner-hero-overlay absolute inset-0" />
         </div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="mb-4 text-5xl font-bold md:text-6xl">CONTACT US</h1>
-          <div className="flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-zinc-300">
-            <Link href="/" className="transition-colors hover:text-accent">HOME</Link>
+        <div className="relative z-10 text-center">
+          <h1 className="inner-hero-title mb-4 text-5xl font-bold md:text-6xl">CONTACT US</h1>
+          <div className="inner-hero-breadcrumb flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider">
+            <Link href="/">HOME</Link>
             <span>/</span>
-            <span className="text-[#ba7517]">CONTACT</span>
+            <span className="current">CONTACT</span>
           </div>
         </div>
       </section>
@@ -36,7 +36,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden bg-[#2C2C2A] shadow-xl"
+              className="relative overflow-hidden rounded-[10px] bg-[#173B20] shadow-xl"
             >
               <div className="relative aspect-[4/3] min-h-[360px]">
                 <Image
@@ -46,10 +46,10 @@ export default function Contact() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#27500A]/85 via-[#27500A]/20 to-transparent" />
+                <div className="contact-image-overlay absolute inset-0" />
                 <div className="absolute bottom-0 left-0 right-0 p-7 text-white md:p-9">
-                  <div className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#763300]">Doon Alliance</div>
-                  <h2 className="max-w-md text-2xl font-bold leading-tight md:text-3xl">
+                  <div className="theme-dark-kicker mb-3 text-xs font-bold uppercase tracking-[0.2em]">Doon Alliance</div>
+                  <h2 className="contact-image-title max-w-md text-2xl font-bold leading-tight md:text-3xl">
                     Site visits, project guidance, and property support from one team.
                   </h2>
                 </div>
@@ -61,20 +61,20 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#763300]">
-                CONTACT WITH US <span className="h-[2px] w-8 bg-[#763300]" />
+              <div className="theme-kicker mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em]">
+                CONTACT WITH US <span className="h-px w-8" />
               </div>
               <h2 className="mb-4 text-4xl font-bold leading-tight text-zinc-800 md:text-5xl">
                 Get in touch now
               </h2>
               <p className="mb-10 text-base text-gray-500">
-                We're here to help you find the perfect property.
+                We&apos;re here to help you find the perfect property.
               </p>
 
               <div className="space-y-7">
                 <div className="flex items-start gap-5">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center border border-gray-200">
-                    <Mail className="h-6 w-6 text-[#763300]" />
+                  <div className="theme-icon-tile flex h-14 w-14 shrink-0 items-center justify-center">
+                    <Mail className="h-6 w-6" />
                   </div>
                   <div>
                     <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-gray-400">Write email</div>
@@ -85,8 +85,8 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-5">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center border border-gray-200">
-                    <Phone className="h-6 w-6 text-[#763300]" />
+                  <div className="theme-icon-tile flex h-14 w-14 shrink-0 items-center justify-center">
+                    <Phone className="h-6 w-6" />
                   </div>
                   <div>
                     <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-gray-400">Call expert</div>
@@ -101,8 +101,8 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-5">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center border border-gray-200">
-                    <MapPin className="h-6 w-6 text-[#763300]" />
+                  <div className="theme-icon-tile flex h-14 w-14 shrink-0 items-center justify-center">
+                    <MapPin className="h-6 w-6" />
                   </div>
                   <div>
                     <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-gray-400">Visit office</div>
@@ -119,9 +119,9 @@ export default function Contact() {
 
       <section className="bg-gray-50 py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="mx-auto max-w-3xl bg-white p-10 shadow-xl md:p-14">
-            <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#763300]">
-              WRITE A MESSAGE <span className="h-[2px] w-8 bg-[#763300]" />
+          <div className="theme-card mx-auto max-w-3xl p-10 md:p-14">
+            <div className="theme-kicker mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em]">
+              WRITE A MESSAGE <span className="h-px w-8" />
             </div>
             <h2 className="mb-10 text-4xl font-bold leading-tight text-zinc-800 md:text-[44px]">
               Feel free to write

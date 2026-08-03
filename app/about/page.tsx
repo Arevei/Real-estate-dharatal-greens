@@ -36,7 +36,7 @@ const services = [
 export default function About() {
   return (
     <div className="w-full overflow-x-hidden bg-white font-sans">
-      <section className="relative flex min-h-[420px] items-center justify-center pt-24 text-center text-white">
+      <section className="inner-hero relative flex min-h-[420px] items-center justify-center pt-24 text-center">
         <Image
           src="/images/hero-bg.png"
           alt="Doon Alliance homes"
@@ -45,18 +45,18 @@ export default function About() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[#2C2C2A]/80" />
+        <div className="inner-hero-overlay absolute inset-0" />
         <div className="relative z-10 mx-auto max-w-4xl px-4">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-[#ba7517]">
+          <p className="inner-hero-kicker mb-4 text-xs font-bold uppercase tracking-[0.24em]">
             Know More About Us
           </p>
-          <h1 className="text-4xl font-bold tracking-tight md:text-6xl">Doon Alliance</h1>
-          <div className="mt-5 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-zinc-300">
-            <Link href="/" className="transition-colors hover:text-[#763300]">
+          <h1 className="inner-hero-title text-4xl font-bold tracking-tight md:text-6xl">Doon Alliance</h1>
+          <div className="inner-hero-breadcrumb mt-5 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider">
+            <Link href="/">
               Home
             </Link>
             <span>/</span>
-            <span className="text-[#ba7517]">About Us</span>
+            <span className="current">About Us</span>
           </div>
         </div>
       </section>
@@ -67,7 +67,7 @@ export default function About() {
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative min-h-[360px] overflow-hidden shadow-xl md:min-h-[500px]"
+            className="relative min-h-[360px] overflow-hidden rounded-[10px] shadow-xl md:min-h-[500px]"
           >
             <Image
               src="/images/about/doon-construction-team.png"
@@ -76,9 +76,9 @@ export default function About() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
-            <div className="absolute bottom-5 left-5 bg-[#2C2C2A] p-5 text-white shadow-xl">
-              <div className="text-4xl font-bold text-[#ba7517]">1850+</div>
-              <div className="mt-1 text-xs font-bold uppercase tracking-wider text-zinc-300">
+            <div className="about-resident-badge absolute bottom-5 left-5 p-5 shadow-xl">
+              <div className="number text-4xl font-bold">1850+</div>
+              <div className="label mt-1 text-xs font-bold uppercase tracking-wider">
                 Satisfied Residents
               </div>
             </div>
@@ -89,8 +89,8 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#763300]">
-              <span className="h-[2px] w-8 bg-[#763300]" /> Who Are We?
+            <p className="theme-kicker mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em]">
+              <span className="h-px w-8" /> Who Are We?
             </p>
             <h2 className="mb-6 text-3xl font-bold leading-tight text-zinc-800 md:text-5xl">
               Creating exceptional living experiences with comfort, security, and luxury.
@@ -103,7 +103,7 @@ export default function About() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex h-[52px] items-center gap-2 text-[#F1EFE8] bg-[#763300] hover:bg-[#F1EFE8] hover:text-[#763300] border px-8 text-xs font-bold uppercase tracking-widest text-white transition-colors "
+              className="theme-primary-cta inline-flex h-[52px] items-center gap-2 px-8 text-xs font-bold uppercase tracking-widest"
             >
               Contact Us <ArrowRight className="h-4 w-4" />
             </Link>
@@ -111,7 +111,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#2C2C2A] py-14 text-white">
+      <section className="about-stats py-14">
         <div className="container mx-auto grid grid-cols-1 gap-8 px-4 text-center md:grid-cols-3 md:px-6">
           {stats.map((stat, index) => (
             <motion.div
@@ -121,8 +121,8 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
             >
-              <div className="mb-2 text-4xl font-bold text-[#ba7517]">{stat.num}</div>
-              <div className="text-xs font-bold uppercase tracking-[0.18em] text-zinc-300">{stat.label}</div>
+              <div className="number mb-2 text-4xl font-bold">{stat.num}</div>
+              <div className="label text-xs font-bold uppercase tracking-[0.18em]">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -135,8 +135,8 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#763300]">
-              <span className="h-[2px] w-8 bg-[#763300]" /> Our Vision
+            <p className="theme-kicker mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em]">
+              <span className="h-px w-8" /> Our Vision
             </p>
             <h2 className="mb-6 text-3xl font-bold leading-tight text-zinc-800 md:text-5xl">
               Redefining modern living with sustainable, high-quality real estate.
@@ -155,7 +155,7 @@ export default function About() {
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative min-h-[360px] overflow-hidden shadow-xl md:min-h-[500px]"
+            className="relative min-h-[360px] overflow-hidden rounded-[10px] shadow-xl md:min-h-[500px]"
           >
             <Image
               src="/images/about/doon-vision-target.png"
@@ -171,7 +171,7 @@ export default function About() {
       <section className="py-20 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mx-auto mb-12 max-w-3xl text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#763300]">
+            <p className="theme-kicker mb-3 text-xs font-bold uppercase tracking-[0.2em]">
               Project Highlights
             </p>
             <h2 className="text-3xl font-bold text-zinc-800 md:text-[44px]">Amenities Built For Community Living</h2>
@@ -184,9 +184,9 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: (index % 4) * 0.05 }}
-                className="flex min-h-[76px] items-center gap-4 border border-gray-100 bg-gray-50 px-5 py-4"
+                className="theme-card flex min-h-[76px] items-center gap-4 px-5 py-4"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center bg-[#763300]/10 text-[#763300]">
+                <span className="theme-icon-tile flex h-10 w-10 shrink-0 items-center justify-center">
                   <Check className="h-4 w-4 stroke-[3]" />
                 </span>
                 <span className="text-sm font-semibold leading-snug text-zinc-800">{item}</span>
@@ -196,18 +196,18 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#2C2C2A] py-20 text-white md:py-24">
+      <section className="theme-dark-section py-20 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mx-auto mb-12 max-w-3xl text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#ba7517]">
+            <p className="theme-dark-kicker mb-3 text-xs font-bold uppercase tracking-[0.2em]">
               Build And Construct
             </p>
             <h2 className="text-3xl font-bold md:text-[44px]">Spaces Doon Alliance Develops</h2>
           </div>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
-              <div key={service.title} className="border border-white/10 bg-white/5 p-7">
-                <service.icon className="mb-5 h-9 w-9 text-[#ba7517]" />
+              <div key={service.title} className="theme-dark-card p-7">
+                <div className="theme-icon-tile mb-5 flex h-14 w-14 items-center justify-center"><service.icon className="h-7 w-7" /></div>
                 <h3 className="text-lg font-bold">{service.title}</h3>
               </div>
             ))}
@@ -215,7 +215,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#ba7517] py-12">
+      <section className="theme-brass-section py-12">
         <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 text-center md:flex-row md:px-6 md:text-left">
           <div>
             <h3 className="text-2xl font-bold text-white md:text-3xl">Looking for a home, retreat, or investment?</h3>
@@ -223,7 +223,7 @@ export default function About() {
           </div>
           <Link
             href="/contact"
-            className="inline-flex h-[52px] items-center gap-2 bg-[#2C2C2A] px-8 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#15202b]"
+            className="theme-dark-cta inline-flex h-[52px] items-center gap-2 px-8 text-xs font-bold uppercase tracking-widest"
           >
             Get In Touch <ArrowRight className="h-4 w-4" />
           </Link>

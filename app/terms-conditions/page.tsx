@@ -39,23 +39,22 @@ const sections = [
 export default function TermsConditions() {
   return (
     <main className="bg-[#f8fbfa] font-sans text-zinc-900">
-      <section className="relative overflow-hidden bg-[#08131f] px-4 pb-20 pt-36 text-white md:px-6">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(118,51,0,0.24),transparent_26rem)]" />
+      <section className="terms-hero relative overflow-hidden px-4 pb-20 pt-36 md:px-6">
         <div className="container relative mx-auto">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full  px-4 py-2 text-xs text-[#ba7517] uppercase tracking-[0.18em]">
-            <Gavel className="h-4 w-4 text-[#ba7517]" />
+          <div className="terms-kicker mb-6 inline-flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-[0.18em]">
+            <Gavel className="h-4 w-4" />
             Website Terms
           </div>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <h1 className="text-3xl  leading-tight md:text-6xl">Terms & Conditions</h1>
-              <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/72">
+              <h1 className="terms-title text-3xl leading-tight md:text-6xl">Terms & Conditions</h1>
+              <p className="terms-intro mt-6 max-w-3xl text-lg leading-relaxed">
                 Welcome to Doon Alliance. By using our website and services, you agree to abide by the following terms and conditions.
               </p>
             </div>
-            <div className="rounded-lg border border-white/12 bg-white/10 p-6 backdrop-blur-md lg:col-span-4">
-              <Scale className="mb-4 h-10 w-10 text-[#ba7517]" />
-              <p className="text-sm leading-relaxed text-white/72">
+            <div className="terms-info-card p-6 lg:col-span-4">
+              <Scale className="mb-4 h-10 w-10" />
+              <p className="text-sm leading-relaxed">
                 Please read these terms carefully before using the website or submitting an enquiry.
               </p>
             </div>
@@ -72,7 +71,7 @@ export default function TermsConditions() {
               <p className="mt-4 text-sm leading-relaxed text-zinc-600">
                 These terms cover site usage, listing accuracy, intellectual property, responsibilities, liability and governing law.
               </p>
-              <Link href="/privacy-policy" className="mt-8 inline-flex h-12 items-center rounded-full text-[#F1EFE8] bg-[#763300] hover:bg-[#F1EFE8] hover:text-[#763300] px-6 text-xs font-black uppercase tracking-[0.16em] text-white transition-all hover:-translate-y-1 ">
+              <Link href="/privacy-policy" className="legal-summary-cta mt-8 inline-flex h-12 items-center px-6 text-xs font-black uppercase tracking-[0.16em] transition-all hover:-translate-y-1">
                 Privacy Policy
               </Link>
             </div>
@@ -82,7 +81,7 @@ export default function TermsConditions() {
             {sections.map((section, index) => (
               <article key={section.title} className="group rounded-lg border border-zinc-900/10 bg-white p-7 shadow-[0_18px_48px_rgba(23,52,4,0.06)] transition-all hover:-translate-y-1 hover:border-zinc-900">
                 <div className="mb-4 flex items-center gap-4">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#763300]/12 text-sm font-black text-zinc-900 group-hover:bg-[#1a1a1a] group-hover:text-white">
+                  <span className="legal-section-number flex h-11 w-11 shrink-0 items-center justify-center text-sm font-bold">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="text-2xl font-black">{section.title}</h3>

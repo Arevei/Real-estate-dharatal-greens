@@ -1,18 +1,11 @@
 "use client"
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import {
-  useMotionValueEvent,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Building2, ArrowRight, Check, MapPin, Star,
-  ChevronLeft, ChevronRight, Building, Home,
+  Building, Home,
   Store, Trophy, Phone, Globe, Leaf, Cpu, Quote,
   User, Bed, Sofa, Smile, Zap
 } from "lucide-react";
@@ -52,125 +45,75 @@ export default function HomePage() {
     },
   ];
 
-  const heroRef = useRef<HTMLElement>(null);
-  const blurLayerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end end"],
-  });
-
-  const smoothHero = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 24,
-  });
-
-  const bgScale = useTransform(smoothHero, [0, 0.7], [1.04, 1.12]);
-  const vignetteOpacity = useTransform(smoothHero, [0, 0.38, 0.8], [0.72, 0.88, 0.62]);
-  const whiteWashOpacity = useTransform(smoothHero, [0.72, 1], [0, 0.92]);
-  const s1Opacity = useTransform(smoothHero, [0, 0.22, 0.45], [1, 1, 0]);
-  const s1Y = useTransform(smoothHero, [0, 0.45], ["0px", "-64px"]);
-  const s2Opacity = useTransform(smoothHero, [0.42, 0.66], [0, 1]);
-  const s2Y = useTransform(smoothHero, [0.42, 0.66], ["56px", "0px"]);
-
-  useMotionValueEvent(smoothHero, "change", (value) => {
-    if (!blurLayerRef.current) return;
-
-    const clear = 58 - Math.min(value, 0.72) * 34;
-    const edge = 78 - Math.min(value, 0.72) * 22;
-    const mask = `radial-gradient(ellipse ${clear}% ${clear * 0.82}% at 54% 52%, transparent 0%, transparent ${clear * 0.9}%, rgba(0,0,0,0.6) ${edge}%, black 100%)`;
-
-    blurLayerRef.current.style.maskImage = mask;
-    (blurLayerRef.current.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask;
-  });
-
-  useEffect(() => {
-    if (!blurLayerRef.current) return;
-    const mask =
-      "radial-gradient(ellipse 58% 48% at 54% 52%, transparent 0%, transparent 52%, rgba(0,0,0,0.6) 78%, black 100%)";
-    blurLayerRef.current.style.maskImage = mask;
-    (blurLayerRef.current.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask;
-  }, []);
-
   return (
     <div className="w-full font-sans">
 
       {/* SECTION 1: Hero */}
-      <section ref={heroRef} className="relative min-h-[100svh] w-full overflow-hidden bg-[#08131f] pt-28 pb-12 md:pt-36 md:pb-16">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero-bg.png"
-            alt="Hero background"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-70"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,19,31,0.96)_0%,rgba(8,19,31,0.82)_46%,rgba(8,19,31,0.42)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#08131f] to-transparent" />
+      <section className="hero-luxury relative min-h-[100svh] w-full overflow-hidden pb-12 pt-36 md:pb-16 md:pt-44">
+        <div className="hero-luxury-texture absolute inset-0 z-0" aria-hidden="true">
+          <div className="hero-luxury-glow" />
+          <div className="hero-luxury-rings" />
+          <div className="hero-luxury-grid" />
         </div>
 
-        <div className="relative z-10 container mx-auto grid min-h-[calc(100svh-10rem)] grid-cols-1 items-center gap-12 px-4 md:px-6 lg:grid-cols-12">
+        <div className="hero-approval-badge absolute left-1/2 top-[6.75rem] z-20 inline-flex min-h-10 -translate-x-1/2 items-center gap-3 whitespace-nowrap rounded-[10px] border px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] md:top-[7.25rem] md:text-xs">
+          <span className="h-1.5 w-1.5 rounded-full" />
+          Government Approved Communities
+        </div>
+
+        <div className="relative z-10 container mx-auto grid min-h-[calc(100svh-13rem)] grid-cols-1 items-center gap-14 px-4 md:px-6 lg:grid-cols-12 lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-white lg:col-span-7"
+            initial={false}
+            className="text-[#F7F4EE] lg:col-span-7"
           >
-            <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-[#763300]" />
-              Government Approved Communities
-            </div>
-            <h1 className="mb-7 max-w-5xl text-4xl font-black leading-[0.98] tracking-tight md:text-5xl lg:text-[4rem]">
+            <h1 className="mb-6 max-w-5xl text-4xl font-black leading-[0.98] tracking-tight md:text-5xl lg:text-[4rem]">
               Planned Spaces.
-              <span className="block text-[#BA7517]">Peaceful Living.</span>
+              <span className="block text-[#F7F4EE]">Peaceful Living.</span>
             </h1>
-            <p className="mb-9 max-w-2xl text-base leading-relaxed text-white/78 md:text-xl">
+            <p className="mb-8 max-w-2xl text-base leading-[1.7] text-white/80 md:text-lg">
               We create exceptional living experiences across Delhi, Saharanpur and beyond through thoughtfully planned farmhouses, villas, residential plots, value homes and independent living spaces.
             </p>
-            <div className="mb-10 flex flex-wrap items-center gap-4">
+            <div className="mb-9 flex flex-wrap items-center gap-4">
               <Link
                 href="/about"
-                className="group inline-flex h-[58px] items-center gap-3 rounded-full bg-[#763300] px-8 text-xs font-bold uppercase tracking-widest text-white shadow-[0_18px_45px_rgba(118,51,0,0.34)] transition-all hover:-translate-y-1 hover:bg-[#763300]"
+                className="group inline-flex h-14 items-center gap-3 rounded-[10px] border border-[#F7F4EE] bg-[#F7F4EE] px-7 text-xs font-bold uppercase tracking-widest text-[#173B20] transition-colors hover:bg-transparent hover:text-[#F7F4EE]"
               >
                 Know More About Us <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex h-[58px] items-center rounded-full border border-white/25 bg-white/10 px-8 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white hover:text-zinc-800"
+                className="inline-flex h-14 items-center rounded-[10px] border border-[#F7F4EE] bg-transparent px-7 text-xs font-bold uppercase tracking-widest text-[#F7F4EE] backdrop-blur-md transition-colors hover:bg-[#F7F4EE] hover:text-[#173B20]"
               >
                 Book A Site Visit
               </Link>
             </div>
-            <div className="grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="grid max-w-3xl grid-cols-1 gap-3.5 sm:grid-cols-3">
               {heroStats.map((stat) => (
-                <div key={stat.label} className="rounded-lg border border-white/12 bg-white/10 p-4 backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white/15">
-                  <div className="text-2xl font-black text-white">{stat.value}</div>
-                  <div className="mt-1 text-[11px] font-bold uppercase leading-snug tracking-[0.16em] text-white/58">{stat.label}</div>
+                <div key={stat.label} className="hero-stat-card min-h-[104px] rounded-[10px] border p-4 transition-transform duration-300 hover:-translate-y-1">
+                  <div className="text-2xl font-semibold">{stat.value}</div>
+                  <div className="mt-1.5 text-[10px] font-semibold uppercase leading-snug tracking-[0.16em] opacity-70">{stat.label}</div>
                 </div>
               ))}
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.12 }}
+            initial={false}
             className="hidden lg:col-span-5 lg:block"
           >
             <div className="relative ml-auto h-[560px] max-w-[520px]">
-              <div className="absolute right-0 top-0 h-[78%] w-[82%] overflow-hidden rounded-lg border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
+              <div className="absolute right-0 top-0 h-[78%] w-[82%] overflow-hidden rounded-[10px] border border-[#F7F4EE]/55 shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
                 <Image src="/images/about/doon-construction-team.png" alt="Doon Alliance planning team" fill sizes="40vw" className="object-cover" />
               </div>
-              <div className="absolute bottom-0 left-0 w-[68%] rounded-lg border border-white/12 bg-white p-5 shadow-[0_24px_70px_rgba(0,0,0,0.25)]">
-                <div className="relative mb-4 h-40 overflow-hidden rounded-md">
+              <div className="absolute bottom-0 left-0 w-[68%] rounded-[10px] border border-[#173B20] bg-[#F7F4EE] p-5 text-[#173B20] shadow-[0_24px_70px_rgba(0,0,0,0.25)]">
+                <div className="relative mb-4 h-40 overflow-hidden rounded-[7px]">
                   <Image src="/images/projects/shivalik-plots.png" alt="Shivalik Estate" fill sizes="28vw" className="object-cover" />
                 </div>
-                <div className="text-xs font-black uppercase tracking-[0.18em] text-[#763300]">Featured Estate</div>
-                <div className="mt-2 text-2xl font-black leading-tight text-zinc-800">Shivalik Estate</div>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-500">Documented development in Ganeshpur with planned residential layouts.</p>
+                <div className="text-xs font-bold uppercase tracking-[0.18em] text-[#173B20]">Featured Estate</div>
+                <div className="mt-2 text-2xl font-semibold leading-tight text-[#173B20]">Shivalik Estate</div>
+                <p className="mt-2 text-sm leading-relaxed text-[#173B20]/70">Documented development in Ganeshpur with planned residential layouts.</p>
               </div>
-              <div className="absolute right-6 bottom-24 rounded-full bg-[#763300] px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-white shadow-[0_18px_42px_rgba(118,51,0,0.35)]">
+              <div className="absolute right-6 bottom-24 rounded-[10px] border border-[#F7F4EE] bg-[#173B20] px-5 py-3 text-sm font-bold uppercase tracking-[0.14em] text-[#F7F4EE]">
                 24x7 Security
               </div>
             </div>
@@ -432,16 +375,16 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#173404] via-[#173404]/40 to-transparent opacity-90" />
+                <div className="project-card-overlay absolute inset-0" />
 
-                <div className="absolute bottom-10 left-0 right-0 px-8 flex flex-col items-center text-center z-10">
-                  <div className="bg-[#763300] text-white text-[10px] font-bold uppercase tracking-[0.2em] py-1.5 px-4 mb-5">
+                <div className="project-card-content absolute inset-x-0 bottom-0 z-10 flex flex-col items-center px-8 pb-8 pt-16 text-center">
+                  <div className="project-card-label mb-5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em]">
                     {c.type}
                   </div>
-                  <h3 className="text-[26px] font-bold text-white mb-3 leading-tight">{c.title}</h3>
-                  <p className="text-gray-300 text-sm mb-8 leading-relaxed max-w-[250px]">{c.desc}</p>
+                  <h3 className="project-card-title mb-3 text-[26px] font-bold leading-tight">{c.title}</h3>
+                  <p className="project-card-description mb-8 max-w-[270px] text-sm leading-relaxed">{c.desc}</p>
 
-                  <Link href="/projects" aria-label={`View ${c.title}`} className="w-12 h-12 rounded-full border-2 border-[#763300] flex items-center justify-center text-[#763300] group-hover:bg-[#763300] group-hover:text-white transition-all duration-300">
+                  <Link href="/projects" aria-label={`View ${c.title}`} className="project-card-button flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 group-hover:scale-105">
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </div>
@@ -464,9 +407,9 @@ export default function HomePage() {
               className="lg:col-span-5"
             >
               <div className="text-[#763300] font-bold tracking-[0.2em] text-xs uppercase mb-4">ABOUT COMPANY</div>
-              <h2 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-navy mb-8 leading-[1.1]">What they're talking about us?</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-navy mb-8 leading-[1.1]">What they&apos;re talking about us?</h2>
               <p className="text-gray-500 mb-10 text-lg leading-relaxed">
-                Hear how we've helped them find the right space with confidence and care. Our clients' satisfaction is our greatest reward.
+                Hear how we&apos;ve helped them find the right space with confidence and care. Our clients&apos; satisfaction is our greatest reward.
               </p>
               <Button asChild className="text-[#F1EFE8] bg-[#763300] hover:bg-[#F1EFE8] hover:text-[#763300] border rounded-none h-[52px] px-10 tracking-[0.15em] font-bold text-xs uppercase">
                 <Link href="/contact">
@@ -487,7 +430,7 @@ export default function HomePage() {
                 <Quote className="absolute top-10 right-10 w-24 h-24 text-gray-100" fill="currentColor" />
 
                 <p className="text-2xl md:text-[28px] font-semibold text-navy leading-snug mb-12 relative z-10 italic">
-                  "Very smooth experience from site visit to registration. The team is honest and professional. Doon Alliance has been the best investment for my family's future."
+                  &ldquo;Very smooth experience from site visit to registration. The team is honest and professional. Doon Alliance has been the best investment for my family&apos;s future.&rdquo;
                 </p>
 
                 <div className="flex items-center gap-5 relative z-10 mb-2">
@@ -580,9 +523,9 @@ export default function HomePage() {
           >
             <div className="text-[#763300] font-bold tracking-[0.2em] text-xs uppercase mb-4">OUR VISION</div>
             <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-white mb-10 leading-[1.1]">Sustainable, secure, and harmonious living spaces</h2>
-            <Button asChild className="text-[#F1EFE8] bg-[#ba7517] hover:bg-[#F1EFE8] hover:text-[#763300] text-white rounded-none h-[52px] px-10 tracking-[0.15em] font-bold text-xs uppercase">
+            <Button asChild className="vision-cta h-[52px] px-8 text-xs font-bold uppercase tracking-[0.15em]">
               <Link href="/projects">
-                EXPLORE NOW
+                Explore now <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
           </motion.div>
@@ -599,11 +542,11 @@ export default function HomePage() {
               { icon: MapPin, text: "Residential Plots" },
               { icon: Sofa, text: "Commercial Spaces" }
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-5 group">
-                <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:border-[#763300] group-hover:text-[#763300] transition-colors shrink-0 bg-white/5">
+              <div key={i} className="group flex items-center gap-5">
+                <div className="vision-icon-tile flex h-16 w-16 shrink-0 items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
                   <item.icon className="w-7 h-7 stroke-[1.5]" />
                 </div>
-                <span className="text-white font-bold text-lg md:text-xl leading-tight max-w-[150px]">{item.text}</span>
+                <span className="vision-item-text max-w-[150px] text-lg font-bold leading-tight md:text-xl">{item.text}</span>
               </div>
             ))}
           </motion.div>
@@ -613,12 +556,12 @@ export default function HomePage() {
       {/* SECTION 8: Stats with Bg Images */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
         {[
-          { num: "2,333,520", label: "Residential Projects (Sq. Ft.)", bg: "stats-bg-1.png", icon: Building2, highlight: false },
-          { num: "1,850+", label: "Satisfied Residents", bg: "stats-bg-3.png", icon: Smile, highlight: true },
-          { num: "772,785", label: "Farmhouse Developments (Sq. Ft.)", bg: "stats-bg-2.png", icon: Home, highlight: false },
-          { num: "24x7", label: "Security In Gated Communities", bg: "stats-bg-4.png", icon: Zap, highlight: false },
+          { num: "2,333,520", label: "Residential Projects (Sq. Ft.)", bg: "stats-bg-1.png", icon: Building2 },
+          { num: "1,850+", label: "Satisfied Residents", bg: "stats-bg-3.png", icon: Smile },
+          { num: "772,785", label: "Farmhouse Developments (Sq. Ft.)", bg: "stats-bg-2.png", icon: Home },
+          { num: "24x7", label: "Security In Gated Communities", bg: "stats-bg-4.png", icon: Zap },
         ].map((stat, i) => (
-          <div key={i} className="relative h-72 md:h-[380px] flex flex-col items-center justify-center text-white text-center p-8 overflow-hidden group">
+          <div key={i} className="stats-card group relative flex h-72 flex-col items-center justify-center overflow-hidden p-8 text-center md:h-[380px]">
             <Image
               src={`/images/${stat.bg}`}
               alt={stat.label}
@@ -626,19 +569,15 @@ export default function HomePage() {
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
               className="object-cover group-hover:scale-110 transition-transform duration-1000"
             />
-            <div className={`absolute inset-0 ${stat.highlight ? 'bg-navy/80' : 'bg-black/70'}`} />
+            <div className="stats-card-overlay absolute inset-0" />
 
             <div className="relative z-10 flex flex-col items-center">
-              <stat.icon className="w-12 h-12 mb-6 text-white/80 stroke-[1.5]" />
-              <div className="text-[56px] font-bold mb-4 leading-none tracking-tight">{stat.num}</div>
-
-              <div className="relative inline-block mt-2">
-                {stat.highlight && (
-                  <div className="absolute inset-0 bg-[#ba7517] -z-10 -skew-x-12 scale-x-125 scale-y-150" />
-                )}
-                <div className={`font-bold uppercase tracking-[0.2em] text-xs px-2 ${stat.highlight ? 'text-white' : 'text-gray-300'}`}>
-                  {stat.label}
-                </div>
+              <div className="stats-icon-tile mb-7 flex h-16 w-16 items-center justify-center">
+                <stat.icon className="h-7 w-7 stroke-[1.6]" />
+              </div>
+              <div className="stats-number mb-5 text-[48px] font-semibold leading-none tracking-tight lg:text-[54px]">{stat.num}</div>
+              <div className="stats-label px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em]">
+                {stat.label}
               </div>
             </div>
           </div>
@@ -646,11 +585,18 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 9: Services Grid */}
-      <section className="ploy-surface py-24">
+      <section className="py-24 md:py-28">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
-            <div className="text-[#763300] font-bold tracking-[0.2em] text-xs uppercase mb-4">WHAT WE'RE OFFERING ——</div>
-            <h2 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-navy max-w-3xl mx-auto leading-[1.1]">We're giving all the best services to you</h2>
+          <div className="mb-14 text-center md:mb-16">
+            <div className="mb-5 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.28em] text-[#173B20]">
+              <span className="h-px w-10 bg-[#173B20]/50" />
+              What we&apos;re offering
+              <span className="h-px w-10 bg-[#173B20]/50" />
+            </div>
+            <h2 className="mx-auto max-w-3xl font-serif text-4xl leading-[1.08] text-[#173B20] md:text-5xl lg:text-[56px]">We&apos;re giving all the best services to you</h2>
+            <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-[#173B20]/65 md:text-base">
+              From thoughtfully planned plots to complete communities, every offering is shaped around quality, comfort and lasting value.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -658,26 +604,26 @@ export default function HomePage() {
               {
                 title: "Residential Plots",
                 img: "projects/shivalik-plots.png",
+                icon: MapPin,
                 desc: "Thoughtfully planned residential plots within gated developments featuring wide roads, green spaces and essential community infrastructure.",
-                isDark: false,
               },
               {
                 title: "Farmhouse Developments",
                 img: "projects/dharatal-meadows.png",
+                icon: Home,
                 desc: "Spacious farmhouse developments planned around greenery, privacy, comfort and peaceful living.",
-                isDark: false,
               },
               {
                 title: "Flats & Apartments",
                 img: "projects/valley-view-retreat.png",
+                icon: Building2,
                 desc: "Quality living spaces designed to offer comfort, security and long-term value for residents.",
-                isDark: false,
               },
               {
                 title: "Township Development",
                 img: "projects/green-valley-villas.png",
+                icon: Building,
                 desc: "Gated township developments planned with roads, lighting, plantations, parks and practical community amenities.",
-                isDark: true,
               }
             ].map((srv, i) => (
               <motion.div
@@ -687,23 +633,24 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="group flex min-h-[470px] cursor-pointer flex-col overflow-hidden rounded-lg border border-zinc-900/10 bg-white shadow-[0_18px_48px_rgba(23,52,4,0.07)] transition-all duration-300 hover:border-zinc-900 hover:bg-[#1a1a1a] hover:shadow-[0_28px_70px_rgba(23,52,4,0.18)]"
+                className="group flex min-h-[500px] cursor-pointer flex-col overflow-hidden rounded-[10px] border border-[#173B20]/25 bg-[#F7F4EE] shadow-[0_14px_36px_rgba(23,59,32,0.08)] transition-[border-color,box-shadow] duration-300 hover:border-[#173B20] hover:shadow-[0_20px_45px_rgba(23,59,32,0.14)]"
               >
-                <div className="relative h-[220px] overflow-hidden">
-                  <Image src={`/images/${srv.img}`} alt={srv.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#173404]/35 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                  <div className="absolute  bottom-1 left-2 flex h-14 w-14 items-center justify-center rounded-full bg-[#763300] text-white shadow-lg transition-transform group-hover:-translate-y-2 ">
-                    <Building className="w-6 h-6 stroke-[1.5]" />
+                <div className="relative h-[235px] overflow-hidden">
+                  <Image src={`/images/${srv.img}`} alt={srv.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-1000 group-hover:scale-[1.06]" />
+                  <div className="absolute inset-0 bg-[#173B20]/5 transition-colors duration-300 group-hover:bg-transparent" />
+                  <span className="absolute right-5 top-5 text-[11px] font-bold tracking-[0.24em] text-white/80">0{i + 1}</span>
+                  <div className="service-icon-tile absolute bottom-5 left-5 flex h-14 w-14 items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
+                    <srv.icon className="h-6 w-6 stroke-[1.7]" />
                   </div>
                 </div>
 
-                <div className="flex flex-1 flex-col p-8 pt-12">
-                  <h3 className="mb-4 text-[22px] font-black leading-snug text-zinc-900 transition-colors group-hover:text-white">{srv.title}</h3>
-                  <p className="mb-8 text-sm leading-relaxed text-zinc-600 transition-colors group-hover:text-white/70">
+                <div className="flex flex-1 flex-col px-7 pb-7 pt-7">
+                  <h3 className="mb-4 font-serif text-[25px] font-semibold leading-tight text-[#173404]">{srv.title}</h3>
+                  <p className="mb-8 text-sm leading-7 text-[#4d5547]">
                     {srv.desc}
                   </p>
-                  <Link href="/services" className="mt-auto flex w-fit items-center gap-2 text-sm font-black uppercase tracking-widest text-[#ba7517] transition-colors group-hover:text-[#763300]">
-                    READ MORE <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  <Link href="/services" className="mt-auto flex w-fit items-center gap-3 border-b border-[#ba7517]/50 pb-1 text-xs font-bold uppercase tracking-[0.18em] text-[#763300] transition-colors hover:border-[#763300]">
+                    Explore service <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </motion.div>
@@ -753,12 +700,18 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative flex justify-center items-center h-[400px]"
+            className="regional-presence relative flex h-[400px] items-center justify-center overflow-hidden rounded-[10px] border"
           >
-            <Image src="/images/world-map.png" alt="Map" fill sizes="(max-width: 768px) 100vw, 50vw" className="opacity-40 mix-blend-multiply" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-              <div className="text-[110px] md:text-[140px] font-bold text-[#763300] leading-none drop-shadow-2xl">1,850+</div>
-              <div className="text-[18px] md:text-[22px] font-bold text-navy uppercase tracking-[0.2em] bg-white/90 backdrop-blur-sm px-8 py-3 shadow-xl -mt-6">Satisfied Residents</div>
+            <div className="regional-presence-ring regional-presence-ring-outer" aria-hidden="true" />
+            <div className="regional-presence-ring regional-presence-ring-inner" aria-hidden="true" />
+            <div className="relative z-10 flex flex-col items-center px-6 text-center">
+              <div className="regional-presence-icon mb-5 flex h-14 w-14 items-center justify-center">
+                <MapPin className="h-6 w-6 stroke-[1.8]" />
+              </div>
+              <div className="regional-presence-kicker mb-3 text-[10px] font-bold uppercase tracking-[0.24em]">Growing communities across North India</div>
+              <div className="regional-presence-number text-[88px] font-semibold leading-none tracking-tight md:text-[118px]">1,850+</div>
+              <div className="regional-presence-label mt-4 px-6 py-2 text-[11px] font-bold uppercase tracking-[0.2em]">Satisfied Residents</div>
+              <div className="regional-presence-locations mt-5 text-xs font-semibold uppercase tracking-[0.16em]">Delhi <span>·</span> Saharanpur <span>·</span> Dehradun Region</div>
             </div>
           </motion.div>
         </div>

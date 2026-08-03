@@ -1855,5 +1855,14 @@ section[class*="bg-[#2C2C2A]"] > div:first-child { filter: sepia(.12) saturate(.
   .hero-luxury h1 { font-size: clamp(3rem, 15vw, 4.3rem) !important; }
   .hero-luxury-grid { background-size: 6rem 6rem; opacity: .22; }
   .hero-luxury-glow { right: -18rem; top: -20rem; width: 38rem; height: 38rem; }
-  .hero-approval-badge { top: 6rem; max-width: calc(100% - 2rem); white-space: normal; text-align: center; }
+  .hero-approval-badge {
+    top: 6.25rem;
+    max-width: calc(100% - 1.5rem);
+    gap: .5rem;
+    padding: .55rem .75rem;
+    white-space: nowrap;
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-align: center;
+  }
 }

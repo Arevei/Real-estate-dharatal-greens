@@ -32,8 +32,9 @@ export function Navbar() {
   ];
 
   return (
-    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <div className="site-header-inner">
+    <>
+      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+        <div className="site-header-inner">
         <Link href="/" aria-label="Doon Alliance home" className="relative z-50 flex shrink-0 items-center gap-3">
           <Image 
             src="/images/logo.png" 
@@ -76,28 +77,30 @@ export function Navbar() {
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div id="mobile-navigation" className="fixed inset-0 z-40 flex flex-col bg-[#F7F4EE] px-6 pb-10 pt-28 lg:hidden">
-            <nav className="flex flex-1 flex-col justify-center gap-2" aria-label="Mobile navigation">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`border-b border-[#DED8CE] py-4 text-2xl font-medium tracking-tight ${
-                  pathname === link.path ? "text-[#9A4F2B]" : "text-[#173B20]"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            </nav>
-            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="button-primary w-full">Book a site visit <ArrowUpRight className="h-4 w-4" /></Link>
-            <a href="tel:+919266040973" className="mt-4 text-center text-sm font-semibold text-[#173B20]">+91 92660 40973</a>
-          </div>
-        )}
-      </div>
-    </header>
+        </div>
+      </header>
+
+      {/* Kept outside the filtered header so the surface remains fully opaque. */}
+      {mobileMenuOpen && (
+        <div id="mobile-navigation" className="fixed inset-0 z-40 flex flex-col px-6 pb-10 pt-28 lg:hidden">
+          <nav className="flex flex-1 flex-col justify-center gap-2" aria-label="Mobile navigation">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              href={link.path}
+              onClick={() => setMobileMenuOpen(false)}
+              className={`border-b border-[#DED8CE] py-4 text-2xl font-medium tracking-tight ${
+                pathname === link.path ? "text-[#9A4F2B]" : "text-[#173B20]"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          </nav>
+          <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="button-primary w-full">Book a site visit <ArrowUpRight className="h-4 w-4" /></Link>
+          <a href="tel:+919266040973" className="mt-4 text-center text-sm font-semibold text-[#173B20]">+91 92660 40973</a>
+        </div>
+      )}
+    </>
   );
 }

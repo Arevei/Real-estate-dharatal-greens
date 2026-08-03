@@ -49,7 +49,7 @@ export default function HomePage() {
     <div className="w-full font-sans">
 
       {/* SECTION 1: Hero */}
-      <section className="hero-luxury relative min-h-[100svh] w-full overflow-hidden pb-12 pt-36 md:pb-16 md:pt-44">
+      <section className="hero-luxury relative min-h-[100svh] w-full overflow-hidden pb-12 pt-44 md:pb-16 md:pt-44">
         <div className="hero-luxury-texture absolute inset-0 z-0" aria-hidden="true">
           <div className="hero-luxury-glow" />
           <div className="hero-luxury-rings" />
@@ -534,7 +534,7 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-x-8 gap-y-12"
+            className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-8 md:gap-x-8 md:gap-y-12"
           >
             {[
               { icon: Building2, text: "Gated Townships" },
@@ -542,11 +542,11 @@ export default function HomePage() {
               { icon: MapPin, text: "Residential Plots" },
               { icon: Sofa, text: "Commercial Spaces" }
             ].map((item, i) => (
-              <div key={i} className="group flex items-center gap-5">
+              <div key={i} className="group flex min-w-0 items-center gap-4 md:gap-5">
                 <div className="vision-icon-tile flex h-16 w-16 shrink-0 items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
                   <item.icon className="w-7 h-7 stroke-[1.5]" />
                 </div>
-                <span className="vision-item-text max-w-[150px] text-lg font-bold leading-tight md:text-xl">{item.text}</span>
+                <span className="vision-item-text min-w-0 text-lg font-bold leading-tight md:max-w-[150px] md:text-xl">{item.text}</span>
               </div>
             ))}
           </motion.div>

@@ -12,11 +12,11 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Building2, ArrowRight, Check, MapPin, Star,
-  ChevronLeft, ChevronRight, Building, Home,
-  Store, Trophy, Phone, Globe, Leaf, Cpu, Quote,
+  Building, Home, Store, Trophy, Phone, Globe, Leaf, Cpu, Quote,
   User, Bed, Sofa, Smile, Zap
 } from "lucide-react";
 import { ContactForm } from "./ContactForm";
+import { InstagramReelsSection } from "./InstagramReelsSection";
 
 export default function HomePage() {
   const heroStats = [
@@ -554,6 +554,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <InstagramReelsSection />
 
       {/* SECTION 7: Dark Building Background */}
       <section className="relative py-32 bg-[#2C2C2A] overflow-hidden w-full">

@@ -99,7 +99,7 @@ export default function HomePage() {
       <section ref={heroRef} className="relative min-h-[100svh] w-full overflow-hidden bg-[#08131f] pt-28 pb-12 md:pt-36 md:pb-16">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/events/SRS%20Farm%20House/DSC06800.JPG"
+            src="/images/events/SRS%20Farm%20House/DSC06800.webp"
             alt="SRS Farm House event"
             fill
             sizes="100vw"
@@ -160,11 +160,11 @@ export default function HomePage() {
           >
             <div className="relative ml-auto h-[560px] max-w-[520px]">
               <div className="absolute right-0 top-0 h-[78%] w-[82%] overflow-hidden rounded-lg border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
-                <Image src="/images/events/SRS%20Farm%20House/DSC06905.JPG" alt="SRS Farm House landscape" fill sizes="40vw" className="object-cover" />
+                <Image src="/images/events/SRS%20Farm%20House/DSC06905.webp" alt="SRS Farm House landscape" fill sizes="40vw" className="object-cover" />
               </div>
               <div className="absolute bottom-0 left-0 w-[68%] rounded-lg border border-white/12 bg-white p-5 shadow-[0_24px_70px_rgba(0,0,0,0.25)]">
                 <div className="relative mb-4 h-40 overflow-hidden rounded-md">
-                  <Image src="/images/Shivalik_Projects_Images/Backwoods 10/img3.jpg" alt="SRS Farm House gathering" fill sizes="28vw" className="object-cover" />
+                  <Image src="/images/Shivalik_Projects_Images/Backwoods%2010/img3.jpg" alt="SRS Farm House gathering" fill sizes="28vw" className="object-cover" />
                 </div>
                 <div className="text-xs font-black uppercase tracking-[0.18em] text-[#763300]">Featured Estate</div>
                 <div className="mt-2 text-2xl font-black leading-tight text-zinc-800">Shivalik Estate</div>
@@ -212,7 +212,7 @@ export default function HomePage() {
               {/* Main living room image */}
               <div className="absolute bottom-0 right-0 h-[86%] w-[82%] overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/events/SRS%20Farm%20House/DSC06947.jpg"
+                  src="/images/events/SRS%20Farm%20House/DSC06947.webp"
                   alt="SRS Farm House gathering"
                   fill
                   sizes="(max-width: 1024px) 82vw, 42vw"
@@ -223,7 +223,7 @@ export default function HomePage() {
               {/* Overlapping bedroom image */}
               <div className="absolute left-0 top-0 z-10 h-[52%] w-[52%] overflow-hidden border-[12px] border-white shadow-xl">
                 <Image
-                  src="/images/events/SRS%20Farm%20House/DSC06755.jpg"
+                  src="/images/events/SRS%20Farm%20House/DSC06755.webp"
                   alt="SRS Farm House community space"
                   fill
                   sizes="(max-width: 1024px) 52vw, 26vw"
@@ -429,6 +429,7 @@ export default function HomePage() {
                   src={`/images/${c.img}`}
                   alt={c.title}
                   fill
+                  loading="eager"
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90"
                 />
@@ -534,9 +535,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { img: "/images/events/SRS%20Farm%20House/DSC06800.JPG", title: "Green community planning" },
-              { img: "/images/events/June%202026%20Meet%20and%20Greet/DSC07280.JPG", title: "Community-first living" },
-              { img: "/images/events/February%202026%20Meet%20and%20Greet/DSC03248.JPG", title: "Memorable community moments" },
+              { img: "/images/events/SRS%20Farm%20House/DSC06800.webp", title: "Green community planning" },
+              { img: "/images/events/June%202026%20Meet%20and%20Greet/DSC07280.webp", title: "Community-first living" },
+              { img: "/images/events/February%202026%20Meet%20and%20Greet/DSC03248.webp", title: "Memorable community moments" },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
@@ -562,7 +563,7 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/events/Annual%20Event%20Award%20Function%202025/1W0A2778.JPG"
+            src="/images/events/Annual%20Event%20Award%20Function%202025/1W0A2778.webp"
             alt="Doon Alliance annual community event"
             fill
             sizes="100vw"
@@ -615,10 +616,10 @@ export default function HomePage() {
       {/* SECTION 8: Stats with Bg Images */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
         {[
-          { num: "2,333,520", label: "Residential Projects (Sq. Ft.)", bg: "events/SRS%20Farm%20House/DSC06987.jpg", icon: Building2, highlight: false },
-          { num: "1,850+", label: "Satisfied Residents", bg: "events/June%202026%20Meet%20and%20Greet/DSC07178.JPG", icon: Smile, highlight: true },
-          { num: "772,785", label: "Farmhouse Developments (Sq. Ft.)", bg: "events/Annual%20Event%20Award%20Function%202025/1W0A2881.JPG", icon: Home, highlight: false },
-          { num: "24x7", label: "Security In Gated Communities", bg: "events/February%202026%20Meet%20and%20Greet/DSC03250.JPG", icon: Zap, highlight: false },
+          { num: "2,333,520", label: "Residential Projects (Sq. Ft.)", bg: "events/SRS%20Farm%20House/DSC06987.webp", icon: Building2, highlight: false },
+          { num: "1,850+", label: "Satisfied Residents", bg: "events/June%202026%20Meet%20and%20Greet/DSC07178.webp", icon: Smile, highlight: true },
+          { num: "772,785", label: "Farmhouse Developments (Sq. Ft.)", bg: "events/Annual%20Event%20Award%20Function%202025/1W0A2881.webp", icon: Home, highlight: false },
+          { num: "24x7", label: "Security In Gated Communities", bg: "events/February%202026%20Meet%20and%20Greet/DSC03250.webp", icon: Zap, highlight: false },
         ].map((stat, i) => (
           <div key={i} className="relative h-72 md:h-[380px] flex flex-col items-center justify-center text-white text-center p-8 overflow-hidden group">
             <Image
@@ -692,7 +693,7 @@ export default function HomePage() {
                 className="group flex min-h-[470px] cursor-pointer flex-col overflow-hidden rounded-lg border border-zinc-900/10 bg-white shadow-[0_18px_48px_rgba(23,52,4,0.07)] transition-all duration-300 hover:border-zinc-900 hover:bg-[#1a1a1a] hover:shadow-[0_28px_70px_rgba(23,52,4,0.18)]"
               >
                 <div className="relative h-[220px] overflow-hidden">
-                  <Image src={`/images/${srv.img}`} alt={srv.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <Image src={`/images/${srv.img}`} alt={srv.title} fill loading="eager" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#173404]/35 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                   <div className="absolute  bottom-1 left-2 flex h-14 w-14 items-center justify-center rounded-full bg-[#763300] text-white shadow-lg transition-transform group-hover:-translate-y-2 ">
                     <Building className="w-6 h-6 stroke-[1.5]" />

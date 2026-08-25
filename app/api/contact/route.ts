@@ -72,10 +72,11 @@ export async function POST(request: Request) {
     }
 
     if (hasSmtp) {
+      const smtpPort = Number(process.env.SMTP_PORT || 587);
       const transporter = nodemailer.createTransport({
         host: smtpHost,
-        port: Number(process.env.SMTP_PORT || 587),
-        secure: process.env.SMTP_SECURE === "true",
+        port: smtpPort,
+        secure: smtpPort === 465 || process.env.SMTP_SECURE === "true",
         connectionTimeout: 3500,
         greetingTimeout: 3500,
         socketTimeout: 3500,

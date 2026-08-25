@@ -37,6 +37,9 @@ const amenityIcons = {
 
 const landmarkQueries: Record<string, string> = {
   "Rajaji National Park": "Mohand Forest Range, Chillawali Rajaji National Park, Chillawali Range Shakumbhari Rd, Mohand Range, Uttarakhand 247662",
+  "Mata Shakumbhari Devi Mandir": "Mata Shakumbhari Devi Mandir, Shakumbhari Devi, Saharanpur, Uttar Pradesh, India",
+  "Glocal University": "Glocal University, Saharanpur, Uttar Pradesh, India",
+  "Paonta Shahib": "Paonta Sahib, Himachal Pradesh, India",
   "Doon Group Of Colleges": "Doon Group of Colleges, Saharanpur, Uttar Pradesh, India",
   Dehradun: "Dehradun, Uttarakhand, India",
   Haridwar: "Haridwar, Uttarakhand, India",
@@ -44,10 +47,11 @@ const landmarkQueries: Record<string, string> = {
   Rishikesh: "Rishikesh, Uttarakhand, India",
   Mussoorie: "Mussoorie, Uttarakhand, India",
   Delhi: "Delhi, India",
+  "Saharanpur Railway Station": "Saharanpur Railway Station, Saharanpur, Uttar Pradesh, India",
 };
 
 function directionsMapUrl(destination: string) {
-  const origin = encodeURIComponent(`${projectOrigin}, India`);
+  const origin = encodeURIComponent(projectOrigin);
   const selectedDestination = encodeURIComponent(landmarkQueries[destination] ?? `${destination}, India`);
   return `https://www.google.com/maps?output=embed&saddr=${origin}&daddr=${selectedDestination}`;
 }
@@ -58,7 +62,12 @@ export function ProjectDetailClient({ project }: { project: Project }) {
   const [showFullDescription, setShowFullDescription] = useState(false);
 
   const currentImage = project.images[activeImage];
-  const mapUrl = useMemo(() => directionsMapUrl(selectedLandmark), [selectedLandmark]);
+  const routeOrigin = project.mapOrigin ?? projectOrigin;
+  const mapUrl = useMemo(() => {
+    const origin = encodeURIComponent(routeOrigin);
+    const destination = encodeURIComponent(landmarkQueries[selectedLandmark] ?? `${selectedLandmark}, India`);
+    return `https://www.google.com/maps?output=embed&saddr=${origin}&daddr=${destination}`;
+  }, [routeOrigin, selectedLandmark]);
   const shortDescription =
     project.description.length > 230 ? `${project.description.slice(0, 230).trim()}...` : project.description;
 
@@ -71,32 +80,32 @@ export function ProjectDetailClient({ project }: { project: Project }) {
   };
 
   return (
-    <div className="w-full bg-white font-sans text-zinc-900">
+    <div className="w-full min-w-0 overflow-x-hidden bg-white font-sans text-zinc-900">
       <section className="relative overflow-hidden bg-[#102805] pt-32 text-white">
         <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(8,19,31,0.98)_0%,rgba(23,52,4,0.94)_54%,rgba(118,51,0,0.56)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
-        <div className="container relative z-10 mx-auto px-4 pb-14 md:px-6">
-          <Link href="/projects" className="mb-8 inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-white/70 transition-colors hover:text-white">
+        <div className="container relative z-10 mx-auto max-w-full px-4 pb-14 md:px-6">
+          <Link href="/projects" className="mb-8 inline-flex max-w-full items-center gap-2 text-xs font-black uppercase tracking-[0.12em] text-white/70 transition-colors hover:text-white sm:tracking-[0.16em]">
             <ArrowLeft className="h-4 w-4" />
             Back to projects
           </Link>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div>
-              <div className="mb-4 inline-flex rounded-full border border-white/18 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md">
-                {project.projectName} / {project.category}
+            <div className="min-w-0">
+              <div className="mb-4 inline-flex max-w-full flex-wrap rounded-full border border-white/18 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-md sm:text-xs sm:tracking-[0.18em]">
+                {project.estate} / {project.category}
               </div>
-              <h1 className="text-4xl font-black leading-tight md:text-6xl">{project.title}</h1>
+              <h1 className="break-words text-4xl font-black leading-tight md:text-6xl">{project.title}</h1>
             </div>
             <div className="max-w-xl rounded-lg border border-white/12 bg-white/8 p-5 text-sm font-semibold leading-relaxed text-white/72 backdrop-blur-md">
-              Premium plotted development in Ganeshpur near Rajaji National Park with clear project details, gallery, amenities, and route mapping.
+              {project.estate} development with clear project details, gallery, amenities, and route mapping.
             </div>
           </div>
         </div>
       </section>
 
       <section className="ploy-surface py-16">
-        <div className="container mx-auto grid gap-10 px-4 md:px-6 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+        <div className="container mx-auto grid min-w-0 gap-10 px-4 md:px-6 lg:grid-cols-12">
+          <div className="min-w-0 lg:col-span-7">
             <div className="relative overflow-hidden rounded-lg border border-zinc-900/10 bg-zinc-100 shadow-[0_28px_90px_rgba(23,52,4,0.14)]">
               <div className="relative aspect-[4/3] min-h-[340px]">
                 <AnimatePresence mode="wait">
@@ -140,7 +149,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-4 gap-3 md:grid-cols-6">
+            <div className="mt-4 grid min-w-0 grid-cols-4 gap-2 sm:gap-3 md:grid-cols-6">
               {project.images.map((item, index) => (
                 <button
                   key={item.src}
@@ -158,11 +167,11 @@ export function ProjectDetailClient({ project }: { project: Project }) {
             </div>
           </div>
 
-          <aside className="lg:col-span-5">
+          <aside className="min-w-0 lg:col-span-5">
             <div className="rounded-lg border border-zinc-900/10 bg-white p-6 shadow-[0_22px_70px_rgba(23,52,4,0.1)] md:p-8">
               <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#763300]">Project Details</div>
               <h2 className="mt-3 text-3xl font-black text-[#173404]">{project.category}</h2>
-              <p className="mt-5 text-sm leading-relaxed text-zinc-600">
+              <p className="mt-5 wrap-anywhere text-sm leading-relaxed text-zinc-600">
                 {showFullDescription ? project.description : shortDescription}
               </p>
               {project.description.length > 230 && (
@@ -177,7 +186,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
               <div className="mt-7 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
                 {[
                   { label: "Plot Area", value: project.plotArea, icon: Ruler },
-                  { label: "Location", value: "Ganeshpur, Saharanpur", icon: MapPin },
+                  { label: "Estate", value: project.estate, icon: MapPin },
                   { label: "Amenities", value: `${project.amenities.length} essentials`, icon: ShieldCheck },
                 ].map((item) => (
                   <div key={item.label} className="group flex items-center gap-4 rounded-lg border border-zinc-100 bg-zinc-50 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#763300]/30 hover:bg-white hover:shadow-lg">
@@ -186,7 +195,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                     </div>
                     <div>
                       <div className="text-[10px] font-black uppercase tracking-[0.18em] text-zinc-400">{item.label}</div>
-                      <div className="mt-1 text-sm font-black text-zinc-900">{item.value}</div>
+                      <div className="mt-1 wrap-anywhere text-sm font-black text-zinc-900">{item.value}</div>
                     </div>
                   </div>
                 ))}
@@ -252,7 +261,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
             <div className="text-[11px] font-black uppercase tracking-[0.2em] text-[#763300]">Strategic Location</div>
             <h2 className="mt-4 text-3xl font-black leading-tight text-[#173404] md:text-5xl">Click a nearby landmark to view the route</h2>
             <p className="mt-5 text-base leading-relaxed text-zinc-500">
-              The map updates from the project location in Ganeshpur near Rajaji National Park to whichever strategic location you select.
+              The map updates from this project address to whichever strategic location you select.
             </p>
           </div>
 
@@ -281,9 +290,10 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-[0.18em] text-zinc-400">Route</div>
                     <div className="mt-1 text-sm font-black text-[#173404]">Project location to {selectedLandmark}</div>
+                    <div className="mt-1 max-w-xl wrap-anywhere text-xs leading-relaxed text-zinc-500">From: {routeOrigin}</div>
                   </div>
                   <a
-                    href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(`${projectOrigin}, India`)}&destination=${encodeURIComponent(landmarkQueries[selectedLandmark] ?? `${selectedLandmark}, India`)}`}
+                    href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(routeOrigin)}&destination=${encodeURIComponent(landmarkQueries[selectedLandmark] ?? `${selectedLandmark}, India`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="rounded-full bg-zinc-100 px-4 py-2 text-xs font-black uppercase tracking-wider text-[#763300] transition-colors hover:bg-[#763300] hover:text-white"
@@ -294,7 +304,7 @@ export function ProjectDetailClient({ project }: { project: Project }) {
                 <iframe
                   key={mapUrl}
                   src={mapUrl}
-                  title={`Route from ${projectOrigin} to ${selectedLandmark}`}
+                  title={`Route from ${routeOrigin} to ${selectedLandmark}`}
                   className="h-[460px] w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

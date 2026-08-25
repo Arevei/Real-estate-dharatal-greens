@@ -99,8 +99,8 @@ export default function HomePage() {
       <section ref={heroRef} className="relative min-h-[100svh] w-full overflow-hidden bg-[#08131f] pt-28 pb-12 md:pt-36 md:pb-16">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero-bg.png"
-            alt="Hero background"
+            src="/images/events/SRS%20Farm%20House/DSC06800.JPG"
+            alt="SRS Farm House event"
             fill
             sizes="100vw"
             className="object-cover opacity-70"
@@ -160,11 +160,11 @@ export default function HomePage() {
           >
             <div className="relative ml-auto h-[560px] max-w-[520px]">
               <div className="absolute right-0 top-0 h-[78%] w-[82%] overflow-hidden rounded-lg border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.34)]">
-                <Image src="/images/about/doon-construction-team.png" alt="Doon Alliance planning team" fill sizes="40vw" className="object-cover" />
+                <Image src="/images/events/SRS%20Farm%20House/DSC06905.JPG" alt="SRS Farm House landscape" fill sizes="40vw" className="object-cover" />
               </div>
               <div className="absolute bottom-0 left-0 w-[68%] rounded-lg border border-white/12 bg-white p-5 shadow-[0_24px_70px_rgba(0,0,0,0.25)]">
                 <div className="relative mb-4 h-40 overflow-hidden rounded-md">
-                  <Image src="/images/projects/shivalik-plots.png" alt="Shivalik Estate" fill sizes="28vw" className="object-cover" />
+                  <Image src="/images/Shivalik_Projects_Images/Backwoods 10/img3.jpg" alt="SRS Farm House gathering" fill sizes="28vw" className="object-cover" />
                 </div>
                 <div className="text-xs font-black uppercase tracking-[0.18em] text-[#763300]">Featured Estate</div>
                 <div className="mt-2 text-2xl font-black leading-tight text-zinc-800">Shivalik Estate</div>
@@ -212,8 +212,8 @@ export default function HomePage() {
               {/* Main living room image */}
               <div className="absolute bottom-0 right-0 h-[86%] w-[82%] overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/interior-living.png"
-                  alt="Doon Alliance living space"
+                  src="/images/events/SRS%20Farm%20House/DSC06947.jpg"
+                  alt="SRS Farm House gathering"
                   fill
                   sizes="(max-width: 1024px) 82vw, 42vw"
                   className="object-cover"
@@ -223,8 +223,8 @@ export default function HomePage() {
               {/* Overlapping bedroom image */}
               <div className="absolute left-0 top-0 z-10 h-[52%] w-[52%] overflow-hidden border-[12px] border-white shadow-xl">
                 <Image
-                  src="/images/interior-bedroom.png"
-                  alt="Doon Alliance bedroom"
+                  src="/images/events/SRS%20Farm%20House/DSC06755.jpg"
+                  alt="SRS Farm House community space"
                   fill
                   sizes="(max-width: 1024px) 52vw, 26vw"
                   className="object-cover"
@@ -277,7 +277,7 @@ export default function HomePage() {
           {/* Bottom Tabs */}
           <div className="grid grid-cols-2 md:grid-cols-4 w-full mt-32 overflow-hidden rounded-lg border border-zinc-900/10 bg-white shadow-[0_18px_48px_rgba(23,52,4,0.07)]">
             {[
-              { icon: Building2, label: "Apartment" },
+               { icon: Building2, label: "Apartment" },
               { icon: Home, label: "Villa" },
               { icon: Store, label: "Commercial" },
               { icon: MapPin, label: "Plots" }
@@ -289,7 +289,7 @@ export default function HomePage() {
                 className={`group text-zinc-900 transition-colors duration-200 hover:bg-[#1a1a1a] hover:text-white ${i !== 0 ? 'border-l border-zinc-900/10' : ''}`}
               >
                 <Link href="/projects" className="py-12 flex flex-col items-center justify-center gap-4">
-                  <item.icon className="w-12 h-12 text-zinc-900 group-hover:text-[#ba7517] stroke-[1.5] transition-colors" />
+                   <item.icon className="w-12 h-12 text-zinc-900 group-hover:text-[#ba7517] stroke-[1.5] transition-colors" />
                   <span className="font-bold text-lg">{item.label}</span>
                 </Link>
               </motion.div>
@@ -393,7 +393,7 @@ export default function HomePage() {
       {/* SECTION 5: Choose Your Dream Home */}
       <section className="ploy-surface py-24">
         <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
-          <div className="text-[#763300] font-bold tracking-[0.2em] text-xs uppercase mb-4">RECENT PROJECT ——</div>
+          <div className="text-[#763300] font-bold tracking-[0.2em] text-xs uppercase mb-4">RECENT PROJECT</div>
           <h2 className="text-4xl md:text-5xl font-bold text-navy mb-12 text-center">Choose your Dream Home</h2>
 
           <div className="flex flex-wrap justify-center gap-8 border-b border-gray-200 mb-14 w-full max-w-2xl">
@@ -411,9 +411,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             {[
-              { img: "shivalik-plots.png", title: "Shivalik Estate", desc: "A delivered real estate development in Ganeshpur featuring multiple planned residential layouts.", type: "ESTATE" },
-              { img: "dharatal-meadows.png", title: "Shakumbhari Estate", desc: "A large planned estate development presented across multiple phases with residential and farmhouse layouts.", type: "ESTATE" },
-              { img: "green-valley-villas.png", title: "Backwoods Development", desc: "Part of the wider Backwoods and Shivalik Estate development shown within the project master plans.", type: "MASTER PLAN" }
+              { img: "services/farmhouse-developments.webp", title: "Shivalik Estate", desc: "Delivered residential layouts in Ganeshpur, forming part of the Shivalik Estate.", type: "SHIVALIK ESTATE" },
+              { img: "shakumbhari.webp", title: "Shakumbhari Estate", desc: "Residential plots and farmhouses at the Shakumbhari Estate in Behat, Saharanpur.", type: "SHAKUMBHARI ESTATE" },
+              { img: "services/township-development.webp", title: "Backwoods Projects", desc: "Backwoods 1 to 10 are residential and farmhouse projects within the Shivalik Estate.", type: "SHIVALIK ESTATE" }
             ].map((c, i) => (
               <motion.div
                 key={i}
@@ -426,7 +426,7 @@ export default function HomePage() {
               >
                 {/* Background Image */}
                 <Image
-                  src={`/images/projects/${c.img}`}
+                  src={`/images/${c.img}`}
                   alt={c.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
@@ -534,9 +534,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { img: "/images/about/nature-focus.png", title: "Green community planning" },
-              { img: "/images/interior-living.png", title: "Comfort-first homes" },
-              { img: "/images/projects/shivalik-plots.png", title: "Approved residential plots" },
+              { img: "/images/events/SRS%20Farm%20House/DSC06800.JPG", title: "Green community planning" },
+              { img: "/images/events/June%202026%20Meet%20and%20Greet/DSC07280.JPG", title: "Community-first living" },
+              { img: "/images/events/February%202026%20Meet%20and%20Greet/DSC03248.JPG", title: "Memorable community moments" },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
@@ -562,8 +562,8 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero-bg.png"
-            alt="Building Dark"
+            src="/images/events/Annual%20Event%20Award%20Function%202025/1W0A2778.JPG"
+            alt="Doon Alliance annual community event"
             fill
             sizes="100vw"
             className="object-cover mix-blend-luminosity opacity-20"
@@ -615,10 +615,10 @@ export default function HomePage() {
       {/* SECTION 8: Stats with Bg Images */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
         {[
-          { num: "2,333,520", label: "Residential Projects (Sq. Ft.)", bg: "stats-bg-1.png", icon: Building2, highlight: false },
-          { num: "1,850+", label: "Satisfied Residents", bg: "stats-bg-3.png", icon: Smile, highlight: true },
-          { num: "772,785", label: "Farmhouse Developments (Sq. Ft.)", bg: "stats-bg-2.png", icon: Home, highlight: false },
-          { num: "24x7", label: "Security In Gated Communities", bg: "stats-bg-4.png", icon: Zap, highlight: false },
+          { num: "2,333,520", label: "Residential Projects (Sq. Ft.)", bg: "events/SRS%20Farm%20House/DSC06987.jpg", icon: Building2, highlight: false },
+          { num: "1,850+", label: "Satisfied Residents", bg: "events/June%202026%20Meet%20and%20Greet/DSC07178.JPG", icon: Smile, highlight: true },
+          { num: "772,785", label: "Farmhouse Developments (Sq. Ft.)", bg: "events/Annual%20Event%20Award%20Function%202025/1W0A2881.JPG", icon: Home, highlight: false },
+          { num: "24x7", label: "Security In Gated Communities", bg: "events/February%202026%20Meet%20and%20Greet/DSC03250.JPG", icon: Zap, highlight: false },
         ].map((stat, i) => (
           <div key={i} className="relative h-72 md:h-[380px] flex flex-col items-center justify-center text-white text-center p-8 overflow-hidden group">
             <Image
@@ -659,25 +659,25 @@ export default function HomePage() {
             {[
               {
                 title: "Residential Plots",
-                img: "projects/shivalik-plots.png",
+                img: "services/residential-plots.webp",
                 desc: "Thoughtfully planned residential plots within gated developments featuring wide roads, green spaces and essential community infrastructure.",
                 isDark: false,
               },
               {
                 title: "Farmhouse Developments",
-                img: "projects/dharatal-meadows.png",
+                img: "services/farmhouse-developments.webp",
                 desc: "Spacious farmhouse developments planned around greenery, privacy, comfort and peaceful living.",
                 isDark: false,
               },
               {
                 title: "Flats & Apartments",
-                img: "projects/valley-view-retreat.png",
+                img: "services/flats-apartments.webp",
                 desc: "Quality living spaces designed to offer comfort, security and long-term value for residents.",
                 isDark: false,
               },
               {
                 title: "Township Development",
-                img: "projects/green-valley-villas.png",
+                img: "services/township-development.webp",
                 desc: "Gated township developments planned with roads, lighting, plantations, parks and practical community amenities.",
                 isDark: true,
               }
@@ -784,10 +784,10 @@ export default function HomePage() {
             <div className="lg:col-span-5 hidden lg:flex h-full min-h-[800px] items-end justify-center relative">
               <Image
                 src="/images/agent.png"
-                alt="Real Estate Agent"
+                alt="Doon Alliance property advisor"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-contain object-bottom drop-shadow-2xl"
+                className="object-cover object-center drop-shadow-2xl"
               />
             </div>
 

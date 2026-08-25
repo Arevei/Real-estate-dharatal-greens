@@ -649,11 +649,12 @@ export default function HomePage() {
             </div>
             
             <div className="lg:col-span-5 hidden lg:flex h-full min-h-[800px] items-end justify-center relative">
-              <Image 
-                src="/images/agent.png" 
-                alt="Real Estate Agent" 
+              <Image
+                src="/images/agent.png"
+                alt="Real Estate Agent"
                 fill
-                className="object-contain object-bottom drop-shadow-2xl" 
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-contain object-bottom drop-shadow-2xl"
               />
             </div>
             

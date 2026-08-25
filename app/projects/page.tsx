@@ -7,12 +7,16 @@ import Link from "next/link";
 import { useState } from "react";
 import { projects } from "@/lib/projects";
 
-const tabs = ["All", "Residential Plot", "Bungalow", "Farm House"];
+const tabs = ["All", "Shivalik Estate", "Shakumbhari Estate"];
+
+function shortLocation(location: string) {
+  return location.split(",").slice(0, 2).join(",").trim();
+}
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All");
   const filteredProjects =
-    activeTab === "All" ? projects : projects.filter((project) => project.group === activeTab);
+    activeTab === "All" ? projects : projects.filter((project) => project.estate === activeTab);
 
   return (
     <div className="w-full bg-zinc-50 pb-20 font-sans">
@@ -23,11 +27,11 @@ export default function Projects() {
         </div>
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center text-white">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] backdrop-blur-md">
-            Shivalik Project Collection
+            Dharatal Greens Estates
           </div>
           <h1 className="mb-5 text-4xl font-black leading-tight md:text-6xl">PROJECTS</h1>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
-            Explore Backwoods plotted developments in Ganeshpur near Rajaji National Park with detailed pages, gallery views, amenities, and location routing.
+            Explore Shivalik Estate Backwoods projects and Shakumbhari Estate with detailed pages, gallery views, amenities, and location routing.
           </p>
         </div>
       </section>
@@ -74,13 +78,16 @@ export default function Projects() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#173404]/88 via-[#173404]/25 to-transparent" />
                       <div className="absolute left-5 top-5 rounded-full bg-white/90 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[#763300] shadow-md">
-                        {project.category}
+                        {project.estate}
                       </div>
                       <div className="absolute bottom-5 left-5 right-5">
                         <h3 className="text-2xl font-black text-white">{project.title}</h3>
+                        <div className="mt-1 text-xs font-black uppercase tracking-[0.16em] text-[#ba7517]">
+                          {project.category}
+                        </div>
                         <div className="mt-2 flex items-center gap-2 text-sm font-semibold text-white/78">
                           <MapPin className="h-4 w-4 shrink-0 text-[#ba7517]" />
-                          Ganeshpur, Saharanpur
+                          {shortLocation(project.location)}
                         </div>
                       </div>
                     </div>

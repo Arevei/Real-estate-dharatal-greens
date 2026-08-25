@@ -2,8 +2,10 @@ export type Project = {
   slug: string;
   title: string;
   projectName: string;
+  estate: string;
   category: string;
   group: string;
+  mapOrigin?: string;
   location: string;
   plotArea: string;
   description: string;
@@ -58,9 +60,56 @@ const image = (folder: string, file: string, alt: string, isMasterPlan = false) 
 
 export const projects: Project[] = [
   {
+    slug: "shakumbhari-estate",
+    title: "Shakumbhari Estate",
+    projectName: "Shakumbhari",
+    estate: "Shakumbhari Estate",
+    category: "Residential Land and Farm House",
+    group: "Farm House",
+    mapOrigin:
+      "The Shakumbhari Estate by Dharatal Greens, Jhajra & Dadal, Hinduwala, Samaspur, Ahmadpur, Mohammadpur, Tehsil - Behat, Post, Mirzapur Pole, Uttar Pradesh 247121",
+    location: "Haiderpur Hinduwala, Pargana Faizabad, Behat Tehsil Behat District Saharanpur UP-247121",
+    plotArea: "100-300 Sq Yd, 800 Sq Yd Or Above",
+    description:
+      "Shakumbhari Estate by Dharatal Greens is a premium residential project located in Behat, Saharanpur. This project offers a unique blend of modern living and natural beauty, with plots available in sizes ranging from 100 to 300 square yards, as well as larger farmhouses of 800 square yards and above. The estate is designed to provide a serene environment while ensuring all essential amenities are within reach.",
+    amenities: [...fullAmenities, "Mountain view with tumbling ranges"],
+    landmarks: [
+      "Mata Shakumbhari Devi Mandir",
+      "Glocal University",
+      "Paonta Shahib",
+      "Doon Group Of Colleges",
+      "Dehradun",
+      "Delhi",
+      "Haridwar",
+      "Rishikesh",
+      "Mussoorie",
+      "Saharanpur Railway Station",
+    ],
+    images: [
+      {
+        src: "https://ik.imagekit.io/3uiubuexm/Project%20Photo/shakumbhari/vlcsnap-2025-10-22-16h39m03s016.png",
+        alt: "Shakumbhari Estate project view",
+      },
+      {
+        src: "https://ik.imagekit.io/3uiubuexm/Project%20Photo/shakumbhari/vlcsnap-2025-10-22-16h40m41s648.png",
+        alt: "Shakumbhari Estate landscape view",
+      },
+      {
+        src: "https://ik.imagekit.io/3uiubuexm/Project%20Photo/shakumbhari/vlcsnap-2025-10-22-16h39m40s924.png",
+        alt: "Shakumbhari Estate plotted development",
+      },
+      {
+        src: "https://dharatalgreens.com/images/shakumbhari/shakumbhari_estate_masterplan.webp",
+        alt: "Shakumbhari Estate master plan",
+        isMasterPlan: true,
+      },
+    ],
+  },
+  {
     slug: "backwoods-1",
     title: "Backwoods 1",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Residential Plot",
     group: "Residential Plot",
     location: commonLocation,
@@ -81,6 +130,7 @@ export const projects: Project[] = [
     slug: "backwoods-2",
     title: "Backwoods 2",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Bungalow",
     group: "Bungalow",
     location: commonLocation,
@@ -98,6 +148,7 @@ export const projects: Project[] = [
     slug: "backwoods-3",
     title: "Backwoods 3",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Farm House",
     group: "Farm House",
     location: commonLocation,
@@ -117,6 +168,7 @@ export const projects: Project[] = [
     slug: "backwoods-4",
     title: "Backwoods 4",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Residential Plot",
     group: "Residential Plot",
     location: commonLocation,
@@ -136,6 +188,7 @@ export const projects: Project[] = [
     slug: "backwoods-5",
     title: "Backwoods 5",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Residential Plot",
     group: "Residential Plot",
     location: commonLocation,
@@ -156,6 +209,7 @@ export const projects: Project[] = [
     slug: "backwoods-6",
     title: "Backwoods 6",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Residential Plot",
     group: "Residential Plot",
     location: commonLocation,
@@ -176,6 +230,7 @@ export const projects: Project[] = [
     slug: "backwoods-7",
     title: "Backwoods 7",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Residential Plot",
     group: "Residential Plot",
     location: commonLocation,
@@ -198,6 +253,7 @@ export const projects: Project[] = [
     slug: "backwoods-8",
     title: "Backwoods 8",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Mini Farm house",
     group: "Farm House",
     location: commonLocation,
@@ -217,6 +273,7 @@ export const projects: Project[] = [
     slug: "backwoods-9",
     title: "Backwoods 9",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Residential Plot",
     group: "Residential Plot",
     location: commonLocation,
@@ -237,6 +294,7 @@ export const projects: Project[] = [
     slug: "backwoods-10",
     title: "Backwoods 10",
     projectName: "Shivalik",
+    estate: "Shivalik Estate",
     category: "Residential Plot",
     group: "Residential Plot",
     location: commonLocation,

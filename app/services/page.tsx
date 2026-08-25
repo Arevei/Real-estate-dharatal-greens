@@ -43,7 +43,7 @@ export default function Services() {
     <div className="w-full bg-zinc-50 pb-20 font-sans">
       <section className="relative flex h-[50vh] min-h-[400px] items-center justify-center pt-20">
         <div className="absolute inset-0">
-          <Image src="/images/hero-bg.png" alt="Contact Doon Alliance" fill priority sizes="100vw" className="object-cover" />
+          <Image src="/images/events/SRS%20Farm%20House/DSC06755.jpg" alt="SRS Farm House community space" fill priority sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-[#2C2C2A]/80" />
         </div>
         <div className="relative z-10 text-center text-white">

@@ -38,8 +38,8 @@ export default function About() {
     <div className="w-full overflow-x-hidden bg-white font-sans">
       <section className="relative flex min-h-[420px] items-center justify-center pt-24 text-center text-white">
         <Image
-          src="/images/hero-bg.png"
-          alt="Doon Alliance homes"
+          src="/images/events/SRS%20Farm%20House/DSC06800.JPG"
+          alt="SRS Farm House event"
           fill
           priority
           sizes="100vw"
@@ -70,8 +70,8 @@ export default function About() {
             className="relative min-h-[360px] overflow-hidden shadow-xl md:min-h-[500px]"
           >
             <Image
-              src="/images/about/doon-construction-team.png"
-              alt="Doon Alliance construction planning team"
+              src="/images/events/SRS%20Farm%20House/DSC06758.webp"
+              alt="SRS Farm House landscape"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -158,8 +158,8 @@ export default function About() {
             className="relative min-h-[360px] overflow-hidden shadow-xl md:min-h-[500px]"
           >
             <Image
-              src="/images/about/doon-vision-target.png"
-              alt="Doon Alliance vision and planning"
+              src="/images/events/SRS Farm House/DJI_0829.webp"
+              alt="SRS Farm House gathering"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

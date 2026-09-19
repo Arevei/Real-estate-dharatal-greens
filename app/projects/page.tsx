@@ -27,7 +27,7 @@ export default function Projects() {
         </div>
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center text-white">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] backdrop-blur-md">
-            Dharatal Greens Estates
+            Doon Alliance Estates
           </div>
           <h1 className="mb-5 text-4xl font-black leading-tight md:text-6xl">PROJECTS</h1>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">

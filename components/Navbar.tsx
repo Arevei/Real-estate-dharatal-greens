@@ -27,6 +27,7 @@ export function Navbar() {
             alt="Doon Alliance" 
             width={64}
             height={64}
+            loading="eager"
             className="h-16 w-auto object-contain"
           />
         </Link>

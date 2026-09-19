@@ -4,15 +4,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 const contactSchema = z.object({
   name: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
-  subject: z.string().optional(),
+  email: z.string().trim().email("Please enter a valid email address."),
+  phone: z.string().trim().min(1, "Phone number is required."),
+  subject: z.string().trim().max(80, "Subject should be 80 characters or less.").optional(),
   message: z.string().optional(),
 });
 
@@ -76,10 +76,12 @@ export function ContactForm() {
                 <FormControl>
                   <Input
                     placeholder="Email Address"
+                    type="email"
                     className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#763300] bg-white rounded-none text-base"
                     {...field}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -94,10 +96,12 @@ export function ContactForm() {
                 <FormControl>
                   <Input
                     placeholder="Phone Number"
+                    type="tel"
                     className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#763300] bg-white rounded-none text-base"
                     {...field}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -109,10 +113,12 @@ export function ContactForm() {
                 <FormControl>
                   <Input
                     placeholder="Subject"
+                    maxLength={80}
                     className="h-[60px] border border-gray-200 px-5 w-full focus-visible:ring-0 focus-visible:border-[#763300] bg-white rounded-none text-base"
                     {...field}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />

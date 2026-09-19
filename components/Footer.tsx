@@ -58,7 +58,7 @@ export function Footer() {
           {/* Bottom Bar */}
         </div>
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-500 w-full">
-          <p>Copyright &copy; {new Date().getFullYear()} Dharatal Greens All Rights Reserved.</p>
+          <p>Copyright &copy; {new Date().getFullYear()} Doon Alliance All Rights Reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms-conditions" className="hover:text-white transition-colors">Terms of Service</Link>

@@ -13,10 +13,125 @@ function text(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
 
-function timeoutError(label: string, ms: number) {
-  return new Promise<never>((_, reject) => {
-    setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+function envNumber(name: string, fallback: number) {
+  const value = Number(process.env[name]);
+  return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+function isAbortError(error: unknown) {
+  return error instanceof DOMException && error.name === "AbortError";
+}
+
+function isEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function formatMessageHtml(payload: Record<string, string>) {
+  return [
+    `<p style="margin:0 0 4px;">Name: ${escapeHtml(payload.name || "-")}</p>`,
+    `<p style="margin:0 0 4px;">Email: <a href="mailto:${escapeHtml(payload.email)}">${escapeHtml(payload.email || "-")}</a></p>`,
+    `<p style="margin:0 0 4px;">Phone: ${escapeHtml(payload.phone || "-")}</p>`,
+    `<p style="margin:0 0 24px;">Subject: ${escapeHtml(payload.subject || "-")}</p>`,
+    `<p style="margin:0; white-space:pre-wrap;">${escapeHtml(payload.message || "-")}</p>`,
+  ].join("");
+}
+
+async function submitToSheetDb(payload: Record<string, string>) {
+  const sheetUrl = process.env.SHEETDB_API_URL;
+
+  if (!sheetUrl) {
+    return false;
+  }
+
+  const sheetRequestUrl = new URL(sheetUrl);
+  sheetRequestUrl.searchParams.set("sheet", process.env.SHEETDB_SHEET_NAME || "DoonAlliance");
+
+  const controller = new AbortController();
+  const timeoutMs = envNumber("SHEETDB_TIMEOUT_MS", 10000);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const sheetResponse = await fetch(sheetRequestUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: payload }),
+      signal: controller.signal,
+    });
+
+    if (!sheetResponse.ok) {
+      console.error(`SheetDB request failed with ${sheetResponse.status}`);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error(
+      isAbortError(error) ? `SheetDB submission timed out after ${timeoutMs}ms` : "SheetDB submission failed",
+      error,
+    );
+    return false;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function submitToSmtp(payload: Record<string, string>) {
+  const smtpHost = process.env.SMTP_HOST;
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+  const mailTo = process.env.CONTACT_TO_EMAIL || smtpUser;
+
+  if (!smtpHost || !smtpUser || !smtpPass || !mailTo) {
+    return false;
+  }
+
+  const smtpPort = Number(process.env.SMTP_PORT || 587);
+  const timeoutMs = envNumber("SMTP_TIMEOUT_MS", 10000);
+  const transporter = nodemailer.createTransport({
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpPort === 465 || process.env.SMTP_SECURE === "true",
+    connectionTimeout: timeoutMs,
+    greetingTimeout: timeoutMs,
+    socketTimeout: timeoutMs,
+    auth: {
+      user: smtpUser,
+      pass: smtpPass,
+    },
   });
+
+  try {
+    await transporter.sendMail({
+      from: "Doon Aliance <info@joincloud.in>",
+      to: mailTo,
+      replyTo: payload.email || undefined,
+      subject: `Doon Alliance enquiry: ${payload.subject}`,
+      text: [
+        `Name: ${payload.name || "-"}`,
+        `Email: ${payload.email || "-"}`,
+        `Phone: ${payload.phone || "-"}`,
+        `Subject: ${payload.subject || "-"}`,
+        "",
+        payload.message || "-",
+      ].join("\n"),
+      html: formatMessageHtml(payload),
+    });
+    return true;
+  } catch (error) {
+    console.error("SMTP submission failed", error);
+    return false;
+  } finally {
+    transporter.close();
+  }
 }
 
 export async function POST(request: Request) {
@@ -32,84 +147,34 @@ export async function POST(request: Request) {
       source: "Doon Alliance website",
     };
 
-    if (!payload.name && !payload.email && !payload.phone && !payload.message) {
-      return NextResponse.json({ error: "Please add your contact details." }, { status: 400 });
+    if (!payload.email || !isEmail(payload.email)) {
+      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
     }
 
-    const sheetUrl = process.env.SHEETDB_API_URL;
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
-    const mailTo = process.env.CONTACT_TO_EMAIL || smtpUser;
-
-    const hasSmtp = Boolean(smtpHost && smtpUser && smtpPass && mailTo);
-
-    let delivered = false;
-
-    if (sheetUrl) {
-      const sheetRequestUrl = new URL(sheetUrl);
-      sheetRequestUrl.searchParams.set("sheet", process.env.SHEETDB_SHEET_NAME || "DoonAlliance");
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 3500);
-
-      try {
-        const sheetResponse = await fetch(sheetRequestUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ data: payload }),
-          signal: controller.signal,
-        });
-
-        delivered = delivered || sheetResponse.ok;
-        if (!sheetResponse.ok) {
-          console.error(`SheetDB request failed with ${sheetResponse.status}`);
-        }
-      } catch (error) {
-        console.error("SheetDB submission failed", error);
-      } finally {
-        clearTimeout(timeout);
-      }
+    if (!payload.phone) {
+      return NextResponse.json({ error: "Phone number is required." }, { status: 400 });
     }
 
-    if (hasSmtp) {
-      const smtpPort = Number(process.env.SMTP_PORT || 587);
-      const transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: smtpPort,
-        secure: smtpPort === 465 || process.env.SMTP_SECURE === "true",
-        connectionTimeout: 3500,
-        greetingTimeout: 3500,
-        socketTimeout: 3500,
-        auth: {
-          user: smtpUser,
-          pass: smtpPass,
-        },
-      });
+    if (payload.subject.length > 80) {
+      return NextResponse.json({ error: "Subject should be 80 characters or less." }, { status: 400 });
+    }
 
-      try {
-        await Promise.race([
-          transporter.sendMail({
-            from: process.env.CONTACT_FROM_EMAIL || process.env.SMTP_FROM || smtpUser,
-            to: mailTo,
-            replyTo: payload.email || undefined,
-            subject: `Doon Alliance enquiry: ${payload.subject}`,
-            text: [
-              `Name: ${payload.name || "-"}`,
-              `Email: ${payload.email || "-"}`,
-              `Phone: ${payload.phone || "-"}`,
-              `Subject: ${payload.subject || "-"}`,
-              "",
-              payload.message || "-",
-            ].join("\n"),
-          }),
-          timeoutError("SMTP submission", 4500),
-        ]);
-        delivered = true;
-      } catch (error) {
-        console.error("SMTP submission failed", error);
-      } finally {
-        transporter.close();
-      }
+    const hasSmtp = Boolean(
+      process.env.SMTP_HOST &&
+        process.env.SMTP_USER &&
+        process.env.SMTP_PASS &&
+        (process.env.CONTACT_TO_EMAIL || process.env.SMTP_USER),
+    );
+    const configured = Boolean(process.env.SHEETDB_API_URL || hasSmtp);
+    const deliveryAttempts = [submitToSheetDb(payload), submitToSmtp(payload)];
+    const results = await Promise.all(deliveryAttempts);
+    const delivered = results.some(Boolean);
+
+    if (configured && !delivered) {
+      return NextResponse.json(
+        { error: "Unable to send your message right now. Please try again in a moment." },
+        { status: 502 },
+      );
     }
 
     return NextResponse.json({ ok: true, delivered });

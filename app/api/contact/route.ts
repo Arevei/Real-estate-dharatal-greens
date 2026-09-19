@@ -165,19 +165,24 @@ export async function POST(request: Request) {
         process.env.SMTP_PASS &&
         (process.env.CONTACT_TO_EMAIL || process.env.SMTP_USER),
     );
-    const configured = Boolean(process.env.SHEETDB_API_URL || hasSmtp);
-    const deliveryAttempts = [submitToSheetDb(payload), submitToSmtp(payload)];
-    const results = await Promise.all(deliveryAttempts);
-    const delivered = results.some(Boolean);
+    if (!hasSmtp) {
+      console.error("SMTP delivery is not configured in this environment.");
+      return NextResponse.json(
+        { error: "Email delivery is not configured right now." },
+        { status: 500 },
+      );
+    }
 
-    if (configured && !delivered) {
+    const [sheetDelivered, emailDelivered] = await Promise.all([submitToSheetDb(payload), submitToSmtp(payload)]);
+
+    if (!emailDelivered) {
       return NextResponse.json(
         { error: "Unable to send your message right now. Please try again in a moment." },
         { status: 502 },
       );
     }
 
-    return NextResponse.json({ ok: true, delivered });
+    return NextResponse.json({ ok: true, delivered: true, emailDelivered, sheetDelivered });
   } catch (error) {
     console.error("Contact form submission failed", error);
     return NextResponse.json({ error: "Unable to send your message right now." }, { status: 500 });
